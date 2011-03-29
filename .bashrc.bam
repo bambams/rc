@@ -55,7 +55,12 @@ export EDITOR PATH
 
 # Give me a fortune!
 echo '--'
-/usr/games/fortune
+
+if [ -e /usr/games/fortune ]; then
+    /usr/games/fortune
+elif [ -e /usr/bin/fortune ]; then
+    /usr/bin/fortune
+fi
 
 #less /usr/share/games/fortune/humorix-stories
 
