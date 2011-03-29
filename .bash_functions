@@ -1,3 +1,41 @@
+function killflash
+{
+    flashpids=`flashpids`;
+    if [ "$flashpids" == "" ]; then
+        echo "Can't get flash PIDs... :(" 1>&2;
+    fi
+    kill -KILL "`flashpids`";
+    #killall -q nsplugin
+}
+
+function killall
+{
+    while [ "$1" ]; do
+        process="$1"
+
+        if [ "$process" == -f -o "$process" == --force ]; then
+            force=1
+            continue;
+        fi
+
+        psaux="`ps aux | grep "$process" | grep -v grep`";
+        pids="`echo "$psaux" | awk '{print $2}' | xargs`";
+
+        echo "$psaux";
+
+        if [ ! "$force" ]; then
+            echo "The following PIDs will be KILLed: $pids";
+            read -p "Terminate these processes (Y/n) [n] " answer;
+            if [ "$answer" == y -o "$answer" == Y ]; then
+                echo "KILLing..."
+                kill -KILL $pids
+            else
+                echo "Skipping /$process/";
+            fi;
+        fi
+    done
+}
+
 function mkscreen
 {
     local add=n
