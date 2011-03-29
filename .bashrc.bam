@@ -3,6 +3,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# Fedora's way of checking interactivity... Not sure if both work or if we
+# need distro specifics... Since this is called by .bashrc anyway it
+# probably won't matter.
+#[[ $- != *i* ]] && return;
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -32,6 +37,12 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# Source git's bash completion. :)
+git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`
+if [ -e "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash" ];
+    . "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
+then
+
 EDITOR=vim
 
 export EDITOR
@@ -39,4 +50,6 @@ export EDITOR
 # Give me a fortune!
 echo '--'
 /usr/games/fortune
+
+#less /usr/share/games/fortune/humorix-stories
 
