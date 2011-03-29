@@ -1,0 +1,11 @@
+"3.0 (created: 2011/03/06 22:51:04)
+
+set defsearch=
+set focuscontent
+set newtab=all
+set runtimepath=/home/bamccaig
+set tabnumbers
+set wildmode=list:longest
+source! /home/bamccaig/.vimperatorrc.local
+
+" vim: set ft=vimperator:
