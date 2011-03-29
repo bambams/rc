@@ -1,0 +1,11 @@
+"3.0 (created: 2011/03/06 22:51:04)
+
+set defsearch=
+set guioptions=CMNs
+set newtab=all
+set runtimepath=/home/bamccaig
+set wildmode=list:longest
+"source! /home/bamccaig/.vimperatorrc.local
+
+" vim: set ft=pentadactyl:
+
