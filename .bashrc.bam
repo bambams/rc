@@ -39,9 +39,9 @@ fi
 
 # Source git's bash completion. :)
 git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`
-if [ -e "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash" ];
+if [ -e "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash" ]; then
     . "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
-then
+fi
 
 EDITOR=vim
 
