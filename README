@@ -1,0 +1,37 @@
+This project is basically used to track my rc (config) files and other
+files of a similar nature. This is because I share most of the same
+configuration on all computers and it's becoming too much of a hassle to
+duplicate it all the time.
+
+You may or may not find this useful. It's mostly for myself anyway. If you
+do happen to look through it and find something that could be considered a
+privacy or security leak I would greatly appreciate it if you would point
+it out to me. :)
+
+My plan is to create symlinks from my $HOME/src/rc/$foo (where I'll typically
+have this repository cloned) to my $HOME/$foo. Hopefully this will make it
+easier to track new configurations that I learn about.
+
+I realized that much of my .bashrc is very Debian-esque (it's mostly the
+Debian .bashrc template anyway with a few additions) and it seemed silly
+to track all of that, especially when it might not necessarily work
+properly on other distros (I also use Fedora, and from time to time,
+Gentoo). So instead I moved what little I had added to .bashrc.bam and
+then added a simple reference to that inside of my actual .bashrc:
+
+  if [ -f ~/.bashrc.bam ]; then
+      . .bashrc.bam
+  fi
+
+That way I can keep everything separate. So if you're wondering why things
+aren't working for you it might be because such a reference is missing in
+your environment.
+
+Much of my configs are taken from Linux distros or from online guides. I'm
+not attempting to claim "copyright" or "credit" for anything in these
+files. :P If you find something useful and want to thank somebody then you
+should thank the original author, whether that was me, or somebody else.
+:P
+
+Enough with the reading. :P Get back to coding. >:(
+
