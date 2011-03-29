@@ -54,12 +54,14 @@ fi
 export EDITOR PATH
 
 # Give me a fortune!
-echo '--'
+if [ "$UID" != 0 ]; then
+    echo '--'
 
-if [ -e /usr/games/fortune ]; then
-    /usr/games/fortune
-elif [ -e /usr/bin/fortune ]; then
-    /usr/bin/fortune
+    if [ -e /usr/games/fortune ]; then
+        /usr/games/fortune
+    elif [ -e /usr/bin/fortune ]; then
+        /usr/bin/fortune
+    fi;
 fi
 
 #less /usr/share/games/fortune/humorix-stories
