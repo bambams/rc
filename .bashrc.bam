@@ -45,7 +45,13 @@ fi
 
 EDITOR=vim
 
-export EDITOR
+if [ -z "$PATH" ]; then
+    PATH=$HOME/bin
+else
+    PATH=$PATH:$HOME/bin
+fi
+
+export EDITOR PATH
 
 # Give me a fortune!
 echo '--'
