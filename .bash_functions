@@ -1,3 +1,19 @@
+function find_js_func
+{
+    egrep -iR 'function\s+\S*'"$1"'\S*\(' . | grep -v '^Binary';
+}
+
+function find_cs_class
+{
+    egrep -iR '(:?class|struct)\s+\S*'"$1" . | grep -v '^Binary';
+}
+
+function find_cs_func
+{
+    egrep -iR '(:?public|protected|private)\s+\S+\s+\S*'"$1"'\S*\s*\(' . | \
+            grep -v '^Binary';
+}
+
 function killflash
 {
     flashpids=`flashpids`;
