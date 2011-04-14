@@ -1,16 +1,16 @@
-function find_js_func
+function find-js-func
 {
-    egrep -iR 'function\s+\S*'"$1"'\S*\(' . | grep -v '^Binary';
+    egrep -inR 'function\s+\S*'"$1"'\S*\(' . | grep -v '^Binary';
 }
 
-function find_cs_class
+function find-cs-class
 {
-    egrep -iR '(:?class|struct)\s+\S*'"$1" . | grep -v '^Binary';
+    egrep -inR '(:?class|struct)\s+\S*'"$1" . | grep -v '^Binary';
 }
 
-function find_cs_func
+function find-cs-func
 {
-    egrep -iR '(:?public|protected|private)\s+\S+\s+\S*'"$1"'\S*\s*\(' . | \
+    egrep -inR '(:?public|protected|private)\s+\S+\s+\S*'"$1"'\S*\s*\(' . | \
             grep -v '^Binary';
 }
 
