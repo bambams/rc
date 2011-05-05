@@ -131,3 +131,14 @@ nmap <silent> ,/ :nohlsearch<CR>
 let packager = "Brandon McCaig <bamccaig@gmail.com>"
 let spec_chglog_release_info = 1
 
+""""""""""""""""""
+" Create a function to configure Vim for writing E-mails.
+""""""""""""""""""
+function! Mail_mode()
+    set filetype=text
+    set noautoindent
+    set nocindent
+    set nosmartindent
+    set textwidth=65
+endfunction
+
