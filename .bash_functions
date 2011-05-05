@@ -19,6 +19,7 @@ function killflash
     flashpids=`flashpids`;
     if [ "$flashpids" == "" ]; then
         echo "Can't get flash PIDs... :(" 1>&2;
+        return 1;
     fi
     kill -KILL "`flashpids`";
     #killall -q nsplugin
