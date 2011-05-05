@@ -5,6 +5,7 @@ alias aptitude='/usr/bin/aptitude -P'
 alias cb='/usr/bin/xclip -selection clipboard'
 alias cp='/bin/cp -i'
 alias flashpids="(ps aux | grep npviewer.bin | grep -v grep | awk '{print \$2}' ; ps aux | grep flashplayer | grep -v grep | awk '{print \$2}') | xargs"
+alias iperl="/usr/bin/perl -Mstrict -Mwarnings <<-'EOF'"
 alias less='/usr/bin/less -S'
 alias mv='/bin/mv -i'
 alias rm='/bin/rm -i'
