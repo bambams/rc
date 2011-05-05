@@ -2,4 +2,4 @@ mkscreen admin /usr/bin/env /bin/bash
 mkscreen irc /usr/bin/irssi
 mkscreen lfs elinks http://www.linuxfromscratch.org/
 mkscreen rpm-cheats /usr/bin/vim ~/.rpm-cheats
-
+mkscreen perlxs /usr/bin/perldoc perlxs
