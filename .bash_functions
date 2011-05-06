@@ -5,8 +5,6 @@ function args
 		<<<<<<
 		EOF
 
-    echo "0=$0"
-
     local i=1;
 
     while /bin/true; do
