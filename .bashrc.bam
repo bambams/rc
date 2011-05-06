@@ -35,6 +35,8 @@ fi
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+elif [ -f /etc/bash_completion.d/git ]; then
+    . /etc/bash_completion.d/git
 fi
 
 # Source git's bash completion. :)
