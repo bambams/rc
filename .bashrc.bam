@@ -45,6 +45,14 @@ if [ -e "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bas
     . "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
 fi
 
+# Local perl modules. :)
+perl5lib="$HOME/perl5"
+
+if [ ! -z "$perl5lib" ]; then
+    PERL5LIB="$perl5lib";
+    export PERL5LIB
+fi
+
 EDITOR=vim
 
 if [ -z "$PATH" ]; then
