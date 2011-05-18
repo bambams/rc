@@ -47,7 +47,7 @@ function killflash
         echo "Can't get flash PIDs... :(" 1>&2;
         return 1;
     fi
-    kill -KILL "`flashpids`";
+    kill -KILL `flashpids`;
     #killall -q nsplugin
 }
 
