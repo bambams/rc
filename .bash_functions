@@ -1,3 +1,8 @@
+function abspath
+{
+    echo "$1" | sed -r 's,^([^/]),'"`pwd`"'/\1,'
+}
+
 function args
 {
     cat <<-EOF 1>&2;
