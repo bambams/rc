@@ -53,7 +53,10 @@ if [ ! -z "$perl5lib" ]; then
     export PERL5LIB
 fi
 
+# Always vim as an editor. :)
 EDITOR=vim
+
+export EDITOR
 
 if [ -z "$PATH" ]; then
     PATH=$HOME/bin
@@ -61,7 +64,7 @@ else
     PATH=$PATH:$HOME/bin
 fi
 
-export EDITOR PATH
+export PATH
 
 # Give me a fortune!
 if [ "$UID" != 0 ]; then
