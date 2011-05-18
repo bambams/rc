@@ -140,5 +140,6 @@ function! Mail_mode()
     set nocindent
     set nosmartindent
     set textwidth=65
+    set wrap
 endfunction
 
