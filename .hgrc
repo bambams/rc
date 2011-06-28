@@ -17,6 +17,7 @@ highlight =
 histedit = ~/src/histedit/hg_histedit.py
 #keyword = 
 mq = 
+notify = 
 progress = 
 purge = 
 rebase = 
