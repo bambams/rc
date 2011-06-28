@@ -1,0 +1,33 @@
+[ui]
+merge = internal:merge
+username = Brandon McCaig <bamccaig@gmail.com>
+
+[extensions]
+bugzilla = 
+children = 
+churn = 
+color = 
+convert = 
+eol = 
+fetch = 
+gpg = 
+graphlog = 
+hgk = 
+highlight = 
+histedit = ~/src/histedit/hg_histedit.py
+#keyword = 
+mq = 
+progress = 
+purge = 
+rebase = 
+record = 
+relink = 
+schemes = 
+shelve = ~/src/hgshelve/hgshelve.py
+transplant = 
+
+[eol]
+only-consistent = False
+
+%include .hgrc.override
+
