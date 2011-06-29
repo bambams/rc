@@ -3,6 +3,7 @@ merge = internal:merge
 username = Brandon McCaig <bamccaig@gmail.com>
 
 [extensions]
+autopager = ~/src/autopager/autopager.py
 bugzilla = 
 children = 
 churn = 
@@ -18,6 +19,9 @@ histedit = ~/src/histedit/hg_histedit.py
 #keyword = 
 mq = 
 notify = 
+#pager = 
+parentrevspec = 
+patchbomb = 
 progress = 
 purge = 
 rebase = 
@@ -29,6 +33,10 @@ transplant =
 
 [eol]
 only-consistent = False
+
+#[pager]
+#[autopager]
+#pager = LESS='FSRX' less
 
 %include .hgrc.override
 
