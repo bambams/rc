@@ -24,6 +24,147 @@ function args
 		EOF
 }
 
+function check_git
+{
+    local d="${1:-.}";
+    local status=0;
+
+    pushd "$d" &>/dev/null;
+
+    if [ -d .git ]; then
+        git status 2>&1 | grep -i 'working directory clean' &>/dev/null;
+
+        if [ $? != 0 ]; then
+            echo "$d: Working directory dirty!" 1>&2;
+            (( status++ ));
+        fi;
+        
+        git push --dry-run origin master 2>&1 1>/dev/null |
+                grep -i 'everything up-to-date' &>/dev/null;
+
+        if [ $? != 0 ]; then
+            echo "$d: Unpushed changes!" 1>&2;
+            (( status++ ));
+        fi
+    else
+        status=128;
+    fi;
+
+    popd &>/dev/null;
+
+    return $status;
+}
+
+function check_hg
+{
+    local d="${1:-.}";
+    local status=0;
+
+    pushd "$d" &>/dev/null;
+
+    if [ -d .hg ]; then
+        if [ ! -z "`hg status 2>/dev/null`" ]; then
+            echo "$d: Working directory dirty!" 1>&2;
+            (( status++ ));
+        fi;
+
+        if [ hg out origin &>/dev/null ]; then
+            echo "$d: Unpushed changes!" 1>&2;
+            (( status++ ));
+        fi
+
+        if [ hg out &>/dev/null ]; then
+            echo "$d: Unpushed changes!" 1>&2;
+            (( status++ ));
+        fi
+    else
+        status=128;
+    fi;
+
+    popd &>/dev/null;
+
+    return $status;
+}
+
+function check_svn
+{
+    local d="${1:-.}";
+    local status=0;
+
+    pushd "$d" &>/dev/null;
+
+    if [ -d .svn ]; then
+        if [ ! -z "`svn status`" ]; then
+            echo "$d: Working directory dirty!" 1>&2;
+            status=1;
+        fi
+    else
+        status=128;
+    fi;
+        
+    popd &>/dev/null;
+
+    return $status;
+}
+
+function check_scms
+{
+    local i=0;
+    local src="${1:-${HOME}/src}";
+    local unhappy=0;
+
+    for d in `find "$src" -maxdepth 1 -type d`; do
+        local scms=0;
+        
+        echo "$d:";
+
+        check_git "$d";
+
+        if [ $? != 128 ]; then
+            (( scms++ ));
+        fi
+
+        if [ $? != 0 -a $? != 128 ]; then
+            (( unhappy++ ));
+        fi;
+
+        check_hg "$d";
+
+        if [ $? != 128 ]; then
+            (( scms++ ));
+        fi
+
+        if [ $? != 0 -a $? != 128 ]; then
+            (( unhappy++ ));
+        fi;
+
+        check_svn "$d";
+
+        if [ $? != 128 ]; then
+            (( scms++ ));
+        fi
+
+        if [ $? != 0 -a $? != 128 ]; then
+            (( unhappy++ ));
+        fi;
+
+        if [ $scms == 0 ]; then
+            echo "$d: *WARNING*: No SCM in use!";
+        else
+            echo "$d: SCMS: $scms";
+        fi
+
+        echo -e '\n\n\n';
+
+        (( i++ ));
+    done;
+    
+    local happy=$(( i - unhappy ));
+
+    echo ======;
+    echo "Total directories checked: $i (Happy: $happy/Unhappy: $unhappy)";
+}
+
 function find-js-func
 {
     egrep -inR 'function\s+\S*'"$1"'\S*\(' . | grep -v '^Binary';

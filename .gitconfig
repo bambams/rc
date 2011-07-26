@@ -1,0 +1,13 @@
+[alias]
+    br  = branch
+    ci  = commit
+    co  = checkout
+    di  = diff
+    st  = status
+    sta = stash
+[user]
+	name = "Brandon McCaig"
+	email = "bamccaig@gmail.com"
+[core]
+	filemode = false
+	autocrlf = input

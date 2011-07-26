@@ -8,42 +8,38 @@
 # probably won't matter.
 #[[ $- != *i* ]] && return;
 
+# A function to source a script only if it exists.
+function source_if
+{
+    if [ -f "$1" ]; then
+        source "$1"
+    fi
+}
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+source_if ~/.bash_aliases
 
 # Function definitions.
 # Just because aliases are separate, I guess functions might as well be
 # too.
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+source_if ~/.bash_functions
 
 # Screen definitions.
 # These are created by mkscreen and removed by rmscreen functions.
-if [ -f ~/.bash_screens ]; then
-    . ~/.bash_screens
-fi
+source_if ~/.bash_screens
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-elif [ -f /etc/bash_completion.d/git ]; then
-    . /etc/bash_completion.d/git
-fi
+source_if /etc/bash_completion
+source_if /etc/bash_completion.d/git
 
 # Source git's bash completion. :)
 git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`
-if [ -e "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash" ]; then
-    . "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
-fi
+source_if "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
 
 # Local perl modules. :)
 perl5lib="$HOME/perl5"

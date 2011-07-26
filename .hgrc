@@ -1,0 +1,42 @@
+[ui]
+merge = internal:merge
+username = Brandon McCaig <bamccaig@gmail.com>
+
+[extensions]
+autopager = ~/src/autopager/autopager.py
+bugzilla = 
+children = 
+churn = 
+color = 
+convert = 
+eol = 
+fetch = 
+gpg = 
+graphlog = 
+hgk = 
+highlight = 
+histedit = ~/src/histedit/hg_histedit.py
+#keyword = 
+mq = 
+notify = 
+#pager = 
+parentrevspec = 
+patchbomb = 
+progress = 
+purge = 
+rebase = 
+record = 
+relink = 
+schemes = 
+shelve = ~/src/hgshelve/hgshelve.py
+transplant = 
+
+[eol]
+only-consistent = False
+
+#[pager]
+#[autopager]
+#pager = LESS='FSRX' less
+
+%include .hgrc.override
+
