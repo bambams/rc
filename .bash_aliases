@@ -13,6 +13,7 @@ alias rot13='/home/bamccaig/bin/rot --13'
 alias rot47='/home/bamccaig/bin/rot --47'
 alias scheme='/usr/bin/guile'
 alias sls='/usr/bin/screen -ls'
+alias todo='/usr/bin/todo -G'
 
 if [ "$UID" == 0 ]; then
     alias tar='/bin/tar --interactive'
