@@ -276,6 +276,37 @@ function rmscreen
     return 0;
 }
 
+function ssh_agent_init
+{
+    if [ -z "$1" ]; then
+        echo 'invalid arguments' 1>&2;
+        return 1;
+    fi;
+    local ssh_agent_env="$1";
+    local ssh_agent='/usr/bin/ssh-agent';
+    local ssh_agent_args=(-s);
+    if [ -x "$ssh_agent" ]; then
+        "$ssh_agent" "${ssh_agent_args[@]}" |
+                sed -r 's/^echo/#echo/' 1> "$ssh_agent_env";
+        chmod 600 "$ssh_agent_env";
+        source "$ssh_agent_env";
+        trap "kill $SSH_AGENT_PID" 0;
+    fi;
+}
+
+function ssh_agent_setup
+{
+    local ssh_agent_env="$HOME/.ssh_agent_env";
+    if [ -f "$ssh_agent_env" ]; then
+        source "$ssh_agent_env";
+    fi;
+    if [ -z "$SSH_AGENT_PID" ]; then
+        ssh_agent_init "$ssh_agent_env";
+    elif ! ps "$SSH_AGENT_PID" 2>/dev/null | grep ssh-agent; then
+        ssh_agent_init "$ssh_agent_env";
+    fi;
+}
+
 function tryperl
 { 
     local answer=y;
