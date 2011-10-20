@@ -1,0 +1,56 @@
+# Basics.
+set realname = "Brandon McCaig"
+set from = bamccaig@gmail.com
+set use_from = yes
+set envelope_from = yes
+set signature = ~/.signature
+set sendmail = /usr/bin/msmtp
+#set spoolfile = /var/mail/bamccaig
+
+# Directories.
+set folder = "$HOME/mail"
+set record = +sent
+set postponed = +postponed
+set mbox_type = mbox
+set move=no
+
+# Mailboxes to watch.
+mailboxes ! +slrn +fetchmail +mutt
+set sort_browser = alpha
+
+# Headers.
+ignore *
+unignore Date: From: User-Agent: X-Mailer X-Operating-System TO: \
+         Cc: Reply-To: Subject: Mail-Followup-To:
+hdr_order Date: From: User-Agent: X-Mailer X-Operating-System TO: \
+          Cc: Reply-To: Subject: Mail-Followup-To:
+
+# Editor.
+set editor="vim -c 'call Mail_mode()' '+/^$' "
+set edit_headers = yes
+
+# Macros.
+macro index,pager G '<shell-escape> fetchmail -v<enter>'
+
+# Aliases.
+set alias_file = ~/.mutt/aliases
+source ~/.mutt/aliases
+set sort_alias = alias
+
+# Colors.
+source ~/.mutt/colors
+
+# Lists.
+lists mutt-users
+subscribe mutt-users
+set followup_to = yes
+set honor_followup_to = yes
+fcc-hook mutt-user +mutt
+
+# Misc.
+set markers
+set smart_wrap
+set pager_context = 5
+set status_on_top
+push <show-version>
+

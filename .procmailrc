@@ -1,0 +1,17 @@
+PATH=/bin:/usr/bin:/usr/local/bin
+VERBOSE=off
+#DEFAULT=/var/mail/bamccaig
+MAILDIR=$HOME/mail
+LOGFILE=$HOME/.procmail.log
+
+# Recipes below this comment:
+#
+# Example:
+#:0:
+#* ^TOmutt-user
+#mutt
+
+:0:
+* ^(To|Cc):.*beginners@perl.org
+perl-beginners
+
