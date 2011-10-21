@@ -16,7 +16,4 @@ alias scheme='/usr/bin/guile'
 alias sls='/usr/bin/screen -ls'
 alias todo='/usr/bin/todo -G'
 
-if [ "$UID" == 0 ]; then
-    alias tar='/bin/tar --interactive'
-fi
 
