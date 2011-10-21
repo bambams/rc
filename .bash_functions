@@ -311,7 +311,8 @@ function ssh_agent_setup
     fi;
     if [ -z "$SSH_AGENT_PID" ]; then
         ssh_agent_init "$ssh_agent_env";
-    elif ! ps "$SSH_AGENT_PID" 2>/dev/null | grep ssh-agent; then
+    elif ! ps "$SSH_AGENT_PID" 2>/dev/null |
+            grep ssh-agent &>/dev/null; then
         ssh_agent_init "$ssh_agent_env";
     fi;
 }
