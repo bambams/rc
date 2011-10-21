@@ -76,5 +76,6 @@ fi
 #less /usr/share/games/fortune/humorix-stories
 
 # ZOMG, bash has a vi mode!
-set -o vi
+# UGH, but it's hard to get used to...
+#set -o vi
 
