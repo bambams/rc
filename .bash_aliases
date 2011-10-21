@@ -16,4 +16,7 @@ alias scheme='/usr/bin/guile'
 alias sls='/usr/bin/screen -ls'
 alias todo='/usr/bin/todo -G'
 
+if [ -f ~/.bash_aliases_ex ]; then
+    source ~/.bash_aliases_ex;
+fi;
 
