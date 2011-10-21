@@ -223,9 +223,13 @@ function killall
 function mkscreen
 {
     local add=n
+    local replace=n
 
     if [ "$1" == '-a' ]; then
         add=y
+        shift;
+    elif [ "$1" == '-r' ]; then
+        replace=y
         shift;
     fi
 
@@ -234,14 +238,19 @@ function mkscreen
     local command="$*";
 
     if [ -z "$name" -o -z "$command" ]; then
-        echo 'Usage: mkscreen [ -a ] name command
+        echo 'Usage: mkscreen [ -a | -r ] name command
 
-    -a          Add to .bashrc.' 1>&2;
+    -a          Add to .bashrc.
+    
+    -r          Replace screen in .bashrc.' 1>&2;
         return 1;
     fi
 
     if [ $add == y ]; then
         echo "mkscreen $name $command" >> $HOME/.bash_screens;
+    elif [ $replace == y ]; then
+        sed -i -r "/mkscreen $name / s/mkscreen $name (.*)/\
+mkscreen $name $command/" $HOME/.bash_screens;
     fi
 
     alias $name="/usr/bin/screen -d -RR -S $name $command";
