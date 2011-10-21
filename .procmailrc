@@ -7,9 +7,9 @@ LOGFILE=$HOME/.procmail.log
 # Recipes below this comment:
 #
 # Example:
-#:0:
-#* ^TOmutt-user
-#mutt
+:0:
+* ^TOmutt-user
+mutt
 
 :0:
 * ^(To|Cc):.*beginners@perl.org
