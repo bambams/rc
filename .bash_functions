@@ -42,7 +42,7 @@ function check_git
         git push --dry-run origin master 2>&1 1>/dev/null |
                 grep -i 'everything up-to-date' &>/dev/null;
 
-        if [ $? != 0 ]; then
+        if [ $? != 0 -a $? != 128 ]; then
             echo "$d: Unpushed changes!" 1>&2;
             (( status++ ));
         fi
