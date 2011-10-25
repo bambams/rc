@@ -12,6 +12,6 @@ LOGFILE=$HOME/.procmail.log
 mutt
 
 :0:
-* ^(To|Cc):.*beginners@perl.org
+* ^TObeginners
 perl-beginners
 
