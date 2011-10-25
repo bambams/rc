@@ -21,9 +21,9 @@ set sort_browser = alpha
 # Headers.
 ignore *
 unignore Date: From: User-Agent: X-Mailer X-Operating-System TO: \
-         Cc: Reply-To: Subject: Mail-Followup-To:
+         Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
 hdr_order Date: From: User-Agent: X-Mailer X-Operating-System TO: \
-          Cc: Reply-To: Subject: Mail-Followup-To:
+          Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
 
 # Editor.
 set editor="vim -c 'call Mail_mode()' '+/^$' "
