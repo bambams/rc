@@ -1,0 +1,7 @@
+Brandon McCaig <bamccaig@gmail.com> <bamccaig@castopulence.org>
+Castopulence Software <https://www.castopulence.org/>
+Blog <http://www.bamccaig.com/>
+perl -E '$_=q{V zrna gur orfg jvgu jung V fnl. }.
+q{Vg qbrfa'\''g nyjnlf fbhaq gung jnl.};
+tr/A-Ma-mN-Zn-z/N-Zn-zA-Ma-m/;say'
+
