@@ -11,6 +11,10 @@ LOGFILE=$HOME/.procmail.log
 alleg-developers
 
 :0:
+* ^TOdevel-announce
+fedora-dev-annc
+
+:0:
 * ^TOpackage-review
 fedora-pkg-rev
 
