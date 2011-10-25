@@ -6,7 +6,14 @@ LOGFILE=$HOME/.procmail.log
 
 # Recipes below this comment:
 #
-# Example:
+:0:
+* ^TOalleg-developers
+alleg-developers
+
+:0:
+* ^TOpackage-review
+fedora-pkg-rev
+
 :0:
 * ^TOmutt-user
 mutt
@@ -14,4 +21,8 @@ mutt
 :0:
 * ^TObeginners
 perl-beginners
+
+:0:
+* ^FROM.*playstation.sony.com
+playstation
 
