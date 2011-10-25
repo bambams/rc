@@ -47,6 +47,11 @@ set followup_to = yes
 set honor_followup_to = yes
 fcc-hook mutt-user +mutt
 
+# Sorting.
+set sort = threads
+#set sort_browser = reverse-date
+#set sort_aux = reverse-last-date-received
+
 # Misc.
 set markers
 set smart_wrap
