@@ -15,7 +15,7 @@ set mbox_type = mbox
 set move=no
 
 # Mailboxes to watch.
-mailboxes ! +slrn +fetchmail +mutt
+mailboxes ! +alleg-developers +fedora-pkg-rev +mutt +perl-beginners
 set sort_browser = alpha
 
 # Headers.
