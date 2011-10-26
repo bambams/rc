@@ -1,0 +1,16 @@
+# color     object      foreground      background
+color       attachment  black           default
+color       bold        brightyellow    default
+color       error       red             default
+color       hdrdefault  black           default
+color       indicator   brightwhite     red
+color       markers     red             default
+color       message     blue            default
+color       normal      blue            default
+color       quoted      red             default
+color       signature   brightblack     default
+color       search      brightwhite     magenta
+color       status      brightyellow    default
+color       tilde       green           default
+color       tree        red             default
+

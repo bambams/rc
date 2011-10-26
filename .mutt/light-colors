@@ -1,0 +1,17 @@
+# color     object      foreground      background
+color       attachment  red             black
+color       error       brightred       black
+color       hdrdefault  brightblue      black
+color       indicator   black           red
+color       markers     red             black
+color       message     brightred       black
+color       normal      white           black
+color       quoted      brightblue      black
+color       search      white           black
+color       signature   brightblue      black
+color       status      brightgreen     black
+color       tilde       brightmagenta   black
+color       tree        white           black
+color       index       brightblue      black ~F
+color       index       red             black "~N|~O"
+
