@@ -30,7 +30,7 @@ set editor="vim -c 'call Mail_mode()' '+/^$' "
 set edit_headers = yes
 
 # Macros.
-macro index,pager G '<shell-escape> fetchmail -v<enter>'
+macro index,pager G '<shell-escape> fetchmail<enter>'
 macro index,pager p '<search-opposite>'
 
 # Aliases.
