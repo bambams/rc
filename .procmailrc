@@ -6,6 +6,15 @@ LOGFILE=$HOME/.procmail.log
 
 # Recipes below this comment:
 #
+
+# The following two recipes should send duplicate mails into a
+# 'duplicates' mailbox (e.g., if people cross-post to multiple lists).
+:0 Whc: msgid.lock
+| formail -D 8192 msgid.cache
+
+:0 a:
+duplicates
+
 :0:
 * ^TOalleg-developers
 alleg-developers
