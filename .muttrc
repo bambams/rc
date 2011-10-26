@@ -42,11 +42,15 @@ set sort_alias = alias
 source ~/.mutt/colors
 
 # Lists.
-lists mutt-users
-subscribe mutt-users
+lists ^alleg-developers@ ^beginners@perl\\.org$ ^mutt-users@mutt\\.org$
+lists ^slrn-user@
+subscribe alleg-developers beginners mutt-users slrn-user
 set followup_to = yes
 set honor_followup_to = yes
-fcc-hook mutt-user +mutt
+fcc-hook ^alleg-developers@ +alleg-developers
+fcc-hook ^beginners@perl\\.org$ +perl-beginners
+fcc-hook ^mutt-user@mutt\\.org$ +mutt
+fcc-hook ^slrn-user@ +slrn
 
 # Sorting.
 set sort = threads
