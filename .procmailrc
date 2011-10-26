@@ -30,3 +30,7 @@ perl-beginners
 * ^FROM.*playstation.sony.com
 playstation
 
+:0:
+* ^TOslrn-user
+slrn-user
+
