@@ -36,6 +36,10 @@ mutt
 perl-beginners
 
 :0:
+* ^TOperl-xs
+perl-xs
+
+:0:
 * ^FROM.*playstation.sony.com
 playstation
 
