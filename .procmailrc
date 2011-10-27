@@ -20,6 +20,10 @@ duplicates
 alleg-developers
 
 :0:
+* ^TOdebian-security-announce@debian.org
+debian-security
+
+:0:
 * ^TOdevel-announce
 fedora-dev-annc
 
