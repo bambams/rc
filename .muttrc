@@ -52,6 +52,8 @@ set sort_alias = alias
 source ~/.mutt/colors
 
 # Lists.
+set followup_to = yes
+set honor_followup_to = yes
 lists ^alleg-developers@
 lists ^beginners@perl\\.org$
 lists ^debian-security-announce@debian\\.org$
@@ -70,8 +72,6 @@ subscribe package-review
 subscribe packaging
 subscribe perl-xs
 subscribe slrn-user
-set followup_to = yes
-set honor_followup_to = yes
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^mutt-user@mutt\\.org$ +mutt
