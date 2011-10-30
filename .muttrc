@@ -15,7 +15,12 @@ set mbox_type = mbox
 set move=no
 
 # Mailboxes to watch.
-mailboxes ! +alleg-developers +fedora-pkg-rev +mutt +perl-beginners +perl-xs +slrn
+mailboxes ! +alleg-developers
+mailboxes ! +fedora-pkg-rev
+mailboxes ! +mutt
+mailboxes ! +perl-beginners
+mailboxes ! +perl-xs
+mailboxes ! +slrn
 set sort_browser = alpha
 
 # Headers.
@@ -43,11 +48,18 @@ set sort_alias = alias
 source ~/.mutt/colors
 
 # Lists.
-lists ^alleg-developers@ ^beginners@perl\\.org$
-lists ^debian-security-announce@debian\\.org$ ^mutt-users@mutt\\.org$
-lists ^perl-xs@perl\\.org ^slrn-user@
-subscribe alleg-developers beginners debian-security-announce mutt-users
-subscribe perl-xs slrn-user
+lists ^alleg-developers@
+lists ^beginners@perl\\.org$
+lists ^debian-security-announce@debian\\.org$
+lists ^mutt-users@mutt\\.org$
+lists ^perl-xs@perl\\.org
+lists ^slrn-user@
+subscribe alleg-developers
+subscribe beginners
+subscribe debian-security-announce
+subscribe mutt-users
+subscribe perl-xs
+subscribe slrn-user
 set followup_to = yes
 set honor_followup_to = yes
 fcc-hook ^alleg-developers@ +alleg-developers
