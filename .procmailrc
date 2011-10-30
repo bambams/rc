@@ -16,7 +16,7 @@ LOGFILE=$HOME/.procmail.log
 duplicates
 
 :0:
-* ^TOalleg-developers
+* ^TOalleg-developers@lists\.sourceforge\.net
 alleg-developers
 
 :0:
@@ -24,15 +24,15 @@ alleg-developers
 debian-security
 
 :0:
-* ^TOdevel-announce
+* ^TOdevel-announce@lists\.fedoraproject\.org
 fedora-dev-annc
 
 :0:
-* ^TOpackage-review
+* ^TOpackage-review@lists\.fedoraproject\.org
 fedora-pkg-rev
 
 :0:
-* ^TOpackaging
+* ^TOpackaging@lists\.fedoraproject\.org
 fedora-pkg
 
 :0:
@@ -40,22 +40,22 @@ fedora-pkg
 google-plus
 
 :0:
-* ^TOmutt-users@mutt.org
+* ^TOmutt-users@mutt\.org
 mutt
 
 :0:
-* ^TObeginners@perl.org
+* ^TObeginners@perl\.org
 perl-beginners
 
 :0:
-* ^TOperl-xs@perl.org
+* ^TOperl-xs@perl\.org
 perl-xs
 
 :0:
-* ^FROM.*@playstation.sony.com
+* ^FROM.*@playstation\.sony\.com
 playstation
 
 :0:
-* ^TOslrn-user
+* ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
 
