@@ -65,6 +65,7 @@ set honor_followup_to = yes
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^mutt-user@mutt\\.org$ +mutt
+fcc-hook ^perl-xs@perl\\.org +perl-xs
 fcc-hook ^slrn-user@ +slrn
 
 # Sorting.
