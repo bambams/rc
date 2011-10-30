@@ -32,6 +32,14 @@ fedora-dev-annc
 fedora-pkg-rev
 
 :0:
+* ^TOpackaging
+fedora-pkg
+
+:0:
+* ^FROM.*plus.google.com$
+google-plus
+
+:0:
 * ^TOmutt-user
 mutt
 

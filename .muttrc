@@ -18,8 +18,12 @@ set move=no
 mailboxes ! +alleg-developers
 mailboxes ! +fedora-pkg-rev
 mailboxes ! +mutt
+mailboxes ! +fedora-dev-annc
+mailboxes ! +fedora-pkg-rev
+mailboxes ! +fedora-pkg
 mailboxes ! +perl-beginners
 mailboxes ! +perl-xs
+mailboxes ! +google-plus
 mailboxes ! +slrn
 set sort_browser = alpha
 
@@ -51,13 +55,19 @@ source ~/.mutt/colors
 lists ^alleg-developers@
 lists ^beginners@perl\\.org$
 lists ^debian-security-announce@debian\\.org$
+lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^mutt-users@mutt\\.org$
+lists ^package-review@lists\\.fedoraproject\\.org$
+lists ^packaging@lists\\.fedoraproject\\.org$
 lists ^perl-xs@perl\\.org
 lists ^slrn-user@
 subscribe alleg-developers
 subscribe beginners
 subscribe debian-security-announce
+subscribe devel-announce
 subscribe mutt-users
+subscribe package-review
+subscribe packaging
 subscribe perl-xs
 subscribe slrn-user
 set followup_to = yes
@@ -65,6 +75,8 @@ set honor_followup_to = yes
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^mutt-user@mutt\\.org$ +mutt
+fcc-hook ^package-review@lists\\.fedoraproject\\.org +fedora-pkg-rev
+fcc-hook ^packaging@lists\\.fedoraproject\\.org +fedora-pkg
 fcc-hook ^perl-xs@perl\\.org +perl-xs
 fcc-hook ^slrn-user@ +slrn
 
