@@ -40,19 +40,19 @@ fedora-pkg
 google-plus
 
 :0:
-* ^TOmutt-user
+* ^TOmutt-users@mutt.org
 mutt
 
 :0:
-* ^TObeginners
+* ^TObeginners@perl.org
 perl-beginners
 
 :0:
-* ^TOperl-xs
+* ^TOperl-xs@perl.org
 perl-xs
 
 :0:
-* ^FROM.*playstation.sony.com
+* ^FROM.*@playstation.sony.com
 playstation
 
 :0:
