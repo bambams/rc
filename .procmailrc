@@ -20,7 +20,7 @@ duplicates
 alleg-developers
 
 :0:
-* ^TOdebian-security-announce@debian.org
+* ^TOdebian-security-announce@lists\.debian\.org
 debian-security
 
 :0:
@@ -36,7 +36,7 @@ fedora-pkg-rev
 fedora-pkg
 
 :0:
-* ^FROM.*plus.google.com$
+* ^FROM.*plus\.google\.com
 google-plus
 
 :0:
