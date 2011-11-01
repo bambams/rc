@@ -32,6 +32,10 @@ fedora-dev-annc
 fedora-pkg-rev
 
 :0:
+* ^TOfedora-package-review@redhat\.com
+fedora-pkg-rev
+
+:0:
 * ^TOpackaging@lists\.fedoraproject\.org
 fedora-pkg
 
