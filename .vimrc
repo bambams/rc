@@ -65,6 +65,8 @@ set showmatch
 " Highlight search results.
 set hlsearch
 
+" This apparently will make gVim maximize by default.
+au GUIEnter * simalt ~x
 
 
 """""""""""""""""""""""""""""""""""""""""""
