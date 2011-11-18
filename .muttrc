@@ -16,6 +16,7 @@ set move=no
 
 # Mailboxes to watch.
 mailboxes ! +alleg-developers
+mailboxes ! +debian-security
 mailboxes ! +fedora-pkg-rev
 mailboxes ! +mutt
 mailboxes ! +fedora-dev-annc
