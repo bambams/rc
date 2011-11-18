@@ -253,7 +253,7 @@ function mkscreen
 mkscreen $name $command/" $HOME/.bash_screens;
     fi
 
-    alias $name="/usr/bin/screen -d -RR -S $name $command";
+    alias $name="/usr/bin/screen -d -RR -S $name -U $command";
 
     return 0;
 }
