@@ -137,7 +137,7 @@ let spec_chglog_release_info = 1
 " Create a function to configure Vim for writing E-mails.
 """"""""""""""""""
 function! Mail_mode()
-    set filetype=text
+    set filetype=mail
     set noautoindent
     set nocindent
     set nosmartindent
