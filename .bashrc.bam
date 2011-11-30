@@ -55,9 +55,9 @@ EDITOR=vim
 export EDITOR
 
 if [ -z "$PATH" ]; then
-    PATH=$HOME/bin
+    PATH="$HOME/bin"
 else
-    PATH=$PATH:$HOME/bin
+    PATH="$PATH:$HOME/bin"
 fi
 
 export PATH
