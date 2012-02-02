@@ -181,6 +181,17 @@ function find-cs-func
             grep -v '^Binary';
 }
 
+function git-out
+{
+    local git_out_range="`git-out-range "$@"`";
+
+    if [ -z "$git_out_range" ]; then
+        return 1;
+    fi;
+    
+    git log $git_out_range;
+}
+
 function killflash
 {
     flashpids=`flashpids`;
