@@ -16,16 +16,26 @@ set move=no
 
 # Mailboxes to watch.
 mailboxes ! +alleg-developers
+mailboxes ! +arch-announce
+mailboxes ! +archive
 mailboxes ! +debian-security
-mailboxes ! +fedora-pkg-rev
-mailboxes ! +mutt
+mailboxes ! +duplicates
+mailboxes ! +fedora-admin
 mailboxes ! +fedora-dev-annc
-mailboxes ! +fedora-pkg-rev
 mailboxes ! +fedora-pkg
+mailboxes ! +fedora-pkg-rev
+mailboxes ! +gameservers
+mailboxes ! +geshi-users
+mailboxes ! +google-plus
+mailboxes ! +green-party
+mailboxes ! +humble-bundle
+mailboxes ! +irssi-users
+mailboxes ! +mutt-users
 mailboxes ! +perl-beginners
 mailboxes ! +perl-xs
-mailboxes ! +google-plus
-mailboxes ! +slrn
+mailboxes ! +rbb
+mailboxes ! +sent
+mailboxes ! +slrn-user
 set sort_browser = alpha
 
 # Headers.
@@ -60,6 +70,8 @@ lists ^alleg-developers@
 lists ^beginners@perl\\.org$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
+lists ^geshi-users@lists\\.sourceforge\\.net$
+lists ^irssi-users@dragoncat\\.net$
 lists ^mutt-users@mutt\\.org$
 lists ^package-review@lists\\.fedoraproject\\.org$
 lists ^packaging@lists\\.fedoraproject\\.org$
@@ -69,6 +81,8 @@ subscribe alleg-developers
 subscribe beginners
 subscribe debian-security-announce
 subscribe devel-announce
+subscribe geshi-users
+subscribe irssi-users
 subscribe mutt-users
 subscribe package-review
 subscribe packaging
@@ -76,7 +90,10 @@ subscribe perl-xs
 subscribe slrn-user
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
-fcc-hook ^mutt-users@mutt\\.org$ +mutt
+fcc-hook ^geshi-users@lists\\.sourceforge\\.net +geshi-users
+fcc-hook ^irssi-users@dragoncat\\.net +irssi-users
+fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
+fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^package-review@lists\\.fedoraproject\\.org +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org +fedora-pkg
 fcc-hook ^perl-xs@perl\\.org +perl-xs
