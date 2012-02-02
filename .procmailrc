@@ -68,6 +68,14 @@ perl-xs
 playstation
 
 :0:
+* ^FROM.*@rbbinnovations\.com
+rbb
+
+:0:
+* ^TOrbbinnovations\.com
+rbb
+
+:0:
 * ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
 
