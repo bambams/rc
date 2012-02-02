@@ -40,6 +40,10 @@ fedora-pkg-rev
 fedora-pkg
 
 :0:
+* ^TOgeshi-users@lists\.sourceforge\.net
+geshi-users
+
+:0:
 * ^FROM.*plus\.google\.com
 google-plus
 
