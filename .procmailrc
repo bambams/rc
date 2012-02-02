@@ -27,12 +27,11 @@ debian-security
 * ^TOdevel-announce@lists\.fedoraproject\.org
 fedora-dev-annc
 
-:0:
-* ^TOpackage-review@lists\.fedoraproject\.org
-fedora-pkg-rev
+:0 fw:
+* ^TO(package-review@lists\.fedoraproject\.org|fedora-package-review@redhat\.com)
+| formail -i 'Status: R'
 
-:0:
-* ^TOfedora-package-review@redhat\.com
+:0 A:
 fedora-pkg-rev
 
 :0:
