@@ -192,6 +192,25 @@ function git-out
     git log $git_out_range;
 }
 
+function git-out-range
+{
+    local remote="${1:-origin}";
+    local branch="${2:-master}";
+
+    if ! git remote | grep "^$remote\$" &>/dev/null; then
+        echo "'$remote' does not appear to be a remote." 1>&2;
+        return 1;
+    fi;
+
+    if ! git branch | grep "$branch\$" &>/dev/null; then
+        echo "'$branch' does not appear to be a branch." 1>&2;
+        return 1;
+    fi;
+
+    git push --dry-run "$remote" "$branch" 2>&1 | \
+            perl -nE '/(\w+\.\.\w+)/ && say $1';
+}
+
 function killflash
 {
     flashpids=`flashpids`;
