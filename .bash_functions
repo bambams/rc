@@ -68,12 +68,12 @@ function check_hg
             (( status++ ));
         fi;
 
-        if [ hg out origin &>/dev/null ]; then
+        if hg out origin &>/dev/null; then
             echo "$d: Unpushed changes!" 1>&2;
             (( status++ ));
         fi
 
-        if [ hg out &>/dev/null ]; then
+        if hg out &>/dev/null; then
             echo "$d: Unpushed changes!" 1>&2;
             (( status++ ));
         fi
