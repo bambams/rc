@@ -20,6 +20,11 @@ duplicates
 alleg-developers
 
 :0:
+* ^FROM:.*noreply@sourceforge.net
+* ^SUBJECT:.*[AD]
+alleg-developers
+
+:0:
 * ^TOdebian-security-announce@lists\.debian\.org
 debian-security
 
