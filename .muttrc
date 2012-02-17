@@ -130,6 +130,7 @@ set mark_old = no
 set markers
 set smart_wrap
 set pager_context = 5
+set pager_stop = yes
 set status_on_top
 push <show-version>
 
