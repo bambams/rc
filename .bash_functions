@@ -341,9 +341,9 @@ function ssh_agent_setup
         source "$ssh_agent_env";
     fi;
     shift;
-    if [ -z "$SSH_AGENT_PID" -o \
+    if [ -z "$SSH_AGENT_PID" ] ||
             ! ps "$SSH_AGENT_PID" 2>/dev/null | \
-            grep ssh-agent &>/dev/null ]; then
+            grep ssh-agent &>/dev/null; then
         ssh_agent_init "$ssh_agent_env" "$@";
     fi;
 }
