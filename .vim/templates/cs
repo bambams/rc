@@ -1,0 +1,16 @@
+using System;
+
+namespace Application
+{
+    class Program
+    {
+        static int Main(string[] args)
+        {
+
+
+            return 0;
+        }
+    }
+}
+
+# cursor: 9 del
