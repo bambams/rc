@@ -2,6 +2,9 @@
 merge = internal:merge
 username = Brandon McCaig <bamccaig@gmail.com>
 
+[diff]
+git = True
+
 [extensions]
 autopager = ~/src/autopager/autopager.py
 bugzilla = 
