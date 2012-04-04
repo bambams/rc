@@ -190,6 +190,8 @@ aliases = {
   bbtopic = "/topic Bambot (Development|Testing) | https://github.com/bamccaig/bambot/ | git://github.com/bamccaig/bambot.git/ | If you manage to compromise him please report it.";
   ayst = "/say Are you still there?";
   close = "/part $*;/win close";
+  bi = "/say http://basicinstructions.net/basic-instructions/$*";
+  yuno = "/exec - -out echo y u no $*? `cat ~/y_u_no`";
 };
 
 statusbar = {
