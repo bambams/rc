@@ -8,6 +8,7 @@ alias flashpids="(ps aux | grep npviewer.bin | grep -v grep | awk '{print \$2}' 
 alias fortune='fortune -ac'
 alias iperl="/usr/bin/perl -Mstrict -Mwarnings -MData::Dumper <<-'EOF'"
 alias less='/usr/bin/less -S'
+alias mq='/usr/bin/hg -R $(hg root)/.hg/patches'
 alias mv='/bin/mv -i'
 alias rm='/bin/rm -i'
 alias rot13='/home/bamccaig/bin/rot --13'
