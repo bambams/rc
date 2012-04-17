@@ -1,9 +1,8 @@
-[ui]
-merge = internal:merge
-username = Brandon McCaig <bamccaig@gmail.com>
-
 [diff]
 git = True
+
+[eol]
+only-consistent = False
 
 [extensions]
 autopager = ~/src/autopager/autopager.py
@@ -34,12 +33,13 @@ schemes =
 shelve = ~/src/hgshelve/hgshelve.py
 transplant = 
 
-[eol]
-only-consistent = False
-
 #[pager]
 #[autopager]
 #pager = LESS='FSRX' less
+
+[ui]
+merge = internal:merge
+username = Brandon McCaig <bamccaig@gmail.com>
 
 %include .hgrc.override
 
