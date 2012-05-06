@@ -4,3 +4,4 @@ mkscreen lfs elinks http://www.linuxfromscratch.org/
 mkscreen rpm-cheats /usr/bin/vim ~/.rpm-cheats
 mkscreen perlxs /usr/bin/perldoc perlxs
 mkscreen perlboot perldoc perlboot
+mkscreen dwarves dwarves
