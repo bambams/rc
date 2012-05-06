@@ -16,46 +16,70 @@ LOGFILE=$HOME/.procmail.log
 duplicates
 
 :0:
-* ^TOalleg-developers
+* ^TOalleg-developers@lists\.sourceforge\.net
 alleg-developers
 
 :0:
-* ^TOdebian-security-announce@debian.org
+* ^FROM:.*noreply@sourceforge.net
+* ^SUBJECT:.*[AD]
+alleg-developers
+
+:0:
+* ^TOdebian-security-announce@lists\.debian\.org
 debian-security
 
 :0:
-* ^TOdevel-announce
+* ^TOdevel-announce@lists\.fedoraproject\.org
 fedora-dev-annc
 
-:0:
-* ^TOpackage-review
+:0 fw:
+* ^TO(package-review@lists\.fedoraproject\.org|fedora-package-review@redhat\.com)
+| formail -i 'Status: R'
+
+:0 A:
 fedora-pkg-rev
 
 :0:
-* ^TOpackaging
+* ^TOpackaging@lists\.fedoraproject\.org
 fedora-pkg
 
 :0:
-* ^FROM.*plus.google.com$
+* ^TOgeshi-users@lists\.sourceforge\.net
+geshi-users
+
+:0:
+* ^FROM.*plus\.google\.com
 google-plus
 
 :0:
-* ^TOmutt-users@mutt.org
-mutt
+* ^TOirssi-users@dragoncat\.net
+irssi-users
 
 :0:
-* ^TObeginners@perl.org
+* ^TOmutt-users@mutt\.org
+mutt-users
+
+:0:
+* ^TObeginners@perl\.org
 perl-beginners
 
 :0:
-* ^TOperl-xs@perl.org
+* ^TOperl-xs@perl\.org
 perl-xs
 
 :0:
-* ^FROM.*@playstation.sony.com
+* ^FROM.*@playstation\.sony\.com
 playstation
 
 :0:
-* ^TOslrn-user
+* ^FROM.*@rbbinnovations\.com
+rbb
+
+:0:
+* ^TOrbbinnovations\.com
+rbb
+
+:0:
+* ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
 

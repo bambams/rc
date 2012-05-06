@@ -16,15 +16,26 @@ set move=no
 
 # Mailboxes to watch.
 mailboxes ! +alleg-developers
-mailboxes ! +fedora-pkg-rev
-mailboxes ! +mutt
+mailboxes ! +arch-announce
+mailboxes ! +archive
+mailboxes ! +debian-security
+mailboxes ! +duplicates
+mailboxes ! +fedora-admin
 mailboxes ! +fedora-dev-annc
-mailboxes ! +fedora-pkg-rev
 mailboxes ! +fedora-pkg
+mailboxes ! +fedora-pkg-rev
+mailboxes ! +gameservers
+mailboxes ! +geshi-users
+mailboxes ! +google-plus
+mailboxes ! +green-party
+mailboxes ! +humble-bundle
+mailboxes ! +irssi-users
+mailboxes ! +mutt-users
 mailboxes ! +perl-beginners
 mailboxes ! +perl-xs
-mailboxes ! +google-plus
-mailboxes ! +slrn
+mailboxes ! +rbb
+mailboxes ! +sent
+mailboxes ! +slrn-user
 set sort_browser = alpha
 
 # Headers.
@@ -40,6 +51,7 @@ set editor="vim -c 'call Mail_mode()' '+/^$' "
 set edit_headers = yes
 
 # Macros.
+macro pager \t '<next-unread>'
 macro index,pager G '<shell-escape> fetchmail<enter>'
 macro index,pager p '<search-opposite>'
 
@@ -58,6 +70,8 @@ lists ^alleg-developers@
 lists ^beginners@perl\\.org$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
+lists ^geshi-users@lists\\.sourceforge\\.net$
+lists ^irssi-users@dragoncat\\.net$
 lists ^mutt-users@mutt\\.org$
 lists ^package-review@lists\\.fedoraproject\\.org$
 lists ^packaging@lists\\.fedoraproject\\.org$
@@ -67,6 +81,8 @@ subscribe alleg-developers
 subscribe beginners
 subscribe debian-security-announce
 subscribe devel-announce
+subscribe geshi-users
+subscribe irssi-users
 subscribe mutt-users
 subscribe package-review
 subscribe packaging
@@ -74,7 +90,10 @@ subscribe perl-xs
 subscribe slrn-user
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
-fcc-hook ^mutt-user@mutt\\.org$ +mutt
+fcc-hook ^geshi-users@lists\\.sourceforge\\.net +geshi-users
+fcc-hook ^irssi-users@dragoncat\\.net +irssi-users
+fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
+fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^package-review@lists\\.fedoraproject\\.org +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org +fedora-pkg
 fcc-hook ^perl-xs@perl\\.org +perl-xs
@@ -93,8 +112,8 @@ set pgp_verify_command = "/usr/bin/gpg --no-verbose --batch --output - --verify 
 set pgp_decrypt_command = "/usr/bin/gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
 set pgp_sign_command = "/usr/bin/gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
 set pgp_clearsign_command = "/usr/bin/gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
-set pgp_encrypt_only_command = "/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f"
-set pgp_encrypt_sign_command = "/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f"
+set pgp_encrypt_only_command = "/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0x22E593F2 -- -r %r -- %f"
+set pgp_encrypt_sign_command = "/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x22E593F2 -- -r %r -- %f"
 set pgp_import_command = "/usr/bin/gpg --no-verbose --import -v %f"
 set pgp_export_command = "/usr/bin/gpg --no-verbose --export --armor %r"
 set pgp_verify_key_command = "/usr/bin/gpg --no-verbose --batch --fingerprint --check-sigs %r"
@@ -107,9 +126,11 @@ set pgp_timeout = 1800
 set pgp_good_sign = "^gpg: Good signature from"
 
 # Misc.
+set mark_old = no
 set markers
 set smart_wrap
 set pager_context = 5
+set pager_stop = yes
 set status_on_top
 push <show-version>
 

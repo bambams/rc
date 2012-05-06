@@ -98,7 +98,7 @@ set ai
 "set si
 
 " C-style indenting.
-set cindent
+"set cindent
 
 " Don't wrap lines.
 set nowrap
@@ -120,8 +120,8 @@ set pastetoggle=<F2>
 
 " Move down a row instead of a line. Helpful when wrapping is on and you
 " have long lines.
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " ,/ stops hilighting search query.
 nmap <silent> ,/ :nohlsearch<CR>

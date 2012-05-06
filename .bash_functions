@@ -68,12 +68,12 @@ function check_hg
             (( status++ ));
         fi;
 
-        if [ hg out origin &>/dev/null ]; then
+        if hg out origin &>/dev/null; then
             echo "$d: Unpushed changes!" 1>&2;
             (( status++ ));
         fi
 
-        if [ hg out &>/dev/null ]; then
+        if hg out &>/dev/null; then
             echo "$d: Unpushed changes!" 1>&2;
             (( status++ ));
         fi
@@ -181,6 +181,36 @@ function find-cs-func
             grep -v '^Binary';
 }
 
+function git-out
+{
+    local git_out_range="`git-out-range "$@"`";
+
+    if [ -z "$git_out_range" ]; then
+        return 1;
+    fi;
+    
+    git log $git_out_range;
+}
+
+function git-out-range
+{
+    local remote="${1:-origin}";
+    local branch="${2:-master}";
+
+    if ! git remote | grep "^$remote\$" &>/dev/null; then
+        echo "'$remote' does not appear to be a remote." 1>&2;
+        return 1;
+    fi;
+
+    if ! git branch | grep "$branch\$" &>/dev/null; then
+        echo "'$branch' does not appear to be a branch." 1>&2;
+        return 1;
+    fi;
+
+    git push --dry-run "$remote" "$branch" 2>&1 | \
+            perl -nE '/(\w+\.\.\w+)/ && say $1';
+}
+
 function killflash
 {
     flashpids=`flashpids`;
@@ -253,7 +283,7 @@ function mkscreen
 mkscreen $name $command/" $HOME/.bash_screens;
     fi
 
-    alias $name="/usr/bin/screen -d -RR -S $name $command";
+    alias $name="/usr/bin/screen -d -RR -S $name -U $command";
 
     return 0;
 }
@@ -292,8 +322,9 @@ function ssh_agent_init
         return 1;
     fi;
     local ssh_agent_env="$1";
-    local ssh_agent='/usr/bin/ssh-agent';
-    local ssh_agent_args=(-s);
+    local ssh_agent="${2:-/usr/bin/ssh-agent}";
+    shift 2;
+    local ssh_agent_args=(-s "$@");
     if [ -x "$ssh_agent" ]; then
         "$ssh_agent" "${ssh_agent_args[@]}" |
                 sed -r 's/^echo/#echo/' 1> "$ssh_agent_env";
@@ -305,15 +336,15 @@ function ssh_agent_init
 
 function ssh_agent_setup
 {
-    local ssh_agent_env="$HOME/.ssh_agent_env";
+    local ssh_agent_env="${1:-$HOME/.ssh_agent_env}";
     if [ -f "$ssh_agent_env" ]; then
         source "$ssh_agent_env";
     fi;
-    if [ -z "$SSH_AGENT_PID" ]; then
-        ssh_agent_init "$ssh_agent_env";
-    elif ! ps "$SSH_AGENT_PID" 2>/dev/null |
+    shift;
+    if [ -z "$SSH_AGENT_PID" ] ||
+            ! ps "$SSH_AGENT_PID" 2>/dev/null | \
             grep ssh-agent &>/dev/null; then
-        ssh_agent_init "$ssh_agent_env";
+        ssh_agent_init "$ssh_agent_env" "$@";
     fi;
 }
 
