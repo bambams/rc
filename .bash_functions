@@ -323,8 +323,14 @@ function ssh_agent_init
     fi;
     local ssh_agent_env="$1";
     local ssh_agent="${2:-/usr/bin/ssh-agent}";
-    shift 2;
-    local ssh_agent_args=(-s "$@");
+    local ssh_agent_args=(-s);
+
+    shift;
+    if [ "$#" > 2 ]; then
+        shift;
+        local ssh_agent_args=("${ssh_agent_args[@]}" "$@");
+    fi
+
     if [ -x "$ssh_agent" ]; then
         "$ssh_agent" "${ssh_agent_args[@]}" |
                 sed -r 's/^echo/#echo/' 1> "$ssh_agent_env";
