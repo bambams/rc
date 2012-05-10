@@ -76,7 +76,7 @@ lists ^irssi-users@dragoncat\\.net$
 lists ^mutt-users@mutt\\.org$
 lists ^package-review@lists\\.fedoraproject\\.org$
 lists ^packaging@lists\\.fedoraproject\\.org$
-lists ^perl-xs@perl\\.org
+lists ^perl-xs@perl\\.org$
 lists ^slrn-user@
 subscribe alleg-developers
 subscribe beginners
@@ -91,13 +91,13 @@ subscribe perl-xs
 subscribe slrn-user
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
-fcc-hook ^geshi-users@lists\\.sourceforge\\.net +geshi-users
-fcc-hook ^irssi-users@dragoncat\\.net +irssi-users
+fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
+fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
 fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
-fcc-hook ^package-review@lists\\.fedoraproject\\.org +fedora-pkg-rev
-fcc-hook ^packaging@lists\\.fedoraproject\\.org +fedora-pkg
-fcc-hook ^perl-xs@perl\\.org +perl-xs
+fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
+fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
+fcc-hook ^perl-xs@perl\\.org$ +perl-xs
 fcc-hook ^slrn-user@ +slrn
 
 # Sorting.
