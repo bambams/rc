@@ -15,27 +15,28 @@ set mbox_type = mbox
 set move=no
 
 # Mailboxes to watch.
-mailboxes ! +alleg-developers
-mailboxes ! +arch-announce
-mailboxes ! +archive
-mailboxes ! +debian-security
-mailboxes ! +duplicates
-mailboxes ! +fedora-admin
-mailboxes ! +fedora-dev-annc
-mailboxes ! +fedora-pkg
-mailboxes ! +fedora-pkg-rev
-mailboxes ! +gameservers
-mailboxes ! +geshi-users
-mailboxes ! +google-plus
-mailboxes ! +green-party
-mailboxes ! +humble-bundle
-mailboxes ! +irssi-users
-mailboxes ! +mutt-users
-mailboxes ! +perl-beginners
-mailboxes ! +perl-xs
-mailboxes ! +rbb
-mailboxes ! +sent
-mailboxes ! +slrn-user
+mailboxes !
+mailboxes +alleg-developers
+mailboxes +arch-announce
+mailboxes +archive
+mailboxes +debian-security
+mailboxes +duplicates
+mailboxes +fedora-admin
+mailboxes +fedora-dev-annc
+mailboxes +fedora-pkg
+mailboxes +fedora-pkg-rev
+mailboxes +gameservers
+mailboxes +geshi-users
+mailboxes +google-plus
+mailboxes +green-party
+mailboxes +humble-bundle
+mailboxes +irssi-users
+mailboxes +mutt-users
+mailboxes +perl-beginners
+mailboxes +perl-xs
+mailboxes +rbb
+mailboxes +sent
+mailboxes +slrn-user
 set sort_browser = alpha
 
 # Headers.
