@@ -19,6 +19,7 @@ mailboxes !
 mailboxes +alleg-developers
 mailboxes +arch-announce
 mailboxes +archive
+mailboxes +catalyst
 mailboxes +debian-security
 mailboxes +duplicates
 mailboxes +fedora-admin
@@ -37,6 +38,7 @@ mailboxes +perl-xs
 mailboxes +rbb
 mailboxes +sent
 mailboxes +slrn-user
+mailboxes +template
 set sort_browser = alpha
 
 # Headers.
@@ -69,6 +71,7 @@ set followup_to = yes
 set honor_followup_to = yes
 lists ^alleg-developers@
 lists ^beginners@perl\\.org$
+lists ^catalyst@lists\\.scsys\\.co\\.uk$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
@@ -78,8 +81,10 @@ lists ^package-review@lists\\.fedoraproject\\.org$
 lists ^packaging@lists\\.fedoraproject\\.org$
 lists ^perl-xs@perl\\.org$
 lists ^slrn-user@
+lists ^templates@template-toolkit\\.org$
 subscribe alleg-developers
 subscribe beginners
+subscribe catalyst
 subscribe debian-security-announce
 subscribe devel-announce
 subscribe geshi-users
@@ -89,8 +94,10 @@ subscribe package-review
 subscribe packaging
 subscribe perl-xs
 subscribe slrn-user
+subscribe template
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
+fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
@@ -99,6 +106,7 @@ fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
 fcc-hook ^perl-xs@perl\\.org$ +perl-xs
 fcc-hook ^slrn-user@ +slrn
+fcc-hook ^templates@template-toolkit\\.org$ +template
 
 # Sorting.
 set sort = threads

@@ -25,6 +25,10 @@ alleg-developers
 alleg-developers
 
 :0:
+* ^TOcatalyst@lists\.scsys\.co\.uk
+catalyst
+
+:0:
 * ^TOdebian-security-announce@lists\.debian\.org
 debian-security
 
@@ -82,4 +86,8 @@ rbb
 :0:
 * ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
+
+:0:
+* ^TOtemplates@template-toolkit\.org
+template
 
