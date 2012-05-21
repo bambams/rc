@@ -8,7 +8,7 @@ git = True
 only-consistent = False
 
 [extensions]
-autopager = ~/src/autopager/autopager.py
+#autopager = ~/src/autopager/autopager.py
 bugzilla = 
 children = 
 churn = 
@@ -20,7 +20,7 @@ gpg =
 graphlog = 
 hgk = 
 highlight = 
-histedit = ~/src/histedit/hg_histedit.py
+#histedit = ~/src/histedit/hg_histedit.py
 #keyword = 
 mq = 
 notify = 
@@ -33,7 +33,7 @@ rebase =
 record = 
 relink = 
 schemes = 
-shelve = ~/src/hgshelve/hgshelve.py
+#shelve = ~/src/hgshelve/hgshelve.py
 transplant = 
 
 #[pager]
