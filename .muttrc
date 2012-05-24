@@ -42,7 +42,7 @@ mailboxes +template
 set sort_browser = alpha
 
 # Headers.
-my_hdr X-PGP-Key: https://castopulence.org/bamccaig/pubkey.asc
+my_hdr X-PGP-Key: https://castopulence.org/bamccaig/castopulence.asc
 ignore *
 unignore Date: From: User-Agent: X-Mailer X-Operating-System TO: \
          Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
