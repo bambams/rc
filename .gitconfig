@@ -11,3 +11,5 @@
 [core]
 	filemode = false
 	autocrlf = input
+[push]
+	default = upstream
