@@ -2,7 +2,7 @@
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
 all_files=(`ls -d .*`);
-ignored_files=(. .. .git);
+ignored_files=(. .. .git .gitignore);
 
 function resolve_rc_path
 {
