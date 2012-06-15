@@ -360,8 +360,6 @@ EOF
     if [ -z "$SSH_AGENT_PID" ] ||
             ! ps "$SSH_AGENT_PID" 2>/dev/null | \
             grep ssh-agent &>/dev/null; then
-        ssh_agent_args=("${ssh_agent_args[@]}" "$@");
-
         if [ -x "$ssh_agent" ]; then
             "$ssh_agent" "${ssh_agent_args[@]}" |
                     sed -r 's/^echo/#echo/' 1> "$ssh_agent_env";
