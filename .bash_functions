@@ -333,7 +333,13 @@ function ssh-agent-setup
             -h|--help) cat <<EOF 1>&2; return 0;;
 Usage:
     ssh-agent-setup { -h | --help }
-    ssh-agent-setup [ -A | --agent=FILE ] [ -E | --env-file=FILE ] ARGS...
+    ssh-agent-setup [ -A | --agent=FILE ] [ -E | --env-file=FILE ]
+                    [ -- ] [ ARGS... ]
+
+        ARGS...             Arguments passed on to ssh-agent. If they look
+                            like option arguments then you will most
+                            likely need to pass -- first so getopt (and
+                            therefore ssh-agent-setup) will ignore them.
 
         -A, --agent=FILE    Specify ssh-agent executable
                             (default: /usr/bin/ssh-agent)
