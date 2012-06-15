@@ -333,7 +333,7 @@ function ssh-agent-setup
             -h|--help) cat <<EOF 1>&2; return 0;;
 Usage:
     ssh-agent-setup { -h | --help }
-    ssh-agent-setup [ -A | --agent=FILE ] [ -E | --env-file=FILE ]
+    ssh-agent-setup [ -A | --agent=FILE ] [ -E | --env=FILE ]
                     [ -- ] [ ARGS... ]
 
         ARGS...             Arguments passed on to ssh-agent. If they look
