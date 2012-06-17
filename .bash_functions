@@ -321,6 +321,12 @@ function ssh-agent-setup
     local ssh_agent_args=(-s);
     local ssh_agent_env=~/.ssh_agent_env;
 
+    if ! which getopt &>/dev/null; then
+        echo 'ssh-agent-setup uses getopt to parse arguments.' \
+                'Please install it and try again.' 1>&2;
+        return 1;
+    fi
+
     eval set -- $(getopt \
             -l agent:,env:,help \
             -n ssh-agent-setup \
