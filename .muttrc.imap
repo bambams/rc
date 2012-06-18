@@ -1,0 +1,160 @@
+# Basics.
+set realname = "Brandon McCaig"
+set from = bamccaig@gmail.com
+set use_from = yes
+set envelope_from = yes
+set signature = ~/.signature
+set sendmail = /usr/bin/msmtp
+#set spoolfile = /var/mail/bamccaig
+set certificate_file=~/.mutt/certificates
+set copy = yes
+
+# IMAP
+set imap_user = bamccaig@gmail.com
+set imap_check_subscribed = yes
+
+# Caching.
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+
+# Directories.
+set folder = imaps://imap.gmail.com:993
+set spoolfile = "+[Gmail]/All Mail"
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+#set mbox_type = mbox
+#set move=no
+
+# Mailboxes to watch.
+#mailboxes !
+#mailboxes +alleg-developers
+#mailboxes +arch-announce
+#mailboxes +archive
+#mailboxes +catalyst
+#mailboxes +community-living-algoma
+#mailboxes +debian-security
+#mailboxes +duplicates
+#mailboxes +fedora-admin
+#mailboxes +fedora-dev-annc
+#mailboxes +fedora-pkg
+##mailboxes +fedora-pkg-rev
+#mailboxes +gameservers
+#mailboxes +geshi-users
+#mailboxes +google-plus
+#mailboxes +green-party
+#mailboxes +humble-bundle
+#mailboxes +irssi-users
+#mailboxes +mutt-users
+#mailboxes +perl-beginners
+#mailboxes +perl-xs
+#mailboxes +rbb
+#mailboxes +sent
+#mailboxes +slrn-user
+#mailboxes +template
+#set sort_browser = alpha
+
+# Headers.
+my_hdr X-PGP-Key: https://castopulence.org/bamccaig/castopulence.asc
+ignore *
+unignore Date: From: User-Agent: X-Mailer X-Operating-System TO: \
+         Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
+hdr_order Date: From: User-Agent: X-Mailer X-Operating-System TO: \
+          Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
+
+# Editor.
+set editor="vim -c 'call Mail_mode()' '+/^$' "
+set edit_headers = yes
+
+# Macros.
+macro pager \t '<next-unread>'
+macro index,pager G '<shell-escape> fetchmail<enter>'
+macro index,pager p '<search-opposite>'
+
+# Aliases.
+set alias_file = ~/.mutt/aliases
+source ~/.mutt/aliases
+set sort_alias = alias
+
+# Colors.
+source ~/.mutt/colors
+
+# Lists.
+set followup_to = yes
+set honor_followup_to = yes
+lists ^alleg-developers@
+lists ^beginners@perl\\.org$
+lists ^catalyst@lists\\.scsys\\.co\\.uk$
+lists ^debian-security-announce@debian\\.org$
+lists ^devel-announce@lists\\.fedoraproject\\.org$
+lists ^geshi-users@lists\\.sourceforge\\.net$
+lists ^irssi-users@dragoncat\\.net$
+lists ^mutt-users@mutt\\.org$
+lists ^package-review@lists\\.fedoraproject\\.org$
+lists ^packaging@lists\\.fedoraproject\\.org$
+lists ^perl-xs@perl\\.org$
+lists ^slrn-user@
+lists ^templates@template-toolkit\\.org$
+subscribe alleg-developers
+subscribe beginners
+subscribe catalyst
+subscribe debian-security-announce
+subscribe devel-announce
+subscribe geshi-users
+subscribe irssi-users
+subscribe mutt-users
+subscribe package-review
+subscribe packaging
+subscribe perl-xs
+subscribe slrn-user
+subscribe template
+fcc-hook ^alleg-developers@ +alleg-developers
+fcc-hook ^beginners@perl\\.org$ +perl-beginners
+fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
+fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
+fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
+fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
+fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
+fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
+fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
+fcc-hook ^perl-xs@perl\\.org$ +perl-xs
+fcc-hook ^slrn-user@ +slrn
+fcc-hook ^templates@template-toolkit\\.org$ +template
+
+# Sorting.
+set sort = threads
+#set sort_browser = reverse-date
+#set sort_aux = reverse-last-date-received
+
+# GPG/PGP.
+# http://codesorcery.net/old/mutt/mutt-gnupg-howto
+# Wait, what do you mean, "old?"
+set pgp_decode_command = "/usr/bin/gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command = "/usr/bin/gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command = "/usr/bin/gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command = "/usr/bin/gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command = "/usr/bin/gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+#set pgp_encrypt_only_command = "/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0x22E593F2 -- -r %r -- %f"
+set pgp_encrypt_only_command = "/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to -- -r %r -- %f"
+#set pgp_encrypt_sign_command = "/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x22E593F2 -- -r %r -- %f"
+set pgp_encrypt_sign_command = "/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to -- -r %r -- %f"
+set pgp_import_command = "/usr/bin/gpg --no-verbose --import -v %f"
+set pgp_export_command = "/usr/bin/gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command = "/usr/bin/gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command = "/usr/bin/gpg --no-verbose --batch --with-colons --list-keys %r" 
+set pgp_list_secring_command = "/usr/bin/gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set pgp_autosign = yes
+#set pgp_sign_as = 0x22E593F2
+set pgp_replyencrypt = yes
+set pgp_timeout = 1800
+set pgp_good_sign = "^gpg: Good signature from"
+
+# Misc.
+set mark_old = no
+set markers
+set smart_wrap
+set pager_context = 5
+set pager_index_lines = 5
+set pager_stop = yes
+set status_on_top
+push <show-version>
+
