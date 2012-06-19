@@ -381,7 +381,7 @@ EOF
     fi;
     if [ -z "$SSH_AGENT_PID" ] ||
             ! ps "$SSH_AGENT_PID" 2>/dev/null | \
-            grep ssh-agent &>/dev/null; then
+            grep "$ssh_agent" &>/dev/null; then
         if [ -x "$ssh_agent" ]; then
             "$ssh_agent" "${ssh_agent_args[@]}" |
                     sed -r 's/^echo/#echo/' 1> "$ssh_agent_env";
