@@ -1,7 +1,25 @@
 mkscreen admin /usr/bin/env /bin/bash
+mkscreen adom sudo -u adom /usr/games/adom
+mkscreen attributes perldoc attributes
+mkscreen bambot bambot
+mkscreen critic perldoc Perl::Critic
+mkscreen curses perldoc Curses::UI
+mkscreen dwarves dwarves
+mkscreen elinks elinks
+mkscreen imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
 mkscreen irc /usr/bin/irssi
 mkscreen lfs elinks http://www.linuxfromscratch.org/
-mkscreen rpm-cheats /usr/bin/vim ~/.rpm-cheats
+mkscreen man-adom view /usr/share/doc/adom/manual.doc
+mkscreen moose perldoc Moose::Manual
+mkscreen moose-more perldoc Moose::Manual::Classes
+mkscreen mutt mutt
+mkscreen perldebug perldoc perldebug
+mkscreen perlmodlib perldoc perlmodlib
+mkscreen perltie perldoc perltie
+mkscreen perltooc perldoc perltooc
+mkscreen perltoot perldoc perltoot
 mkscreen perlxs /usr/bin/perldoc perlxs
-mkscreen perlboot perldoc perlboot
-mkscreen dwarves dwarves
+mkscreen rpm-cheats /usr/bin/vim ~/.rpm-cheats
+mkscreen slrn slrn
+mkscreen socket perldoc Socket
+mkscreen template perldoc Template::Tutorial::Datafile
