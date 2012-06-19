@@ -375,7 +375,8 @@ EOF
 
     ssh_agent_args=("${ssh_agent_args[@]}" "$@");
 
-    if [ -f "$ssh_agent_env" ]; then
+    if [ -f "$ssh_agent_env" ] && \
+            file_is_600 "$ssh_agent_env"; then
         source "$ssh_agent_env";
     fi;
     if [ -z "$SSH_AGENT_PID" ] ||
