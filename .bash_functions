@@ -165,6 +165,15 @@ function check_scms
     echo "Total directories checked: $i (Happy: $happy/Unhappy: $unhappy)";
 }
 
+function file_is_600
+{
+    if [ "$(stat -c '%a' "$1" 2>/dev/null)" == 600 ]; then
+        return 0;
+    fi
+
+    return 1;
+}
+
 function find-js-func
 {
     egrep -inR 'function\s+\S*'"$1"'\S*\(' . | grep -v '^Binary';
