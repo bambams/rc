@@ -384,9 +384,9 @@ EOF
             grep "$ssh_agent" &>/dev/null; then
         if [ -x "$ssh_agent" ]; then
             "$ssh_agent" "${ssh_agent_args[@]}" |
-                    sed -r 's/^echo/#echo/' 1> "$ssh_agent_env";
+                    sed -r 's/^echo/#echo/' 1> "$ssh_agent_env" || exit 1;
             trap "kill $SSH_AGENT_PID" 0;
-            chmod 600 "$ssh_agent_env";
+            chmod 600 "$ssh_agent_env" || exit 1;
             source "$ssh_agent_env";
         fi;
     fi;
