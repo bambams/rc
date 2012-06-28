@@ -138,6 +138,7 @@ let spec_chglog_release_info = 1
 """"""""""""""""""
 function! Mail_mode()
     set filetype=mail
+    set formatoptions+=a
     set noautoindent
     set nocindent
     set nosmartindent
