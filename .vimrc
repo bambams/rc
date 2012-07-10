@@ -84,6 +84,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""
 set expandtab
 set shiftwidth=4
+set nojoinspaces
 set tabstop=4
 set textwidth=74
 set smarttab
