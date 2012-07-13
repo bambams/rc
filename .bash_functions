@@ -190,6 +190,14 @@ function find-cs-func
             grep -v '^Binary';
 }
 
+function git_ps1__
+{
+    local b="$(git symbolic-ref HEAD 2>/dev/null)";
+    if [ -n "$b" ]; then
+        printf " (%s)" "${b##refs/heads/}";
+    fi
+}
+
 function git-out
 {
     local git_out_range="`git-out-range "$@"`";
