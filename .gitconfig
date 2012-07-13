@@ -8,6 +8,8 @@
 [core]
 	filemode = false
 	autocrlf = input
+[merge]
+    log = true
 [push]
 	default = upstream
 [rebase]
