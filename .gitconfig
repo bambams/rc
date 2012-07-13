@@ -5,9 +5,6 @@
     di  = diff
     st  = status
     sta = stash
-[user]
-	name = "Brandon McCaig"
-	email = "bamccaig@gmail.com"
 [core]
 	filemode = false
 	autocrlf = input
@@ -15,3 +12,6 @@
 	default = upstream
 [rebase]
     autosquash = true
+[user]
+	name = "Brandon McCaig"
+	email = "bamccaig@gmail.com"
