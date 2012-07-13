@@ -34,6 +34,10 @@ syntax enable
 """""""""""""""""""""""""""""""""""""""""""
 " Favorite filetypes.
 set ffs=unix,dos,mac
+set fencs=ucs-bom,utf-8,latin-1
+
+" Default file type is UTF-8.
+setglobal fenc=utf-8
 
 
 
