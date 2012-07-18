@@ -151,5 +151,7 @@ function! Mail_mode()
 
     noremap ,, :set formatoptions+=a<CR>
     noremap ,. :set formatoptions-=a<CR>
+    noremap ,p :g/^X-PGP-Key:/d<CR>
+    noremap ,x :.,$g/^>/d<CR>
+    noremap ,s :w<CR>:! perl ~/bin/swap-sigs.pl %<CR>:edit<CR>:call Mail_mode()<CR>
 endfunction
-
