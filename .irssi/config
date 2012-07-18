@@ -26,9 +26,11 @@ servers = (
   {
     address = "irc.freenode.net";
     chatnet = "freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    port = "6697";
+    use_ssl = "yes";
+#    ssl_cert = "/etc/ssl/certs";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
     autoconnect = "yes";
   },
   {
