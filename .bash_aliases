@@ -15,8 +15,8 @@ alias rot13='/home/bamccaig/bin/rot --13'
 alias rot47='/home/bamccaig/bin/rot --47'
 alias scheme='/usr/bin/guile'
 alias sls='/usr/bin/screen -ls'
-alias scp-cs='/usr/bin/ssh bamccaig@castopulence.org'
-alias ssh-cs='/usr/bin/ssh bamccaig@castopulence.org'
+alias scp-cs='/usr/bin/ssh bambams@castopulence.org'
+alias ssh-cs='/usr/bin/ssh bambams@castopulence.org'
 alias todo='/usr/bin/todo -G'
 
 if [ -f ~/.bash_aliases_ex ]; then
