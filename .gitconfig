@@ -11,7 +11,7 @@
 [merge]
     log = true
 [push]
-	default = upstream
+	default = tracking
 [rebase]
     autosquash = true
 [user]
