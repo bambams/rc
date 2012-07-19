@@ -5,7 +5,6 @@ set use_from = yes
 set envelope_from = yes
 set signature = ~/.signature
 set sendmail = /usr/bin/msmtp
-#set spoolfile = /var/mail/bamccaig
 
 # Directories.
 set folder = "$HOME/mail"
