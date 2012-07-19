@@ -2,7 +2,7 @@
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
 all_files=(`ls -d .*`);
-ignored_files=(. .. .git .gitignore offlineimap.conf);
+ignored_files=(. .. .git .gitignore .netrc offlineimap.conf);
 
 function resolve_rc_path
 {
