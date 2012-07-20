@@ -1,12 +1,12 @@
 [core]
-	filemode = false
-	autocrlf = input
+    filemode = false
+    autocrlf = input
 [merge]
     log = true
 [push]
-	default = tracking
+    default = tracking
 [rebase]
     autosquash = true
 [user]
-	name = "Brandon McCaig"
-	email = "bamccaig@gmail.com"
+    name = "Brandon McCaig"
+    email = "bamccaig@gmail.com"
