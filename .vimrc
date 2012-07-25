@@ -6,6 +6,9 @@
 """"""""""""""""""""""""""""""""""""""""""
 
 
+" Remove ALL automatic-commands from previous sources.
+autocmd!
+
 """"""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""
@@ -138,20 +141,17 @@ nmap <silent> ,/ :nohlsearch<CR>
 let packager = "Brandon McCaig <bamccaig@gmail.com>"
 let spec_chglog_release_info = 1
 
-""""""""""""""""""
-" Create a function to configure Vim for writing E-mails.
-""""""""""""""""""
-function! Mail_mode()
-    set filetype=mail
-    set noautoindent
-    set nocindent
-    set nosmartindent
-    set textwidth=65
-    set wrap
+"""""""""""""""""""
+" Automatic commands.
+"""""""""""""""""""
 
-    noremap ,, :set formatoptions+=a<CR>
-    noremap ,. :set formatoptions-=a<CR>
-    noremap ,p :g/^X-PGP-Key:/d<CR>
-    noremap ,x :.,$g/^>/d<CR>
-    noremap ,s :w<CR>:! perl ~/bin/swap-sigs.pl %<CR>:edit<CR>:call Mail_mode()<CR>
-endfunction
+autocmd FileType gitcommit setlocal textwidth=72
+
+autocmd FileType mail
+            \ setlocal noai noci nosi tw=65 wrap |
+            \ noremap ,, :set formatoptions+=a<CR> |
+            \ noremap ,. :set formatoptions-=a<CR> |
+            \ noremap ,p :g/^X-PGP-Key:/d<CR> |
+            \ noremap ,s :w<CR>:! swap-sigs.pl %<CR>
+            \         :edit +set\ ft=mail<CR> |
+            \ noremap ,x :.,$g/^>/d<CR>

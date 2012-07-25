@@ -51,7 +51,7 @@ hdr_order Date: From: User-Agent: X-Mailer X-Operating-System TO: \
           Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
 
 # Editor.
-set editor="vim -c 'call Mail_mode()' '+/^$' "
+set editor="vim '+/^$' "
 set edit_headers = yes
 
 # Macros.
