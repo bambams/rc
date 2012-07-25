@@ -2,7 +2,7 @@
     filemode = false
     autocrlf = input
 [merge]
-    log = true
+    log = 100
 [push]
     default = tracking
 [rebase]
