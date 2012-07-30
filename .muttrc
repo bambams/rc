@@ -138,6 +138,7 @@ set pgp_timeout = 1800
 set pgp_good_sign = "^gpg: Good signature from"
 
 # Misc.
+set attach_format = "%u%D%I %t%4n %T%.150d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
 set mark_old = no
 set markers
 set smart_wrap
