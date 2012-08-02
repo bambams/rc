@@ -148,7 +148,7 @@ let spec_chglog_release_info = 1
 autocmd FileType gitcommit setlocal textwidth=72
 
 autocmd FileType mail
-            \ setlocal noai noci nosi tw=65 wrap |
+            \ setlocal noai nocin nosi tw=65 wrap |
             \ noremap ,, :set formatoptions+=a<CR> |
             \ noremap ,. :set formatoptions-=a<CR> |
             \ noremap ,p :g/^X-PGP-Key:/d<CR> |
