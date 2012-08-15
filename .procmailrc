@@ -96,6 +96,14 @@ rbb
 rbb
 
 :0:
+* ^FROM.*@(.*\.)?tenaris\.com
+rbb
+
+:0:
+* ^TOtenaris\.com
+rbb
+
+:0:
 * ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
 
