@@ -145,7 +145,7 @@ let spec_chglog_release_info = 1
 " Automatic commands.
 """""""""""""""""""
 
-autocmd FileType gitcommit setlocal textwidth=72
+autocmd FileType gitcommit setlocal noai noci nosi tw=72
 
 autocmd FileType mail
             \ setlocal noai nocin nosi tw=65 wrap |
