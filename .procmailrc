@@ -33,6 +33,10 @@ arch-announce
 catalyst
 
 :0:
+* ^TOcmus-devel@lists\.sourceforge\.net
+cmus-devel
+
+:0:
 * ^TOdebian-security-announce@lists\.debian\.org
 debian-security
 

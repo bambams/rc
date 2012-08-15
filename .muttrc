@@ -21,6 +21,7 @@ mailboxes +archive
 mailboxes +catalyst
 mailboxes +community-living-algoma
 mailboxes +corenetworks
+mailboxes +cmus-devel
 mailboxes +debian-security
 mailboxes +duplicates
 mailboxes +fedora-admin
@@ -73,6 +74,7 @@ set honor_followup_to = yes
 lists ^alleg-developers@
 lists ^beginners@perl\\.org$
 lists ^catalyst@lists\\.scsys\\.co\\.uk$
+lists ^cmus-devel@lists\\.sourceforge\\.net$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
@@ -86,6 +88,7 @@ lists ^templates@template-toolkit\\.org$
 subscribe alleg-developers
 subscribe beginners
 subscribe catalyst
+subscribe cmus-devel
 subscribe debian-security-announce
 subscribe devel-announce
 subscribe geshi-users
