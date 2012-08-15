@@ -6,6 +6,9 @@
 """"""""""""""""""""""""""""""""""""""""""
 
 
+" Remove ALL automatic-commands from previous sources.
+autocmd!
+
 """"""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""
@@ -34,6 +37,10 @@ syntax enable
 """""""""""""""""""""""""""""""""""""""""""
 " Favorite filetypes.
 set ffs=unix,dos,mac
+set fencs=ucs-bom,utf-8,latin-1
+
+" Default file type is UTF-8.
+setglobal fenc=utf-8
 
 
 
@@ -84,6 +91,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""
 set expandtab
 set shiftwidth=4
+set nojoinspaces
 set tabstop=4
 set textwidth=74
 set smarttab
@@ -133,15 +141,17 @@ nmap <silent> ,/ :nohlsearch<CR>
 let packager = "Brandon McCaig <bamccaig@gmail.com>"
 let spec_chglog_release_info = 1
 
-""""""""""""""""""
-" Create a function to configure Vim for writing E-mails.
-""""""""""""""""""
-function! Mail_mode()
-    set filetype=mail
-    set noautoindent
-    set nocindent
-    set nosmartindent
-    set textwidth=65
-    set wrap
-endfunction
+"""""""""""""""""""
+" Automatic commands.
+"""""""""""""""""""
 
+autocmd FileType gitcommit setlocal noai noci nosi tw=72
+
+autocmd FileType mail
+            \ setlocal noai nocin nosi tw=65 wrap |
+            \ noremap ,, :set formatoptions+=a<CR> |
+            \ noremap ,. :set formatoptions-=a<CR> |
+            \ noremap ,p :g/^X-PGP-Key:/d<CR> |
+            \ noremap ,s :w<CR>:! swap-sigs.pl %<CR>
+            \         :edit +set\ ft=mail<CR> |
+            \ noremap ,x :.,$g/^>/d<CR>
