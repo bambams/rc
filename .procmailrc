@@ -34,6 +34,10 @@ alleg-developers
 arch-announce
 
 :0:
+* ^FROM:.*issues-reply@bitbucket\.org
+bitbucket-issues
+
+:0:
 * ^TOcatalyst@lists\.scsys\.co\.uk
 catalyst
 
