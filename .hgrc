@@ -36,8 +36,9 @@ schemes =
 #shelve = ~/src/hgshelve/hgshelve.py
 transplant = 
 
-#[pager]
+[pager]
 #[autopager]
+attend = annotate, cat, diff, export, glog, help, log, qdiff, status, tip
 #pager = LESS='FSRX' less
 
 [server]

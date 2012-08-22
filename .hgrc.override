@@ -1,0 +1,14 @@
+[color]
+#mode = win32
+mode = ansi
+
+[extensions]
+tpager = ~/src/tpager/tpager.py
+
+[pager]
+attend = annotate, cat, diff, export, glog, help, log, qdiff, status, tip
+hg16mode = yes
+pager = C:\mingw\msys\1.0\bin\less.exe -FSRX
+
+[ui]
+#username = Brandon McCaig <FIXME>
