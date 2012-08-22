@@ -8,7 +8,8 @@ tpager = ~/src/tpager/tpager.py
 [pager]
 attend = annotate, cat, diff, export, glog, help, log, qdiff, status, tip
 hg16mode = yes
-pager = C:\mingw\msys\1.0\bin\less.exe -FSRX
+# Remember to set LESS environment variable to 'FSRX'.
+pager = C:\\mingw\\msys\\1.0\\bin\\less.exe
 
 [ui]
 #username = Brandon McCaig <FIXME>
