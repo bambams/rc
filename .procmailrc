@@ -16,7 +16,7 @@ LOGFILE=$HOME/.procmail.log
 duplicates
 
 :0:
-* ^TOalleg-developers@lists\.sourceforge\.net
+* ^TOalleg-developers@lists\.s(ource)?f(orge)?\.net
 alleg-developers
 
 :0:
@@ -42,7 +42,7 @@ bitbucket-issues
 catalyst
 
 :0:
-* ^TOcmus-devel@lists\.sourceforge\.net
+* ^TOcmus-devel@lists\.s(ource)?f(orge)?\.net
 cmus-devel
 
 :0:
@@ -65,7 +65,7 @@ fedora-pkg-rev
 fedora-pkg
 
 :0:
-* ^TOgeshi-users@lists\.sourceforge\.net
+* ^TOgeshi-users@lists\.s(ource)?f(orge)?\.net
 geshi-users
 
 :0:
