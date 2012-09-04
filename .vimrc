@@ -150,7 +150,9 @@ autocmd FileType aspvbs setlocal tw=0 |
            \ noremap ,. s" & vbNewline & _<CR>"<ESC> |
            \ noremap ,<CR> A & vbNewline & _<ESC>
 
-autocmd FileType gitcommit setlocal noai noci nosi tw=72
+autocmd FileType gitcommit setlocal fo+=a noai noci nosi tw=72 |
+            \ noremap ,, :setlocal fo+=a<CR> |
+            \ noremap ,. :setlocal fo-=a<CR>
 
 autocmd FileType mail
             \ setlocal noai nocin nosi tw=65 wrap |
