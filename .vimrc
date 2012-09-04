@@ -145,6 +145,11 @@ let spec_chglog_release_info = 1
 " Automatic commands.
 """""""""""""""""""
 
+autocmd FileType aspvbs setlocal tw=0 |
+           \ noremap ,, s" & vbNewline & _<CR>"    <ESC> |
+           \ noremap ,. s" & vbNewline & _<CR>"<ESC> |
+           \ noremap ,<CR> A & vbNewline & _<ESC>
+
 autocmd FileType gitcommit setlocal noai noci nosi tw=72
 
 autocmd FileType mail
