@@ -1,6 +1,10 @@
 [bookmarks]
 track.current = True
 
+[defaults]
+blame = -clnu
+log = -gv
+
 [diff]
 git = True
 
