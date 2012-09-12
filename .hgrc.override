@@ -6,7 +6,6 @@ mode = ansi
 tpager = ~/src/tpager/tpager.py
 
 [pager]
-attend = annotate, cat, diff, export, glog, help, log, qdiff, status, tip
 hg16mode = yes
 # Remember to set LESS environment variable to 'FSRX'.
 pager = C:\\mingw\\msys\\1.0\\bin\\less.exe
