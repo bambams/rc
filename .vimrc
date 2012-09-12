@@ -150,7 +150,7 @@ autocmd FileType aspvbs setlocal ic tw=0 |
            \ noremap ,. s" & vbNewline & _<CR>"<ESC> |
            \ noremap ,<CR> A & vbNewline & _<ESC>j |
 
-autocmd FileType gitcommit setlocal fo+=a noai noci nosi tw=72 |
+autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72 |
             \ noremap ,, :setlocal fo+=a<CR> |
             \ noremap ,. :setlocal fo-=a<CR>
 
