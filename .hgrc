@@ -1,9 +1,10 @@
-[bookmarks]
-track.current = True
 
 [alias]
 blame = blame -clnu
 log = log -Gv
+
+[bookmarks]
+track.current = True
 
 [diff]
 git = True
