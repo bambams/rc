@@ -148,7 +148,7 @@ let spec_chglog_release_info = 1
 autocmd FileType aspvbs setlocal ic tw=0 |
            \ noremap ,, s" & vbNewline & _<CR>"    <ESC> |
            \ noremap ,. s" & vbNewline & _<CR>"<ESC> |
-           \ noremap ,<CR> A & vbNewline & _<ESC>
+           \ noremap ,<CR> A & vbNewline & _<ESC>j |
 
 autocmd FileType gitcommit setlocal fo+=a noai noci nosi tw=72 |
             \ noremap ,, :setlocal fo+=a<CR> |
