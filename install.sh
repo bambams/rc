@@ -4,7 +4,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
 all_files=(`ls -d .*`);
 ignored_files=(. .. .git .gitignore .netrc offlineimap.conf);
 
-function resolve_rc_path
+function resolve-rc-path
 {
     local home_dir="$1";
     local rc_dir="$2";
@@ -18,7 +18,7 @@ function resolve_rc_path
     fi;
 }
 
-rc_dir="$(resolve_rc_path "${HOME}" "${script_dir}")";
+rc_dir="$(resolve-rc-path "${HOME}" "${script_dir}")";
 
 for f in "${all_files[@]}"; do
     ignored=;

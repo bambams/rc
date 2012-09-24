@@ -24,7 +24,7 @@ function args
 		EOF
 }
 
-function check_git
+function check-git
 {
     local d="${1:-.}";
     local status=0;
@@ -55,7 +55,7 @@ function check_git
     return $status;
 }
 
-function check_hg
+function check-hg
 {
     local d="${1:-.}";
     local status=0;
@@ -86,7 +86,7 @@ function check_hg
     return $status;
 }
 
-function check_svn
+function check-svn
 {
     local d="${1:-.}";
     local status=0;
@@ -107,7 +107,7 @@ function check_svn
     return $status;
 }
 
-function check_scms
+function check-scms
 {
     local i=0;
     local src="${1:-${HOME}/src}";
@@ -118,7 +118,7 @@ function check_scms
         
         echo "$d:";
 
-        check_git "$d";
+        check-git "$d";
 
         if [ $? != 128 ]; then
             (( scms++ ));
@@ -128,7 +128,7 @@ function check_scms
             (( unhappy++ ));
         fi;
 
-        check_hg "$d";
+        check-hg "$d";
 
         if [ $? != 128 ]; then
             (( scms++ ));
@@ -138,7 +138,7 @@ function check_scms
             (( unhappy++ ));
         fi;
 
-        check_svn "$d";
+        check-svn "$d";
 
         if [ $? != 128 ]; then
             (( scms++ ));
@@ -165,7 +165,7 @@ function check_scms
     echo "Total directories checked: $i (Happy: $happy/Unhappy: $unhappy)";
 }
 
-function file_is_600
+function file-is-600
 {
     if [ "$(stat -c '%a' "$1" 2>/dev/null)" == 600 ]; then
         return 0;
@@ -190,7 +190,7 @@ function find-cs-func
             grep -v '^Binary';
 }
 
-function git_ps1__
+function git-ps1__
 {
     local b="$(git symbolic-ref HEAD 2>/dev/null)";
     if [ -n "$b" ]; then
@@ -294,10 +294,10 @@ function mkscreen
     fi
 
     if [ $add == y ]; then
-        echo "mkscreen $name $command" >> $HOME/.bash_screens;
+        echo "mkscreen $name $command" >> $HOME/.bash-screens;
     elif [ $replace == y ]; then
         sed -i -r "/mkscreen $name / s/mkscreen $name (.*)/\
-mkscreen $name $command/" $HOME/.bash_screens;
+mkscreen $name $command/" $HOME/.bash-screens;
     fi
 
     alias $name="/usr/bin/screen -d -RR -S $name -U $command";
@@ -324,7 +324,7 @@ function rmscreen
     fi
 
     if [ $delete == y ]; then
-        sed -i -r "/^mkscreen $name .*/d" $HOME/.bash_screens;
+        sed -i -r "/^mkscreen $name .*/d" $HOME/.bash-screens;
     fi
 
     unalias $name;
@@ -336,7 +336,7 @@ function ssh-agent-setup
 {
     local ssh_agent=/usr/bin/ssh-agent;
     local ssh_agent_args=(-s);
-    local ssh_agent_env=~/.ssh_agent_env;
+    local ssh_agent_env=~/.ssh-agent-env;
 
     if ! which getopt &>/dev/null; then
         echo 'ssh-agent-setup uses getopt to parse arguments.' \
@@ -373,7 +373,7 @@ Usage:
                             variables. The file should have its
                             permissions set to 0600. ssh-agent-env tries
                             to reset this each time the file is
-                            created. (default: ~/.ssh_agent_env)
+                            created. (default: ~/.ssh-agent-env)
 
         -h, --help          Show this message and exit success.
 EOF
@@ -384,7 +384,7 @@ EOF
     ssh_agent_args=("${ssh_agent_args[@]}" "$@");
 
     if [ -f "$ssh_agent_env" ] && \
-            file_is_600 "$ssh_agent_env"; then
+            file-is-600 "$ssh_agent_env"; then
         source "$ssh_agent_env";
     fi;
     if [ -z "$SSH_AGENT_PID" ] ||

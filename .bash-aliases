@@ -1,4 +1,4 @@
-# .bash_aliases
+# .bash-aliases
 
 # User specific aliases and functions
 alias aptitude='/usr/bin/aptitude -P'
@@ -19,7 +19,7 @@ alias scp-cs='/usr/bin/ssh bambams@castopulence.org'
 alias ssh-cs='/usr/bin/ssh bambams@castopulence.org'
 alias todo='/usr/bin/todo -G'
 
-if [ -f ~/.bash_aliases_ex ]; then
-    source ~/.bash_aliases_ex;
+if [ -f ~/.bash-aliases-ex ]; then
+    source ~/.bash-aliases-ex;
 fi;
 
