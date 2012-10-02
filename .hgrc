@@ -45,7 +45,7 @@ transplant =
 
 [pager]
 #[autopager]
-attend = annotate, branches, cat, diff, export, glog, grep, help, incoming, log, outgoing, qapplied, qunapplied, qdiff, qseries, status, summary tip
+attend = annotate, blame, bookmarks, branches, cat, diff, export, glog, grep, heads, help, in, incoming, log, merge, out, outgoing, qapplied, qdiff, qguard, qseries, qunapplied, resolve, status, summary, tags, tip
 #pager = LESS='FSRX' less
 
 [server]
