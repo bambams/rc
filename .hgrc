@@ -1,7 +1,9 @@
 
 [alias]
 blame = blame -clnu
+in = in -Gv
 log = log -Gv
+out = out -Gv
 
 [bookmarks]
 track.current = True
