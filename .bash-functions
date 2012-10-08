@@ -340,20 +340,18 @@ function ssh-agent-setup
 
     if ! which getopt &>/dev/null; then
         echo 'ssh-agent-setup uses getopt to parse arguments.' \
-                'Please install it and try again.' 1>&2;
-        return 1;
-    fi
+                'Passing on arguments.' 1>&2;
+    else
+        eval set -- $(getopt \
+                -l agent:,env:,help \
+                -n ssh-agent-setup \
+                -o A:E:h -- "$@");
 
-    eval set -- $(getopt \
-            -l agent:,env:,help \
-            -n ssh-agent-setup \
-            -o A:E:h -- "$@");
-
-    while true; do
-        case "$1" in
-            -A|--agent) ssh_agent="$2"; shift 2;;
-            -E|--env) ssh_agent_env="$2"; shift 2;;
-            -h|--help) cat <<EOF 1>&2; return 0;;
+        while true; do
+            case "$1" in
+                -A|--agent) ssh_agent="$2"; shift 2;;
+                -E|--env) ssh_agent_env="$2"; shift 2;;
+                -h|--help) cat <<EOF 1>&2; return 0;;
 Usage:
     ssh-agent-setup { -h | --help }
     ssh-agent-setup [ -A | --agent=FILE ] [ -E | --env=FILE ]
@@ -377,9 +375,10 @@ Usage:
 
         -h, --help          Show this message and exit success.
 EOF
-            --) shift; break ;;
-        esac;
-    done;
+                --) shift; break ;;
+            esac;
+        done;
+    fi;
 
     ssh_agent_args=("${ssh_agent_args[@]}" "$@");
 
