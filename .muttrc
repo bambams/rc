@@ -149,6 +149,7 @@ set markers
 set send_charset = utf-8
 set smart_wrap
 set pager_context = 5
+set pager_format="-%Z- %C/%m %e/%E %D %.20F <%.20a>   %s%*  -- (%P)"
 set pager_index_lines = 5
 set pager_stop = yes
 set status_on_top
