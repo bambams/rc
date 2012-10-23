@@ -1,6 +1,7 @@
 
 [alias]
 blame = blame -clnu
+log.. = log -r "ancestor($1,$2)::$2 - ancestor($1,$2)"
 in = in -Gv
 log = log -Gv
 out = out -Gv
