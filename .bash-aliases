@@ -18,6 +18,10 @@ alias sls='/usr/bin/screen -ls'
 alias scp-cs='/usr/bin/ssh bambams@castopulence.org'
 alias ssh-cs='/usr/bin/ssh bambams@castopulence.org'
 alias todo='/usr/bin/todo -G'
+alias vbinary='grep -v '\''^Binary'\'
+alias vgrep='vbinary | vmin | vscm'
+alias vmin='grep -v '\''^[^:]*\.min\.'\'
+alias vscm='grep -v '\''^[^:]*\.(git|hg|svn)'\'
 
 if [ -f ~/.bash-aliases-ex ]; then
     source ~/.bash-aliases-ex;
