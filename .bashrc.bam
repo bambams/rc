@@ -54,6 +54,9 @@ EDITOR=vim
 
 export EDITOR
 
+# Show Git branch in bash prompt.
+export PS1='[\u@\h \W$(git-ps1__ " (%s)")]\$ ';
+
 if [ -z "$PATH" ]; then
     PATH="$HOME/bin"
 else
