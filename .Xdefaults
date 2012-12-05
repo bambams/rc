@@ -1,0 +1,3 @@
+XTerm.VT100.renderFont: true
+XTerm*faceName: Bitstream Vera Serif Mono
+XTerm*faceSize: 10
