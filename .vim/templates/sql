@@ -1,0 +1,9 @@
+BEGIN TRANSACTION;
+
+SET XACT_ABORT ON;
+
+
+
+ROLLBACK;
+--COMMIT;
+# cursor: 5 del
