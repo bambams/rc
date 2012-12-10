@@ -8,5 +8,4 @@ int main(int argc, char * argv[])
 
     return 0;
 }
-
 # cursor: 7 del
