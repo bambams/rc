@@ -26,3 +26,4 @@ mkscreen template /usr/bin/perldoc Template::Tutorial::Datafile
 mkscreen fetch-loop fetch-loop
 mkscreen cmus cmus
 mkscreen cmus-tutorial man cmus-tutorial
+mkscreen talk talk
