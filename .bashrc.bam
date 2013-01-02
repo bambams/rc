@@ -16,6 +16,9 @@ function source-if
     fi
 }
 
+# Setup a paranoid umask. :) Files that need to be shared can be modified.
+umask 0077
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash-aliases, instead of adding them here directly.
