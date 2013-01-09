@@ -25,6 +25,10 @@ alleg-developers
 alleg-bugs
 
 :0:
+* ^SUBJECT:.*[AD]\s*[alleg:bugs]
+alleg-bugs
+
+:0:
 * ^FROM:.*noreply@sourceforge.net
 * ^SUBJECT:.*[AD]
 alleg-developers
