@@ -18,6 +18,7 @@ only-consistent = False
 
 [extensions]
 #autopager = ~/src/autopager/autopager.py
+bookmarks = 
 bugzilla = 
 children = 
 churn = 
