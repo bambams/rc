@@ -1,0 +1,4 @@
+# vim: set ft=bash
+for f in ~/.bash.d/*; do
+    source "$f";
+done;
