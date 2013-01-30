@@ -50,6 +50,10 @@ catalyst
 cmus-devel
 
 :0:
+* ^TOcmus@noreply.github.com
+cmus-devel
+
+:0:
 * ^TOdebian-security-announce@lists\.debian\.org
 debian-security
 
