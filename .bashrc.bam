@@ -68,6 +68,11 @@ fi
 
 export PATH
 
+# Disable annoying terminal blanking (virtual consoles only).
+if perl -e 'exit int((my $tty = `tty`) !~ m{^/dev/tty[0-9]+$})'; then
+    setterm -powersave off -blank 0
+fi
+
 # Give me a fortune!
 if [ "$UID" != 0 ]; then
     echo '--'
