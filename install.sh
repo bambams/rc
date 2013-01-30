@@ -34,3 +34,13 @@ for f in "${all_files[@]}"; do
     fi;
 done;
 
+# Install into .bashrc.
+if [ "$1" == "-f" ] &&
+        ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
+        then
+    cat <<-'EOF' >> .bashrc;
+	
+	# Source the awesomeness.
+	source ~/.bashrc.d.source
+EOF
+fi;
