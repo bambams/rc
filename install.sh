@@ -38,7 +38,7 @@ done;
 if [ "$1" == "-f" ] &&
         ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
         then
-    cat <<-'EOF' >> .bashrc;
+    cat <<-'EOF' >> ~/.bashrc;
 	
 	# Source the awesomeness.
 	source ~/.bashrc.d.source
