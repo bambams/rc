@@ -1,0 +1,4 @@
+function find-js-func
+{
+    egrep -inR 'function\s+\S*'"$1"'\S*\(' . | grep -v '^Binary';
+}

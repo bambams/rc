@@ -1,0 +1,64 @@
+function tryperl
+{ 
+    local answer=y;
+    local args=();
+    local editor="${TRYPERL_EDITOR:-${EDITOR:-/usr/bin/vim}}";
+    local editorargs=(${TRYPERL_EDITORARGS[@]});
+    local perl="${TRYPERL_PERL:-/usr/bin/perl}";
+    local perlargs=(${TRYPERL_PERLARGS[@]});
+
+    if [ ${#editorargs[@]} == 0 ]; then
+        editorargs=(-O);
+    fi
+
+    if [ ${#perlargs[@]} == 0 ]; then
+        perlargs=(-Mstrict -Mwarnings -MData::Dumper);
+    fi
+
+    if [ $1 == -- ]; then
+        if grep '^# tryperl: ' "$2" 1>/dev/null; then
+            args=(`sed -n -r '/^# tryperl: / s,^# tryperl: (.*),\1,p' "$2"`);
+        fi
+    fi
+
+    while [ $# -gt 0 -a "$1" != -- ]; do
+        args[${#args[@]}]="$1";
+        shift;
+    done
+
+    if [ $# == 0 ]; then
+        cat <<-EOF 1>&2;
+			Usage: tryperl [ SCRIPT_ARGS ] -- PROGRAM_FILE [ MODULE_FILE... ]
+			EOF
+        return 255;
+    fi
+
+    shift;
+
+    local program="$1";
+
+    if grep '^# tryperl: ' "$program"; then
+        sed -i -r 's,^(# tryperl: ).*,\1'"${args[*]}"',' "$program"
+    else
+        sed -i -r "2i\
+# tryperl: ${args[*]}" "$program"
+    fi
+
+    while [ "$answer" == y -o "$answer" == Y ]; do
+        "$editor" "${editorargs[@]}" "$@"
+
+        if grep '^# tryperl: ' "$program" 1>/dev/null; then
+            args=(`sed -n -r '/^# tryperl: / s,^# tryperl: (.*),\1,p' "$program"`);
+        fi
+
+        if [ "$?" == 0 ]; then
+            "$perl" "${perlargs[@]}" "$program" "${args[@]}";
+        fi
+
+        result=$?;
+
+        read -p 'Again? (Y/n) ' answer;
+    done;
+
+    return $result;
+}

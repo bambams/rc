@@ -1,0 +1,4 @@
+function find-cs-class
+{
+    egrep -inR '(:?class|struct)\s+\S*'"$1" . | grep -v '^Binary';
+}

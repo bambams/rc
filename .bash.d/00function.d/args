@@ -1,0 +1,20 @@
+function args
+{
+    cat <<-EOF 1>&2;
+		Args:
+		<<<<<<
+		EOF
+
+    local i=1;
+
+    while /bin/true; do
+        [ -z "$1" ] && break;
+        echo "$i=$1"
+        shift;
+        /bin/true $(( i++ ))
+    done
+
+    cat <<-EOF 1>&2;
+		>>>>>>
+		EOF
+}

@@ -1,0 +1,66 @@
+function ssh-agent-setup
+{
+    local ssh_agent=/usr/bin/ssh-agent;
+    local ssh_agent_args=(-s);
+    local ssh_agent_env=~/.ssh-agent-env;
+
+    if ! which getopt &>/dev/null; then
+        echo 'ssh-agent-setup uses getopt to parse arguments.' \
+                'Passing on arguments.' 1>&2;
+    else
+        eval set -- $(getopt \
+                -l agent:,env:,help \
+                -n ssh-agent-setup \
+                -o A:E:h -- "$@");
+
+        while true; do
+            case "$1" in
+                -A|--agent) ssh_agent="$2"; shift 2;;
+                -E|--env) ssh_agent_env="$2"; shift 2;;
+                -h|--help) cat <<EOF 1>&2; return 0;;
+Usage:
+    ssh-agent-setup { -h | --help }
+    ssh-agent-setup [ -A | --agent=FILE ] [ -E | --env=FILE ]
+                    [ -- ] [ ARGS... ]
+
+        ARGS...             Arguments passed on to ssh-agent. If they look
+                            like option arguments then you will most
+                            likely need to pass -- first so getopt (and
+                            therefore ssh-agent-setup) will ignore them.
+
+        -A, --agent=FILE    Specify ssh-agent executable
+                            (default: /usr/bin/ssh-agent)
+
+        -E, --env           Specify file with agent environment. This
+                            file should be source-able by the shell
+                            (i.e., bash) and should set the necessary
+                            variables. The file should have its
+                            permissions set to 0600. ssh-agent-env tries
+                            to reset this each time the file is
+                            created. (default: ~/.ssh-agent-env)
+
+        -h, --help          Show this message and exit success.
+EOF
+                --) shift; break ;;
+            esac;
+        done;
+    fi;
+
+    ssh_agent_args=("${ssh_agent_args[@]}" "$@");
+
+    if [ -f "$ssh_agent_env" ] && \
+            file-is-600 "$ssh_agent_env"; then
+        source "$ssh_agent_env";
+    fi;
+    if [ -z "$SSH_AGENT_PID" ] ||
+            ! ps "$SSH_AGENT_PID" 2>/dev/null | \
+            grep "$ssh_agent" &>/dev/null; then
+        if [ -x "$ssh_agent" ]; then
+            "$ssh_agent" "${ssh_agent_args[@]}" |
+                    sed -r 's/^echo/#echo/' 1> "$ssh_agent_env" || exit 1;
+            trap "kill $SSH_AGENT_PID" 0;
+            chmod 600 "$ssh_agent_env" || exit 1;
+            source "$ssh_agent_env";
+        fi;
+    fi;
+}

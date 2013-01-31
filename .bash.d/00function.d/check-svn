@@ -1,0 +1,20 @@
+function check-svn
+{
+    local d="${1:-.}";
+    local status=0;
+
+    pushd "$d" &>/dev/null;
+
+    if [ -d .svn ]; then
+        if [ ! -z "`svn status`" ]; then
+            echo "$d: Working directory dirty!" 1>&2;
+            status=1;
+        fi
+    else
+        status=128;
+    fi;
+        
+    popd &>/dev/null;
+
+    return $status;
+}

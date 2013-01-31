@@ -1,0 +1,57 @@
+function check-scms
+{
+    local i=0;
+    local src="${1:-${HOME}/src}";
+    local unhappy=0;
+
+    for d in `find "$src" -maxdepth 1 -type d`; do
+        local scms=0;
+        
+        echo "$d:";
+
+        check-git "$d";
+
+        if [ $? != 128 ]; then
+            (( scms++ ));
+        fi
+
+        if [ $? != 0 -a $? != 128 ]; then
+            (( unhappy++ ));
+        fi;
+
+        check-hg "$d";
+
+        if [ $? != 128 ]; then
+            (( scms++ ));
+        fi
+
+        if [ $? != 0 -a $? != 128 ]; then
+            (( unhappy++ ));
+        fi;
+
+        check-svn "$d";
+
+        if [ $? != 128 ]; then
+            (( scms++ ));
+        fi
+
+        if [ $? != 0 -a $? != 128 ]; then
+            (( unhappy++ ));
+        fi;
+
+        if [ $scms == 0 ]; then
+            echo "$d: *WARNING*: No SCM in use!";
+        else
+            echo "$d: SCMS: $scms";
+        fi
+
+        echo -e '\n\n\n';
+
+        (( i++ ));
+    done;
+    
+    local happy=$(( i - unhappy ));
+
+    echo ======;
+    echo "Total directories checked: $i (Happy: $happy/Unhappy: $unhappy)";
+}

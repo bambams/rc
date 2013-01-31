@@ -1,0 +1,30 @@
+function check-hg
+{
+    local d="${1:-.}";
+    local status=0;
+
+    pushd "$d" &>/dev/null;
+
+    if [ -d .hg ]; then
+        if [ ! -z "`hg status 2>/dev/null`" ]; then
+            echo "$d: Working directory dirty!" 1>&2;
+            (( status++ ));
+        fi;
+
+        if hg out origin &>/dev/null; then
+            echo "$d: Unpushed changes!" 1>&2;
+            (( status++ ));
+        fi
+
+        if hg out &>/dev/null; then
+            echo "$d: Unpushed changes!" 1>&2;
+            (( status++ ));
+        fi
+    else
+        status=128;
+    fi;
+
+    popd &>/dev/null;
+
+    return $status;
+}

@@ -1,0 +1,30 @@
+function check-git
+{
+    local d="${1:-.}";
+    local status=0;
+
+    pushd "$d" &>/dev/null;
+
+    if [ -d .git ]; then
+        git status 2>&1 | grep -i 'working directory clean' &>/dev/null;
+
+        if [ $? != 0 ]; then
+            echo "$d: Working directory dirty!" 1>&2;
+            (( status++ ));
+        fi;
+        
+        git push --dry-run origin master 2>&1 1>/dev/null |
+                grep -i 'everything up-to-date' &>/dev/null;
+
+        if [ $? != 0 -a $? != 128 ]; then
+            echo "$d: Unpushed changes!" 1>&2;
+            (( status++ ));
+        fi
+    else
+        status=128;
+    fi;
+
+    popd &>/dev/null;
+
+    return $status;
+}

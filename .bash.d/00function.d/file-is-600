@@ -1,0 +1,8 @@
+function file-is-600
+{
+    if [ "$(stat -c '%a' "$1" 2>/dev/null)" == 600 ]; then
+        return 0;
+    fi
+
+    return 1;
+}

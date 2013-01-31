@@ -1,0 +1,26 @@
+function rmscreen
+{
+    local delete=n
+
+    if [ "$1" == '-d' ]; then
+        delete=y
+        shift;
+    fi
+
+    local name=$1;
+
+    if [ -z "$name" ]; then
+        echo 'Usage: rmscreen [ -d ] name
+
+    -d          Delete from .bashrc.' 1>&2;
+        return 1;
+    fi
+
+    if [ $delete == y ]; then
+        sed -i -r "/^mkscreen $name .*/d" $HOME/.bash-screens;
+    fi
+
+    unalias $name;
+
+    return 0;
+}

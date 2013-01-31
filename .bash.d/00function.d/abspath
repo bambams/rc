@@ -1,0 +1,4 @@
+function abspath
+{
+    echo "$1" | sed -r 's,^([^/]),'"`pwd`"'/\1,'
+}

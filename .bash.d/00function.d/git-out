@@ -1,0 +1,10 @@
+function git-out
+{
+    local git_out_range="`git-out-range "$@"`";
+
+    if [ -z "$git_out_range" ]; then
+        return 1;
+    fi;
+    
+    git log $git_out_range;
+}
