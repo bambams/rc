@@ -41,6 +41,6 @@ if [ "$1" == "-f" ] &&
     cat <<-'EOF' >> ~/.bashrc;
 	
 	# Source the awesomeness.
-	source ~/.bashrc.d.source
+	source ~/.bash.d.source
 EOF
 fi;
