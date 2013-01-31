@@ -1,4 +1,4 @@
 # vim: set ft=bash
-for f in ~/.bash.d/*; do
+for f in `find -L ~/.bash.d -type f | sort`; do
     source "$f";
 done;
