@@ -1,27 +1,38 @@
 function killall
 {
     while [ "$1" ]; do
-        process="$1"
+        local answer;
+        local process="$1"
 
         if [ "$process" == -f -o "$process" == --force ]; then
-            force=1
+            answer=y;
+            shift;
             continue;
         fi
 
-        psaux="`ps aux | grep "$process" | grep -v grep`";
-        pids="`echo "$psaux" | awk '{print $2}' | xargs`";
+        local psaux="`ps aux | grep "$process" | grep -v grep`";
+        local pids="`echo "$psaux" | awk '{print $2}' | xargs`";
+
+        if [ "$pids" == "" ]; then
+            echo "$process not found" 1>&2;
+            shift;
+            continue;
+        fi;
 
         echo "$psaux";
 
-        if [ ! "$force" ]; then
+        if [ "$answer" != y ]; then
             echo "The following PIDs will be KILLed: $pids";
             read -p "Terminate these processes (Y/n) [n] " answer;
-            if [ "$answer" == y -o "$answer" == Y ]; then
-                echo "KILLing..."
-                kill -KILL $pids
-            else
-                echo "Skipping /$process/";
-            fi;
         fi
+
+        if [ "$answer" == y -o "$answer" == Y ]; then
+            echo "KILLing..."
+            kill -KILL $pids
+        else
+            echo "Skipping $process";
+        fi;
+
+        shift;
     done
 }
