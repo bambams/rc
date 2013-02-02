@@ -3,7 +3,7 @@
 set defsearch=
 set guioptions=CMNs
 set newtab=all
-set runtimepath=/home/bamccaig
+set runtimepath=/home/bambams
 set wildmode=list:longest
 "source! /home/bamccaig/.vimperatorrc.local
 
