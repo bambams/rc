@@ -1,4 +1,9 @@
 # vim: set ft=bash
-for f in `find -L ~/.bash.d -type f | sort`; do
+
+if [ ! -z "$1" ]; then
+    name=".$1";
+fi;
+
+for f in `find -L ~/.bash.d$name -type f | sort`; do
     source "$f";
 done;
