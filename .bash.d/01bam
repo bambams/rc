@@ -9,21 +9,6 @@
 # Setup a paranoid umask. :) Files that need to be shared can be modified.
 umask 0077
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash-aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-source-if ~/.bash-aliases
-
-# Function definitions.
-# Just because aliases are separate, I guess functions might as well be
-# too.
-source-if ~/.bash-functions
-
-# Screen definitions.
-# These are created by mkscreen and removed by rmscreen functions.
-source-if ~/.bash-screens
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
