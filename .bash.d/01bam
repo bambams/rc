@@ -19,14 +19,6 @@ source-if /etc/bash_completion.d/git
 git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`
 source-if "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
 
-# Local perl modules. :)
-perl5lib="$HOME/perl5"
-
-if [ ! -z "$perl5lib" ]; then
-    PERL5LIB="$perl5lib";
-    export PERL5LIB
-fi
-
 # Always vim as an editor. :)
 EDITOR=vim
 
