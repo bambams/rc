@@ -77,6 +77,7 @@ lists ^alleg-developers@
 lists ^beginners@perl\\.org$
 lists ^catalyst@lists\\.scsys\\.co\\.uk$
 lists ^cmus-devel@lists\\.sourceforge\\.net$
+lists ^cmus@noreply\\.github\\.com$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
