@@ -8,14 +8,6 @@
 # probably won't matter.
 #[[ $- != *i* ]] && return;
 
-# A function to source a script only if it exists.
-function source-if
-{
-    if [ -f "$1" ]; then
-        source "$1"
-    fi
-}
-
 # Setup a paranoid umask. :) Files that need to be shared can be modified.
 umask 0077
 
