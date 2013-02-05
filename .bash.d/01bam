@@ -1,5 +1,5 @@
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[ -z "$PS1" ] && return;
 
 # Fedora's way of checking interactivity... Not sure if both work or if we
 # need distro specifics... Since this is called by .bashrc anyway it
@@ -7,53 +7,50 @@
 #[[ $- != *i* ]] && return;
 
 # Setup a paranoid umask. :) Files that need to be shared can be modified.
-umask 0077
+umask 0077;
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-source-if /etc/bash_completion
-source-if /etc/bash_completion.d/git
+source-if /etc/bash_completion;
+source-if /etc/bash_completion.d/git;
 
 # Source git's bash completion. :)
-git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`
-source-if "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash"
+git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`;
+source-if "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash";
 
 # Always vim as an editor. :)
-EDITOR=vim
-
-export EDITOR
+export EDITOR=vim;
 
 # Show Git branch in bash prompt.
 export PS1='[\u@\h \W$(git-ps1__ " (%s)")]\$ ';
 
 if [ -z "$PATH" ]; then
-    PATH="$HOME/bin"
+    PATH="$HOME/bin";
 else
-    PATH="$PATH:$HOME/bin"
+    PATH="$PATH:$HOME/bin";
 fi
 
-export PATH
+export PATH;
 
 # Disable annoying terminal blanking (virtual consoles only).
 if perl -e 'exit int((my $tty = `tty`) !~ m{^/dev/tty[0-9]+$})'; then
-    setterm -powersave off -blank 0
+    setterm -powersave off -blank 0;
 fi
 
 # Give me a fortune!
 if [ "$UID" != 0 ]; then
-    echo '--'
+    echo '--';
 
     if [ -e /usr/games/fortune ]; then
-        /usr/games/fortune
+        /usr/games/fortune;
     elif [ -e /usr/bin/fortune ]; then
-        /usr/bin/fortune
+        /usr/bin/fortune;
     fi;
-fi
+fi;
 
-#less /usr/share/games/fortune/humorix-stories
+#less /usr/share/games/fortune/humorix-stories;
 
 # ZOMG, bash has a vi mode!
 # UGH, but it's hard to get used to...
-#set -o vi
-
+#set -o vi;
