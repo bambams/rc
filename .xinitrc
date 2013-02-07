@@ -1,1 +1,2 @@
+xscreensaver &
 xmonad
