@@ -1,5 +1,6 @@
 function mkscreen
 {
+    local rc="$HOME/.bash.d/screens";
     local add=n
     local replace=n
 
@@ -18,17 +19,17 @@ function mkscreen
     if [ -z "$name" -o -z "$command" ]; then
         echo 'Usage: mkscreen [ -a | -r ] name command
 
-    -a          Add to .bashrc.
+    -a          Add to ~/.bash.d/screens.
     
-    -r          Replace screen in .bashrc.' 1>&2;
+    -r          Replace screen in ~/.bash.d/screens.' 1>&2;
         return 1;
     fi
 
     if [ $add == y ]; then
-        echo "mkscreen $name $command" >> $HOME/.bash-screens;
+        echo "mkscreen $name $command" >> "$rc";
     elif [ $replace == y ]; then
         sed -i -r "/mkscreen $name / s/mkscreen $name (.*)/\
-mkscreen $name $command/" $HOME/.bash-screens;
+mkscreen $name $command/" "$rc";
     fi
 
     alias $name="/usr/bin/screen -d -RR -S $name -U $command";
