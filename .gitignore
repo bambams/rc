@@ -1,3 +1,7 @@
+.cmus/*.pl
+.cmus/cache
+.cmus/command-history
+.cmus/search-history
 .mutt/aliases
 .mutt/certificates
 .mutt/cache
