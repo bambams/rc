@@ -25,5 +25,6 @@ mkscreen perlxs /usr/bin/perldoc perlxs
 mkscreen rpm-cheats /usr/bin/vim ~/.rpm-cheats
 mkscreen slrn /usr/bin/slrn
 mkscreen socket /usr/bin/perldoc Socket
+mkscreen starman starman
 mkscreen talk talk
 mkscreen template /usr/bin/perldoc Template::Tutorial::Datafile
