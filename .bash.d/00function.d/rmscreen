@@ -1,12 +1,12 @@
 function rmscreen
 {
     local rc="$HOME/.bash.d/screens";
-    local delete=n
+    local delete=n;
 
     if [ "$1" == '-d' ]; then
-        delete=y
+        delete=y;
         shift;
-    fi
+    fi;
 
     local name=$1;
 
@@ -15,11 +15,11 @@ function rmscreen
 
     -d          Delete from ~/.bash.d/screens.' 1>&2;
         return 1;
-    fi
+    fi;
 
     if [ $delete == y ]; then
         sed -i -r "/^mkscreen $name .*/d" "$rc";
-    fi
+    fi;
 
     unalias $name;
 

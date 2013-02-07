@@ -1,16 +1,17 @@
+# vim: ft=sh
 function mkscreen
 {
     local rc="$HOME/.bash.d/screens";
-    local add=n
-    local replace=n
+    local add=n;
+    local replace=n;
 
     if [ "$1" == '-a' ]; then
-        add=y
+        add=y;
         shift;
     elif [ "$1" == '-r' ]; then
-        replace=y
+        replace=y;
         shift;
-    fi
+    fi;
 
     local name=$1;
     shift;
@@ -30,7 +31,7 @@ function mkscreen
     elif [ $replace == y ]; then
         sed -i -r "/mkscreen $name / s/mkscreen $name (.*)/\
 mkscreen $name $command/" "$rc";
-    fi
+    fi;
 
     alias $name="/usr/bin/screen -d -RR -S $name -U $command";
 
