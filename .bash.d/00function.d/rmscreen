@@ -1,11 +1,11 @@
 function rmscreen
 {
     local rc="$HOME/.bash.d/screens";
-    local delete=n;
+    local delete=n sort=n;
     local name="$1";
 
     if [ "$1" == '-d' ]; then
-        delete=y;
+        delete=y sort=y;
         shift;
     fi;
 
@@ -18,6 +18,10 @@ function rmscreen
 
     if [ "$delete" == y ]; then
         sed -i -r "/^mkscreen $name .*/d" "$rc";
+    fi;
+
+    if [ "$sort" == y ]; then
+        sort-screens;
     fi;
 
     unalias "$name";

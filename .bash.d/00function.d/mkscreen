@@ -2,14 +2,13 @@
 function mkscreen
 {
     local rc="$HOME/.bash.d/screens";
-    local add=n;
-    local replace=n;
+    local add=n replace=n sort=n;
 
     if [ "$1" == '-a' ]; then
-        add=y;
+        add=y sort=y;
         shift;
     elif [ "$1" == '-r' ]; then
-        replace=y;
+        replace=y sort=y;
         shift;
     fi;
 
@@ -31,6 +30,10 @@ function mkscreen
     elif [ $replace == y ]; then
         sed -i -r "/mkscreen $name / s/mkscreen $name (.*)/\
 mkscreen $name $command/" "$rc";
+    fi;
+
+    if [ "$sort" == y ];  then
+        sort-screens;
     fi;
 
     alias $name="/usr/bin/screen -d -RR -S $name -U $command";
