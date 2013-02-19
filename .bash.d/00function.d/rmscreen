@@ -2,12 +2,13 @@ function rmscreen
 {
     local rc="$HOME/.bash.d/screens";
     local delete=n sort=n;
-    local name="$1";
 
     if [ "$1" == '-d' ]; then
         delete=y sort=y;
         shift;
     fi;
+
+    local name="$1";
 
     if [ -z "$name" ]; then
         echo 'Usage: rmscreen [ -d ] name
