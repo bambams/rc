@@ -1,0 +1,8 @@
+# vim: ft=sh
+
+function steam {
+    local err="$HOME/.X.steam.err";
+    local out="$HOME/.X.steam.out";
+
+    xinit /home/bambams/.local/share/Steam/debian_bin/steam -- :1 1>"$out" 2>"$err";
+}
