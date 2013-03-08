@@ -10,3 +10,5 @@
 [user]
     name = "Brandon McCaig"
     email = "bamccaig@gmail.com"
+[color]
+	diff = auto
