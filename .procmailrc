@@ -101,6 +101,12 @@ perl-xs
 playstation
 
 :0:
+* ^FROM.*customercare@pof\.com
+* ! ^SUBJECT.*wants\ to\ meet\ you
+* ! ^SUBJECT.*you\ have\ received\ a\ new\ message
+pof
+
+:0:
 * ^FROM.*OnTimeNotifications@Axosoft\.com
 rbb-ontime
 
