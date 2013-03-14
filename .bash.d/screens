@@ -1,7 +1,7 @@
 mkscreen admin /usr/bin/env /bin/bash
 mkscreen adom /usr/bin/sudo -u /usr/games/adom /usr/games/adom
 mkscreen attributes /usr/bin/perldoc attributes
-mkscreen bambot bambot
+mkscreen bambots bambot
 mkscreen cmus cmus
 mkscreen cmus-tutorial man cmus-tutorial
 mkscreen critic /usr/bin/perldoc Perl::Critic
