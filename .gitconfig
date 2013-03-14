@@ -12,3 +12,5 @@
     email = "bamccaig@gmail.com"
 [color]
 	diff = auto
+[pretty]
+	subject = format:%s
