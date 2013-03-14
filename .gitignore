@@ -5,4 +5,7 @@
 .mutt/aliases
 .mutt/certificates
 .mutt/cache
+.newsbeuter/*.db
+.newsbeuter/*.cmdline
+.newsbeuter/*.search
 .vim/.netrwhist
