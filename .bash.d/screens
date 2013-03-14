@@ -17,6 +17,7 @@ mkscreen man-adom /usr/bin/view /usr/share/doc/adom/manual.doc
 mkscreen moose-more /usr/bin/perldoc Moose::Manual::Classes
 mkscreen moose /usr/bin/perldoc Moose::Manual
 mkscreen mutt /usr/bin/mutt
+mkscreen newsbeuter newsbeuter
 mkscreen perldebtut perldoc perldebtut
 mkscreen perldebug /usr/bin/perldoc perldebug
 mkscreen perlmodlib /usr/bin/perldoc perlmodlib
