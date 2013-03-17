@@ -161,6 +161,10 @@ autocmd FileType aspvbs setlocal ic tw=0 |
            \ noremap ,U gUw |
            \ inoremap <ESC><tab> <C-O>i    |
 
+autocmd FileType diff
+            \ noremap ,, :s/^-/ /e<CR> | :.g/^+/d<CR> | :nohl<CR> |
+            \ noremap ,. :s/^ /-/e<CR> | :nohl<CR>
+
 autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72 |
             \ noremap ,, :setlocal fo+=a<CR> |
             \ noremap ,. :setlocal fo-=a<CR>
