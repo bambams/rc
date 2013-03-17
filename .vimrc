@@ -162,8 +162,8 @@ autocmd FileType aspvbs setlocal ic tw=0 |
            \ inoremap <ESC><tab> <C-O>i    |
 
 autocmd FileType diff
-            \ noremap ,, :s/^-/ /e<CR>:.g/^+/d<CR>:nohl<CR> |
-            \ noremap ,. :s/^ /-/e<CR>:nohl<CR>
+            \ nnoremap ,, :call UndoPatch()<CR> |
+            \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>j
 
 autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72 |
             \ noremap ,, :setlocal fo+=a<CR> |
@@ -177,3 +177,14 @@ autocmd FileType mail
             \ noremap ,s :w<CR>:! swap-sigs.pl %<CR>
             \         :edit +set\ ft=mail<CR> |
             \ noremap ,x :.,$g/^>/d<CR>
+
+function! UndoPatch()
+    if getline('.') =~ '^- '
+        s/^-/ /
+        normal! j
+    elseif getline('.') =~ '^+ '
+        delete
+    else
+        normal! j
+    endif
+endfunction
