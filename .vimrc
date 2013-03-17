@@ -145,37 +145,37 @@ let spec_chglog_release_info = 1
 " Automatic commands.
 """""""""""""""""""
 
-autocmd FileType aspvbs setlocal ic tw=0 |
-           \ noremap ,, s" & vbNewline & _<CR>"    <ESC> |
-           \ noremap ,. s" & vbNewline & _<CR>"<ESC> |
-           \ noremap ,<CR> A & vbNewline & _<ESC>j |
-           \ noremap ,e i)<ESC> |
-           \ noremap ,h iToHTML(<ESC> |
-           \ noremap ,i iToIndex(<ESC> |
-           \ noremap ,I iToDbIndex(<ESC> |
-           \ noremap ,l iToLong(<ESC> |
-           \ noremap ,L iToDbLong(<ESC> |
-           \ noremap ,s iToTrimString(<ESC> |
-           \ noremap ,S iToDbString(<ESC> |
-           \ noremap ,u iServer.UrlEncode(<ESC> |
-           \ noremap ,U gUw |
+autocmd FileType aspvbs setlocal ic tw=0|
+           \ noremap ,, s" & vbNewline & _<CR>"    <ESC>|
+           \ noremap ,. s" & vbNewline & _<CR>"<ESC>|
+           \ noremap ,<CR> A & vbNewline & _<ESC>j|
+           \ noremap ,e i)<ESC>|
+           \ noremap ,h iToHTML(<ESC>|
+           \ noremap ,i iToIndex(<ESC>|
+           \ noremap ,I iToDbIndex(<ESC>|
+           \ noremap ,l iToLong(<ESC>|
+           \ noremap ,L iToDbLong(<ESC>|
+           \ noremap ,s iToTrimString(<ESC>|
+           \ noremap ,S iToDbString(<ESC>|
+           \ noremap ,u iServer.UrlEncode(<ESC>|
+           \ noremap ,U gUw|
            \ inoremap <ESC><tab> <C-O>i    |
 
 autocmd FileType diff
-            \ nnoremap ,, :call UndoPatch()<CR> |
+            \ nnoremap ,, :call UndoPatch()<CR>|
             \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>j
 
-autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72 |
-            \ noremap ,, :setlocal fo+=a<CR> |
+autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72|
+            \ noremap ,, :setlocal fo+=a<CR>|
             \ noremap ,. :setlocal fo-=a<CR>
 
 autocmd FileType mail
-            \ setlocal noai nocin nosi tw=65 wrap |
-            \ noremap ,, :set formatoptions+=a<CR> |
-            \ noremap ,. :set formatoptions-=a<CR> |
-            \ noremap ,p :g/^X-PGP-Key:/d<CR> |
+            \ setlocal noai nocin nosi tw=65 wrap|
+            \ noremap ,, :set formatoptions+=a<CR>|
+            \ noremap ,. :set formatoptions-=a<CR>|
+            \ noremap ,p :g/^X-PGP-Key:/d<CR>|
             \ noremap ,s :w<CR>:! swap-sigs.pl %<CR>
-            \         :edit +set\ ft=mail<CR> |
+            \         :edit +set\ ft=mail<CR>|
             \ noremap ,x :.,$g/^>/d<CR>
 
 function! UndoPatch()
