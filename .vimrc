@@ -179,13 +179,15 @@ autocmd FileType mail
             \ noremap ,x :.,$g/^>/d<CR>
 
 function! UndoPatch()
+    if getline('.') =~ '^+'
+        delete
+        return
+    endif
+
     if getline('.') =~ '^-'
         s/^-/ /
         nohlsearch
-        normal! j
-    elseif getline('.') =~ '^+'
-        delete
-    else
-        normal! j
     endif
+
+    normal! j
 endfunction
