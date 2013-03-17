@@ -181,6 +181,7 @@ autocmd FileType mail
 function! UndoPatch()
     if getline('.') =~ '^- '
         s/^-/ /
+        nohlsearch
         normal! j
     elseif getline('.') =~ '^+ '
         delete
