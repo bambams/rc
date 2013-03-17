@@ -186,6 +186,7 @@ function! UndoPatch()
 
     if getline('.') =~ '^-'
         s/^-/ /
+        normal! 0
         nohlsearch
     endif
 
