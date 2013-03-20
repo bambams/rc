@@ -93,6 +93,10 @@ mutt-users
 perl-beginners
 
 :0:
+* ^TOmoose@perl\.org
+perl-moose
+
+:0:
 * ^TOperl-xs@perl\.org
 perl-xs
 
