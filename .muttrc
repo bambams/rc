@@ -38,6 +38,7 @@ mailboxes +humble-bundle
 mailboxes +irssi-users
 mailboxes +mutt-users
 mailboxes +perl-beginners
+mailboxes +perl-moose
 mailboxes +perl-xs
 mailboxes +pof
 mailboxes +rbb
@@ -83,6 +84,7 @@ lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
 lists ^irssi-users@dragoncat\\.net$
+lists ^moose@perl\\.org$
 lists ^mutt-users@mutt\\.org$
 lists ^package-review@lists\\.fedoraproject\\.org$
 lists ^packaging@lists\\.fedoraproject\\.org$
@@ -97,6 +99,7 @@ subscribe debian-security-announce
 subscribe devel-announce
 subscribe geshi-users
 subscribe irssi-users
+subscribe moose
 subscribe mutt-users
 subscribe package-review
 subscribe packaging
@@ -110,6 +113,7 @@ fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
 fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
+fcc-hook ^moose@perl\\.org$ +perl-moose
 fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
 fcc-hook ^perl-xs@perl\\.org$ +perl-xs
