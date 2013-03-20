@@ -104,10 +104,13 @@ perl-xs
 * ^FROM.*@playstation\.sony\.com
 playstation
 
-:0:
+:0 fw:
 * ^FROM.*customercare@pof\.com
 * ! ^SUBJECT.*wants\ to\ meet\ you
 * ! ^SUBJECT.*you\ have\ received\ a\ new\ message
+| formail -i 'Status: R'
+
+:0 A:
 pof
 
 :0:
