@@ -32,6 +32,7 @@ mailboxes +fedora-pkg
 #mailboxes +fedora-pkg-rev
 mailboxes +gameservers
 mailboxes +geshi-users
+mailboxes +google-chat
 mailboxes +google-plus
 mailboxes +green-party
 mailboxes +humble-bundle
