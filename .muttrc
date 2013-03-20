@@ -109,11 +109,11 @@ subscribe slrn-user
 subscribe template
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
+fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
-fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^moose@perl\\.org$ +perl-moose
 fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
