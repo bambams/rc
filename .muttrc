@@ -35,16 +35,19 @@ mailboxes +geshi-users
 mailboxes +google-chat
 mailboxes +google-plus
 mailboxes +green-party
+mailboxes +gwrra
 mailboxes +humble-bundle
 mailboxes +irssi-users
 mailboxes +mutt-users
 mailboxes +perl-beginners
+mailboxes +perl-jobs
 mailboxes +perl-moose
 mailboxes +perl-xs
 mailboxes +pof
 mailboxes +rbb
 mailboxes +sent
 mailboxes +slrn-user
+mailboxes +stembot
 mailboxes +template
 set sort_browser = alpha
 
