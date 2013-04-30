@@ -31,3 +31,4 @@ mkscreen socket /usr/bin/perldoc Socket
 mkscreen starmans starman
 mkscreen talk talk
 mkscreen template /usr/bin/perldoc Template::Tutorial::Datafile
+mkscreen Text::Balanced perldoc Text::Balanced
