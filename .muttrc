@@ -40,6 +40,7 @@ mailboxes +google-chat
 mailboxes +google-plus
 mailboxes +green-party
 mailboxes +gwrra
+mailboxes +hg-bugs
 mailboxes +humble-bundle
 mailboxes +irssi-users
 mailboxes +mutt-users
@@ -122,6 +123,7 @@ fcc-hook ^cmus-devel@lists\\.sourceforge\\.net$ +cmus-devel
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
+fcc-hook ^mercurial-bugs@selenic\\.com$ +hg-bugs
 fcc-hook ^moose@perl\\.org$ +perl-moose
 fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg

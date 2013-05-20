@@ -81,6 +81,14 @@ geshi-users
 google-plus
 
 :0:
+* ^FROM.*mercurial-bugs@selenic.com
+hg-bugs
+
+:0:
+* ^TOmercurial-bugs@selenic.com
+hg-bugs
+
+:0:
 * ^TOirssi-users@dragoncat\.net
 irssi-users
 
