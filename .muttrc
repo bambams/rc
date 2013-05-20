@@ -50,6 +50,8 @@ mailboxes +perl-moose
 mailboxes +perl-xs
 mailboxes +pof
 mailboxes +rbb
+mailboxes +rbb-collab
+mailboxes +rbb-hackday
 mailboxes +sent
 mailboxes +slrn-user
 mailboxes +stembot
@@ -89,9 +91,11 @@ lists ^beginners@perl\\.org$
 lists ^catalyst@lists\\.scsys\\.co\\.uk$
 lists ^cmus-devel@lists\\.sourceforge\\.net$
 lists ^cmus@noreply\\.github\\.com$
+lists ^collaboration@rbbinnovations\\.com$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
+lists ^hackday@rbbinnovations\\.com$
 lists ^irssi-users@dragoncat\\.net$
 lists ^moose@perl\\.org$
 lists ^mutt-users@mutt\\.org$
@@ -103,10 +107,12 @@ lists ^templates@template-toolkit\\.org$
 subscribe alleg-developers
 subscribe beginners
 subscribe catalyst
+subscribe collaboration
 subscribe cmus-devel
 subscribe debian-security-announce
 subscribe devel-announce
 subscribe geshi-users
+subscribe hackday
 subscribe irssi-users
 subscribe moose
 subscribe mutt-users
@@ -120,7 +126,9 @@ fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^brandon\\.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
 fcc-hook ^cmus-devel@lists\\.sourceforge\\.net$ +cmus-devel
+fcc-hook ^collaboartion@rbbinnovations\\.com$ +rbb-collab
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
+fcc-hook ^hackday@rbbinnovations\\.com$ +rbb-hackday
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
 fcc-hook ^mercurial-bugs@selenic\\.com$ +hg-bugs

@@ -126,6 +126,14 @@ pof
 rbb-ontime
 
 :0:
+* ^LIST-ID:.*collaboration\.rbbinnovations\.com
+rbb-collab
+
+:0:
+* ^LIST-ID:.*hackday\.rbbinnovations\.com
+rbb-hackday
+
+:0:
 * ^FROM.*@rbbinnovations\.com
 rbb
 
