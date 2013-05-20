@@ -116,7 +116,7 @@ subscribe slrn-user
 subscribe template
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
-fcc-hook ^brandon.mccaig@rbbinnovations\\.com$ +rbb
+fcc-hook ^brandon\\.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
 fcc-hook ^cmus-devel@lists\\.sourceforge\\.net$ +cmus-devel
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
