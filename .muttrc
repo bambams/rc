@@ -17,6 +17,10 @@ set postponed = +postponed
 set mbox_type = mbox
 set move=no
 
+# MIME types.
+alternative_order text/plain text/enriched text/html
+auto_view text/html;
+
 # Mailboxes to watch.
 mailboxes !
 mailboxes +alleg-bugs

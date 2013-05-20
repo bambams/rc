@@ -1,0 +1,3 @@
+text/html; elinks %s; nametemplate=%s.html;
+text/html; elinks -dump %s; nametemplate=%s.html; copiousoutput
+#text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput
