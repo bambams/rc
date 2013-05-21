@@ -34,7 +34,7 @@ sub sig_printtext {
       $text = $dest->{target}.": ".$text;
     }
     $text =~ s/%/%%/g;
-    $window->print("text=".$text, MSGLEVEL_CLIENTCRAP()) if ($window);
+    $window->print($text, MSGLEVEL_CLIENTCRAP()) if ($window);
   }
 }
 
