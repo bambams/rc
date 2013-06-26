@@ -149,7 +149,7 @@ let spec_chglog_release_info = 1
 """""""""""""""""""
 
 autocmd FileType aspvbs setlocal ic tw=0|
-           \ noremap ,, s" & vbNewline & _<CR>"    <ESC>|
+           \ noremap ,, s" & vbNewline & _<CR>"   <ESC>|
            \ noremap ,. s" & vbNewline & _<CR>"<ESC>|
            \ noremap ,<CR> A & vbNewline & _<ESC>j|
            \ noremap ,e i)<ESC>|
