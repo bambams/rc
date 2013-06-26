@@ -46,6 +46,10 @@ schemes =
 #shelve = ~/src/hgshelve/hgshelve.py
 transplant = 
 
+[mq]
+keepchanges = true
+secret = true
+
 [pager]
 #[autopager]
 attend = annotate, blame, bookmarks, branches, cat, diff, export, glog, grep, heads, help, in, incoming, log, merge, out, outgoing, qapplied, qdiff, qguard, qseries, qunapplied, resolve, status, summary, tags, tip
