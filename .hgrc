@@ -1,3 +1,4 @@
+# vim: tw=0
 
 [alias]
 blame = blame -clnu
