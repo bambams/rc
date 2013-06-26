@@ -166,7 +166,7 @@ autocmd FileType aspvbs setlocal ic tw=0|
 
 autocmd FileType diff
             \ nnoremap ,, :call UndoPatch()<CR>|
-            \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>j
+            \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>jzz
 
 autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72|
             \ noremap ,, :setlocal fo+=a<CR>|
@@ -186,6 +186,7 @@ function! UndoPatch()
 
     if getline('.') =~ '^+'
         delete
+        normal! zz
         return
     endif
 
@@ -196,4 +197,5 @@ function! UndoPatch()
 
     normal! j
     normal! ^
+    normal! zz
 endfunction
