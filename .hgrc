@@ -27,6 +27,7 @@ churn =
 color = 
 convert = 
 eol = 
+extdiff =
 fetch = 
 gpg = 
 graphlog = 
