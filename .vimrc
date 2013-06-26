@@ -75,6 +75,9 @@ set hlsearch
 " This apparently will make gVim maximize by default.
 au GUIEnter * simalt ~x
 
+" Disable the mouse (hopefully).
+set mouse=
+
 
 """""""""""""""""""""""""""""""""""""""""""
 " Files and backups.
