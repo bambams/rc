@@ -1,5 +1,3 @@
-# vim: tw=0
-
 [alias]
 blame = blame -clnu
 log.. = log -r "ancestor($1,$2)::$2 - ancestor($1,$2)"
@@ -55,7 +53,10 @@ secret = true
 
 [pager]
 #[autopager]
-attend = annotate, blame, bookmarks, branches, cat, diff, export, flog, glog, grep, heads, help, in, incoming, log, log.., merge, out, outgoing, qapplied, qdiff, qguard, qseries, qunapplied, resolve, status, summary, tags, tip
+attend = annotate, blame, bookmarks, branches, cat, diff, export, flog,
+       glog, grep, heads, help, in, incoming, log, log.., merge, out,
+       outgoing, qapplied, qdiff, qguard, qseries, qunapplied, resolve,
+       status, summary, tags, tip
 #pager = LESS='FSRX' less
 
 [server]
