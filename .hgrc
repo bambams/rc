@@ -6,6 +6,7 @@ html-diff = !hg-html-diff $@
 in = in -Gv
 log = log -Gv
 out = out -Gv
+qlog = log -Gvr qbase:qtip
 
 [bookmarks]
 track.current = True
@@ -55,8 +56,8 @@ secret = true
 #[autopager]
 attend = annotate, blame, bookmarks, branches, cat, diff, export, flog,
        glog, grep, heads, help, in, incoming, log, log.., merge, out,
-       outgoing, qapplied, qdiff, qguard, qseries, qunapplied, resolve,
-       status, summary, tags, tip
+       outgoing, qapplied, qdiff, qguard, qlog, qseries, qunapplied,
+       resolve, status, summary, tags, tip
 #pager = LESS='FSRX' less
 
 [server]
