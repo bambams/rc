@@ -1,6 +1,6 @@
 [alias]
 blame = blame -clnu
-log.. = log -r "ancestor($1,$2)::$2 - ancestor($1,$2)"
+log.. = log -r "::$2 - ::$1"
 flog = log
 html-diff = !hg-html-diff $@
 in = in -Gv
