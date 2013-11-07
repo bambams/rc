@@ -60,6 +60,7 @@ mailboxes +sent
 mailboxes +slrn-user
 mailboxes +stembot
 mailboxes +template
+mailboxes +toronto-pm
 set sort_browser = alpha
 
 # Headers.
@@ -108,6 +109,8 @@ lists ^packaging@lists\\.fedoraproject\\.org$
 lists ^perl-xs@perl\\.org$
 lists ^slrn-user@
 lists ^templates@template-toolkit\\.org$
+lists ^toronto-pm@pm\\.org$
+lists ^tpm@to\\.pm\\.org$
 subscribe alleg-developers
 subscribe beginners
 subscribe catalyst
@@ -125,6 +128,7 @@ subscribe packaging
 subscribe perl-xs
 subscribe slrn-user
 subscribe template
+subscribe toronto-pm
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^brandon\\.mccaig@rbbinnovations\\.com$ +rbb
@@ -142,6 +146,8 @@ fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
 fcc-hook ^perl-xs@perl\\.org$ +perl-xs
 fcc-hook ^slrn-user@ +slrn
 fcc-hook ^templates@template-toolkit\\.org$ +template
+fcc-hook ^toronto-pm@pm\\.org$ +toronto-pm
+fcc-hook ^tpm@to\\.pm\\.org$ +toronto-pm
 
 # Sorting.
 set sort = threads
