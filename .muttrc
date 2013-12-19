@@ -49,6 +49,7 @@ mailboxes +hg-bugs
 mailboxes +humble-bundle
 mailboxes +irssi-users
 mailboxes +mutt-users
+mailboxes +oanda
 mailboxes +perl-beginners
 mailboxes +perl-jobs
 mailboxes +perl-moose

@@ -101,6 +101,11 @@ irssi-users
 mutt-users
 
 :0:
+* ^FROM.*oanda|\
+  ^TOoanda
+oanda
+
+:0:
 * ^TObeginners@perl\.org
 perl-beginners
 
