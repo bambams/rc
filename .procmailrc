@@ -77,6 +77,10 @@ fedora-pkg
 geshi-users
 
 :0:
+* ^TOgit@vger\.kernel\.org
+git
+
+:0:
 * ^FROM.*plus\.google\.com
 google-plus
 
