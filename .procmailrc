@@ -179,20 +179,20 @@ rbb
 rbb
 
 :0:
-* ^FROM.*@(.*\.)?tenaris\.com
-rbb
-
-:0:
-* ^TOtenaris\.com
-rbb
-
-:0:
 * ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
 
 :0:
 * ^TOtemplates@template-toolkit\.org
 template
+
+:0:
+* ^FROM.*@(.*\.)?tenaris\.com
+tenaris
+
+:0:
+* ^TOtenaris\.com
+tenaris
 
 :0:
 * ^TOtpm@to\.pm\.org
