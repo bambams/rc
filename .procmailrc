@@ -7,6 +7,10 @@ LOGFILE=$HOME/.procmail.log
 # Recipes below this comment:
 #
 
+:0
+* ^FROM.*CBR500Riders\.com
+/dev/null
+
 # The following two recipes should send duplicate mails into a
 # 'duplicates' mailbox (e.g., if people cross-post to multiple lists).
 :0 Whc: msgid.lock
