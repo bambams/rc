@@ -121,6 +121,10 @@ leadnow
 mutt-users
 
 :0:
+* ^FROM.*netflix\.com
+netflix
+
+:0:
 * ^FROM.*oanda|\
   ^TOoanda
 oanda
