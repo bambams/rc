@@ -89,6 +89,11 @@ git
 google-plus
 
 :0:
+* ^FROM.*greenparty.ca|\
+  ^FROM.*elizabethmaymp.ca
+green-party
+
+:0:
 * ^FROM.*mercurial-bugs@selenic.com
 hg-bugs
 
