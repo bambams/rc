@@ -113,6 +113,10 @@ hg-bugs
 irssi-users
 
 :0:
+* ^FROM.*leadnow.ca
+leadnow
+
+:0:
 * ^TOmutt-users@mutt\.org
 mutt-users
 
@@ -120,6 +124,10 @@ mutt-users
 * ^FROM.*oanda|\
   ^TOoanda
 oanda
+
+:0:
+* ^FROM.*openmedia\.(ca|org)
+openmedia
 
 :0:
 * ^TObeginners@perl\.org
