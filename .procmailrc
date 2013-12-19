@@ -94,6 +94,13 @@ google-plus
 green-party
 
 :0:
+* ^FROM.*gwrra\.ca|\
+  ^FROM.*dalepage|\
+  ^FROM.*fking72|\
+  ^FROM.*kathy\.irvine
+gwrra
+
+:0:
 * ^FROM.*mercurial-bugs@selenic.com
 hg-bugs
 
