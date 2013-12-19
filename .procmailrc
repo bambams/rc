@@ -201,3 +201,7 @@ toronto-pm
 :0:
 * ^TOtoronto-pm@pm\.org
 toronto-pm
+
+:0:
+* ^FROM.*noreply@youtube\.com
+youtube
