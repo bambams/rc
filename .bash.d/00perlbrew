@@ -1,0 +1,7 @@
+# Source perlbrew if exists.
+
+perlbrew=~/perl5/perlbrew/etc/bashrc
+
+if [ -f "$perlbrew" ]; then
+    source "$perlbrew";
+fi;
