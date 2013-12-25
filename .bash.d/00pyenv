@@ -1,0 +1,20 @@
+# Stupid Python. But enough things need it that it wouldn't hurt to have a
+# controlled environment...
+
+PYENV_ROOT="$HOME/src/pyenv";
+
+if [ ! -d "$PYENV_ROOT" ]; then
+    return 1;
+fi;
+
+bindir="$PYENV_ROOT/bin";
+
+if [ -z "$PATH" ]; then
+    PATH="$bindir";
+else
+    PATH="$bindir:$PATH";
+fi;
+
+export PATH PYENV_ROOT;
+
+eval "$(pyenv init -)";
