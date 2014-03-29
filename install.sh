@@ -1,9 +1,23 @@
 #!/bin/bash
 
+cd "$(dirname "$0")" || exit 1;
+
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
 all_files=(`ls -d .* *`);
-ignored_files=(. .. .git .gitignore .netrc install.sh offlineimap.conf \
-               README vs2010.vssettings vs2012.vssettings);
+
+ignored_files=(
+        .
+        ..
+        .git
+        .gitignore
+        .netrc
+        bin
+        install.sh
+        offlineimap.conf
+        README
+        vs2010.vssettings
+        vs2012.vssettings
+        );
 
 function resolve-rc-path
 {
@@ -34,6 +48,9 @@ for f in "${all_files[@]}"; do
         ln -s "${rc_dir}/$f" "${HOME}";
     fi;
 done;
+
+mkdir -p "$HOME/bin";
+ln -s "../${rc_dir}/bin/git-ps1__" "$HOME/bin/";
 
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
