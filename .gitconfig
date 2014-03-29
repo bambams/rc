@@ -12,6 +12,6 @@
     name = "Brandon McCaig"
     email = "bamccaig@gmail.com"
 [color]
-	diff = auto
+    diff = auto
 [pretty]
-	subject = format:%s
+    subject = format:%s
