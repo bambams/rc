@@ -22,10 +22,8 @@ source-if "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.b
 # Always vim as an editor. :)
 export EDITOR=vim;
 
-# Show cmus song and git info in bash prompt. h4x: The only way to do it
-# without the prompt-length count getting fucked up is to export PS1 from
-# PROMPT_COMMAND. >:)
-export PROMPT_COMMAND='export PS1="$(\? -1 --color-prompt -s --suffix=♫)\\[\\e[1;34m\\]\\u@\\h\\[\\e[0m\\]:\\[\\e[1;36m\\]\\w\\[\\e[0m\\]$(git-ps1__)\$ "';
+# Generate an enhanced/"smart" prompt.
+PROMPT_COMMAND=generate-ps1;
 
 if [ -z "$PATH" ]; then
     PATH="$HOME/bin";

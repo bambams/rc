@@ -1,0 +1,20 @@
+# Show cmus song and git info in bash prompt. h4x: The only way to do it
+# without the prompt-length count getting fucked up is to generate PS1
+# from PROMPT_COMMAND. >:)
+generate-ps1() {
+    local music_state="$(\? -1 --color-prompt -s --suffix=♫)";
+    local git_state="$(git-ps1__)";
+
+    # The prompt starts out with music player status and song information.
+    # See music-control (https://github.com/bamccaig/music-control/).
+    PS1="${music_state}";
+
+    # Normal user@host:pwd stuff + color codes.
+    PS1+='\[\e[1;34m\]\u@\h\[\e[0m\]:\[\e[1;36m\]\w\[\e[0m\]';
+
+    # State of git repository and working tree.
+    PS1+="${git_state}";
+
+    # Standard end of prompt. We like to keep things civilized.
+    PS1+='$ ';
+}
