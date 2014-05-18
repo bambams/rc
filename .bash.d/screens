@@ -9,6 +9,7 @@ mkscreen curses /usr/bin/perldoc Curses::UI
 mkscreen dwarves dwarves
 mkscreen elinks /usr/bin/elinks
 mkscreen fetch-loop fetch-loop
+mkscreen ghci ghci
 mkscreen hello-server script/hello_catalyst_server.pl --host 127.0.0.1 -r
 mkscreen imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
 mkscreen irc /usr/bin/irssi
