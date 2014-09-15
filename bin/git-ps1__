@@ -40,7 +40,7 @@ if [ ! -z "$branch" ]; then
 
     upstream="$(upstream "$branch")";
 
-    if [ ! -z "$upstream" ]; then
+    if [ ! -z "$upstream" -a "$upstream" != / ]; then
         num_commits "$upstream" "$branch";
         /bin/echo -en " <- ${upstream_color}${upstream}${reset_color}";
         num_commits "$branch" "$upstream";
