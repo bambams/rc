@@ -1,11 +1,14 @@
 #!/bin/bash
 
 branch="$(git branch 2>/dev/null | grep '^\*' | sed -e 's/^\* //')";
-branch_color='[1;32m';
 dirty="$(git diff --exit-code HEAD &>/dev/null; echo $?)";
-dirty_color='[1;31m';
-reset_color='[0m';
-upstream_color='[1;33m';
+
+if [[ $(tty) =~ /dev/pts ]]; then
+    branch_color='[1;32m';
+    dirty_color='[1;31m';
+    reset_color='[0m';
+    upstream_color='[1;33m';
+fi;
 
 num_commits() {
     num_commits="$(git log --oneline "$1..$2" |
