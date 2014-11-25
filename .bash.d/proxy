@@ -46,6 +46,8 @@ proxy() {
             else
                 echo "cntlm is running with pid $pid.";
 
+                env | grep -i 'proxy=';
+
                 return 0;
             fi;
             ;;
