@@ -45,12 +45,12 @@ for f in "${all_files[@]}"; do
     done;
 
     if [ -z "${ignored}" ]; then
-        ln -s "${rc_dir}/$f" "${HOME}";
+        ln -f -s "${rc_dir}/$f" "${HOME}";
     fi;
 done;
 
 mkdir -p "$HOME/bin";
-ln -s "../${rc_dir}/bin/git-ps1__" "$HOME/bin/";
+ln -f -s "../${rc_dir}/bin/git-ps1__" "$HOME/bin/";
 
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
