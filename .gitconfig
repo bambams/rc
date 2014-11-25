@@ -1,29 +1,57 @@
 [alias]
-    alog = log --all --graph
+    aliases = !git config --global --get-regexp alias. | sed -re 's/alias\\.(\\w+)\\s+([^!])/\\1 = git \\2/' -e 's/alias\\.(\\w+)\\s+!/\\1 = /'
+    alog = log --all --decorate --graph
     amend = commit --amend --no-edit
-    fall = fetch --all
+    changed = diff --name-only
+    detach = checkout --detach
+    fall = fetch --all --prune
     ff = merge --ff --ff-only
     fixup = commit --fixup
+    glog = log --decorate --graph
+    ncommit = commit --no-edit
+    revert-tree = checkout -- .
     squash = commit --squash
-    staged = diff --cached
+    staged = diff --staged
     start = checkout -tb
+    up = pull --ff --ff-only
+[apply]
+    #whitespace = error-all
+    #whitespace = error
+    #whitespace = warn
+[bam]
+    tails = true
+[color]
+    #diff = auto
+    #grep = auto
+    ui = auto
 [core]
-    filemode = false
+    #autocrlf = true
     autocrlf = input
+    filemode = false
+    #safecrlf = warn
+    logAllRefUpdates = true
+    #whitespace=space-before-tab,tab-in-indent,tab-width=4,trailing-space
+[diff]
+    #renames = true
+    renames = copy
+    tool = vimdiff
+[difftool]
+    prompt = false
 [log]
     decorate = short
+    #showroot = true
 [merge]
     ff = false
-    log = 100
+    log = 1000
+[pretty]
+    subject = %s
+    body = %B
 [push]
     default = tracking
 [rebase]
     autosquash = true
+[rerere]
+    enabled = false
 [user]
     name = "Brandon McCaig"
     email = "bamccaig@gmail.com"
-[color]
-    diff = auto
-    grep = auto
-[pretty]
-    subject = format:%s
