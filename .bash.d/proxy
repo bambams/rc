@@ -6,6 +6,14 @@ proxy() {
     local pid="$(cat "$pid_file" 2>/dev/null)";
 
     case "$cmd" in
+        env)
+            export ALL_PROXY='http://localhost:3128';
+            export HTTP_PROXY="$ALL_PROXY";
+            export http_proxy="$ALL_PROXY";
+            ;;
+        noenv)
+            unset ALL_PROXY HTTP_PROXY http_proxy;
+            ;;
         restart)
             proxy stop && proxy start;
             ;;
@@ -13,6 +21,8 @@ proxy() {
             "$path" -c "$conf_file" -P "$pid_file" || return $?;
 
             echo 'Successfully started cntlm.';
+
+            proxy env;
             ;;
         status)
             if [[ -z "$pid" ]]; then
@@ -61,6 +71,8 @@ proxy() {
             else
                 proxy status;
             fi;
+
+            proxy noenv;
             ;;
         *)
             echo "Error: Invalid sub-command <<$cmd>>" 1>&2;
