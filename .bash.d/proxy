@@ -1,0 +1,71 @@
+proxy() {
+    local cmd="${1:-status}";
+    local conf_file="${CNTLM_CONF_FILE:-/etc/cntlm.conf}";
+    local path="${CNTLM_PATH:-/usr/sbin/cntlm}";
+    local pid_file="${CNTLM_PID_FILE:-/var/run/cntlm/pid}";
+    local pid="$(cat "$pid_file" 2>/dev/null)";
+
+    case "$cmd" in
+        restart)
+            proxy stop && proxy start;
+            ;;
+        start)
+            "$path" -c "$conf_file" -P "$pid_file" || return $?;
+
+            echo 'Successfully started cntlm.';
+            ;;
+        status)
+            if [[ -z "$pid" ]]; then
+                echo "cntlm is stopped.";
+
+                return 1;
+            fi;
+
+            let n="$(ps aux | grep "$path" | grep "$pid" | grep -v grep | wc -l)";
+
+            if [[ $n = 0 ]]; then
+                echo "cntlm is stopped.";
+
+                if [[ ! -z "$pid" ]]; then
+                    echo "pid file with pid $pid. Removing it...";
+
+                    rm -f "$pid_file";
+                fi;
+
+                return 1;
+            else
+                echo "cntlm is running with pid $pid.";
+
+                return 0;
+            fi;
+            ;;
+        stop)
+            if proxy status &>/dev/null; then
+                kill -INT "$pid" || return $?;
+
+                if proxy status &>/dev/null; then
+                    echo 'Failed to stop proxy.';
+
+                    return 1;
+                else
+                    echo 'Successfully stopped proxy.';
+
+                    if [[ -f "$pid_file" ]]; then
+                        echo "Removing pid file $pid_file..." 1>&2;
+
+                        rm -f "$pid_file";
+                    fi;
+
+                    return 0;
+                fi;
+            else
+                proxy status;
+            fi;
+            ;;
+        *)
+            echo "Error: Invalid sub-command <<$cmd>>" 1>&2;
+
+            return 1;
+            ;;
+    esac;
+};
