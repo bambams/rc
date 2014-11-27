@@ -4,7 +4,7 @@ function mkscreen
     local add=n;
     local rc="$HOME/.bash.d/screens";
     local replace=n;
-    local sort=n";
+    local sort="${MKSCREEN_SORT:-n}";
     local args=$(getopt -o acr -- "$@");
 
     if [[ $? -ne 0 ]]; then
