@@ -1,4 +1,5 @@
 .cmus/*.pl
+.cmus/autosave
 .cmus/cache
 .cmus/command-history
 .cmus/search-history
