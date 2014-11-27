@@ -1,34 +1,51 @@
 # vim: ft=sh
 function mkscreen
 {
+    local add=n;
     local rc="$HOME/.bash.d/screens";
-    local add=n replace=n sort=n;
+    local replace=n;
+    local sort=n";
+    local args=$(getopt -o acr -- "$@");
 
-    if [ "$1" == '-a' ]; then
-        add=y sort=y;
-        shift;
-    elif [ "$1" == '-r' ]; then
-        replace=y sort=y;
-        shift;
+    if [[ $? -ne 0 ]]; then
+        return $?;
     fi;
 
-    local name=$1;
-    shift;
-    local command="$*";
+    eval set -- "$args";
 
-    if [ -z "$name" -o -z "$command" ]; then
-        echo 'Usage: mkscreen [ -a | -r ] name command
+    case "$1" in
+        -a)
+            add=y;
+            replace=n;
+            shift;
+            ;;
+        -r)
+            replace=y;
+            add=n;
+            shift;
+            ;;
+        --)
+            if [[ $# -lt 2 ]]; then
+                echo 'Usage: mkscreen [ -a | -r ] name command
 
-    -a          Add to ~/.bash.d/screens.
-    
-    -r          Replace screen in ~/.bash.d/screens.' 1>&2;
-        return 1;
-    fi
+-a          Add to ~/.bash.d/screens.
+
+
+-r          Replace screen in ~/.bash.d/screens.' 1>&2;
+                return 1;
+            fi;
+
+            shift;
+            local name="$1";
+            shift;
+            local command="$*";
+            ;;
+    esac;
 
     if [ $add == y ]; then
-        echo "mkscreen $name $command" >> "$rc";
+        echo "mkscreen -- $name $command" >> "$rc";
     elif [ $replace == y ]; then
-        sed -i -r "/mkscreen $name / s/mkscreen $name (.*)/\
+        sed -i -r "/mkscreen -- $name / s/mkscreen -- $name (.*)/\
 mkscreen $name $command/" "$rc";
     fi;
 
