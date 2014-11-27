@@ -2,10 +2,11 @@
 function mkscreen
 {
     local add=n;
+    local exec="${MKSCREEN_EXEC:-n}";
     local rc="$HOME/.bash.d/screens";
     local replace=n;
     local sort="${MKSCREEN_SORT:-n}";
-    local args=$(getopt -o acr -- "$@");
+    local args=$(getopt -o aenr -- "$@");
 
     if [[ $? -ne 0 ]]; then
         return $?;
@@ -13,34 +14,49 @@ function mkscreen
 
     eval set -- "$args";
 
-    case "$1" in
-        -a)
-            add=y;
-            replace=n;
-            shift;
-            ;;
-        -r)
-            replace=y;
-            add=n;
-            shift;
-            ;;
-        --)
-            if [[ $# -lt 2 ]]; then
-                echo 'Usage: mkscreen [ -a | -r ] name command
+    while true; do
+        case "$1" in
+            -a)
+                add=y;
+                replace=n;
+                shift;
+                ;;
+            -e)
+                exec=y;
+                shift;
+                ;;
+            -n)
+                exec=n;
+                shift;
+                ;;
+            -r)
+                replace=y;
+                add=n;
+                shift;
+                ;;
+            --)
+                if [[ $# -lt 2 ]]; then
+                    echo '\
+Usage: mkscreen [ -a | -r ] [ -e | -n ] name command
 
 -a          Add to ~/.bash.d/screens.
 
+-e          Execute the screen immediately after creating it.
+
+-n          Create-only: do not execute now.
 
 -r          Replace screen in ~/.bash.d/screens.' 1>&2;
-                return 1;
-            fi;
+                    return 1;
+                fi;
 
-            shift;
-            local name="$1";
-            shift;
-            local command="$*";
-            ;;
-    esac;
+                shift;
+                local name="$1";
+                shift;
+                local command="$*";
+                break;
+                ;;
+        esac;
+    done;
 
     if [ $add == y ]; then
         echo "mkscreen -- $name $command" >> "$rc";
@@ -54,6 +70,10 @@ mkscreen $name $command/" "$rc";
     fi;
 
     alias $name="/usr/bin/screen -d -RR -S $name -U $command";
+
+    if [ $exec = y ]; then
+        eval $name;
+    fi;
 
     return 0;
 }
