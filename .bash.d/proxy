@@ -18,6 +18,14 @@ proxy() {
             proxy stop && proxy start;
             ;;
         start)
+            local status="$(proxy status 2>/dev/null)";
+
+            if [[ $? = 0 ]]; then
+                echo "$status";
+
+                return;
+            fi;
+
             "$path" -c "$conf_file" -P "$pid_file" || return $?;
 
             echo 'Successfully started cntlm.';
