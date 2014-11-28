@@ -21,6 +21,8 @@ proxy() {
             local status="$(proxy status 2>/dev/null)";
 
             if [[ $? = 0 ]]; then
+                proxy env;
+
                 echo "$status";
 
                 return;
