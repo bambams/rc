@@ -49,9 +49,6 @@ for f in "${all_files[@]}"; do
     fi;
 done;
 
-mkdir -p "$HOME/bin";
-ln -f -s "../${rc_dir}/bin/git-ps1__" "$HOME/bin/";
-
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
         ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
