@@ -28,13 +28,13 @@ proxy() {
 
             "$path" -c "$conf_file" -P "$pid_file" || return $?;
 
-            echo 'Successfully started cntlm.';
+            echo 'Successfully started proxy.';
 
             proxy env;
             ;;
         status)
             if [[ -z "$pid" ]]; then
-                echo "cntlm is stopped.";
+                echo "proxy is stopped.";
 
                 return 1;
             fi;
@@ -42,7 +42,7 @@ proxy() {
             let n="$(ps aux | grep "$path" | grep "$pid" | grep -v grep | wc -l)";
 
             if [[ $n = 0 ]]; then
-                echo "cntlm is stopped.";
+                echo "proxy is stopped.";
 
                 if [[ ! -z "$pid" ]]; then
                     echo "pid file with pid $pid. Removing it...";
@@ -52,7 +52,7 @@ proxy() {
 
                 return 1;
             else
-                echo "cntlm is running with pid $pid.";
+                echo "proxy is running with pid $pid.";
 
                 env | grep -i 'proxy=';
 
