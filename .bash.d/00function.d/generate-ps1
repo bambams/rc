@@ -2,8 +2,8 @@
 # without the prompt-length count getting fucked up is to generate PS1
 # from PROMPT_COMMAND. >:)
 generate-ps1() {
-    local music_state="$(\? -1 --color-prompt -s --suffix=♫)";
-    local git_state="$(git-ps1__)";
+    local music_state="$(\? -1 --color-prompt -s --suffix=♫ 2>/dev/null)";
+    local git_state="$(git-ps1__ 2>/dev/null)";
 
     # The prompt starts out with music player status and song information.
     # See music-control (https://github.com/bamccaig/music-control/).
