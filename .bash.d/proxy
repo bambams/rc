@@ -18,12 +18,10 @@ proxy() {
             proxy stop && proxy start;
             ;;
         start)
-            local status="$(proxy status 2>/dev/null)";
-
-            if [[ $? = 0 ]]; then
+            if proxy status &>/dev/null; then
                 proxy env;
 
-                echo "$status";
+                proxy status;
 
                 return;
             fi;
