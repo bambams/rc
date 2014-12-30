@@ -2,6 +2,7 @@
     aliases = !git config --global --get-regexp alias. | sed -re 's/alias\\.(\\w+)\\s+([^!])/\\1 = git \\2/' -e 's/alias\\.(\\w+)\\s+!/\\1 = /'
     alog = log --all --decorate --graph
     amend = commit --amend --no-edit
+    blog = log --decorate --graph @{u}..
     changed = diff --name-only
     detach = checkout --detach
     fall = fetch --all --prune
