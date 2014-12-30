@@ -9,6 +9,7 @@
     ff = merge --ff --ff-only
     fixup = commit --fixup
     glog = log --decorate --graph
+    lol = log --all --decorate --graph --oneline
     ncommit = commit --no-edit
     revert-tree = checkout -- .
     squash = commit --squash
