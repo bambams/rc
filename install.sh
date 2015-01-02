@@ -49,6 +49,25 @@ for f in "${all_files[@]}"; do
     fi;
 done;
 
+evil_path="$HOME/src/evil";
+evil_repo='git://gitorious.org/evil/evil.git';
+
+if [[ ! -d ~/src/evil ]]; then
+    while true; do
+        echo -n "Evil-mode is not found at $evil_path. \
+Clone it now from $evil_repo? (Y/n) ";
+
+        read answer;
+
+        if [[ $answer =~ ^[yY] ]]; then
+            git clone "$evil_repo" "$evil_path";
+            break;
+        elif [[ $answer =~ ^[nN] ]]; then
+            break;
+        fi;
+    done;
+fi;
+
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
         ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
