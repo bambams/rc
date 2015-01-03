@@ -66,6 +66,10 @@ dactyl
 debian-security
 
 :0:
+* ^TOecls-list@lists\.sourceforge\.net
+ecl
+
+:0:
 * ^TOdevel-announce@lists\.fedoraproject\.org
 fedora-dev-annc
 
