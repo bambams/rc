@@ -109,7 +109,8 @@ green-party
 * ^FROM.*gwrra\.ca|\
   ^FROM.*dalepage|\
   ^FROM.*fking72|\
-  ^FROM.*kathy\.irvine
+  ^FROM.*kathy\.irvine|\
+  ^FROM.*dnjhay
 gwrra
 
 :0:
