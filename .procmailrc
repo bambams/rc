@@ -50,6 +50,10 @@ bitbucket-issues
 catalyst
 
 :0:
+* ^TOcpan-pr-challenge@googlegroups\.com
+cpan-pr-challenge
+
+:0:
 * ^TOcmus-devel@lists\.s(ource)?f(orge)?\.net
 cmus-devel
 
