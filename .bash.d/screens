@@ -1,11 +1,11 @@
 mkscreen -- admin /usr/bin/env /bin/bash
 mkscreen -- adom /usr/bin/sudo -u /usr/games/adom /usr/games/adom
-mkscreen -- attributes /usr/bin/perldoc attributes
+mkscreen -- attributes perldoc attributes
 mkscreen -- bambots bambot
 mkscreen -- cmus cmus
 mkscreen -- cmus-tutorial man cmus-tutorial
-mkscreen -- critic /usr/bin/perldoc Perl::Critic
-mkscreen -- curses /usr/bin/perldoc Curses::UI
+mkscreen -- critic perldoc Perl::Critic
+mkscreen -- curses perldoc Curses::UI
 mkscreen -- dwarves dwarves
 mkscreen -- elinks /usr/bin/elinks
 mkscreen -- fetch-loop fetch-loop
@@ -15,22 +15,22 @@ mkscreen -- imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
 mkscreen -- irc /usr/bin/irssi
 mkscreen -- lfs /usr/bin/elinks http://www.linuxfromscratch.org/
 mkscreen -- man-adom /usr/bin/view /usr/share/doc/adom/manual.doc
-mkscreen -- moose-more /usr/bin/perldoc Moose::Manual::Classes
-mkscreen -- moose /usr/bin/perldoc Moose::Manual
+mkscreen -- moose-more perldoc Moose::Manual::Classes
+mkscreen -- moose perldoc Moose::Manual
 mkscreen -- mutt /usr/bin/mutt
 mkscreen -- newsbeuter newsbeuter
 mkscreen -- perldebtut perldoc perldebtut
-mkscreen -- perldebug /usr/bin/perldoc perldebug
-mkscreen -- perlmodlib /usr/bin/perldoc perlmodlib
-mkscreen -- perltie /usr/bin/perldoc perltie
-mkscreen -- perltooc /usr/bin/perldoc perltooc
-mkscreen -- perltoot /usr/bin/perldoc perltoot
-mkscreen -- perlxs /usr/bin/perldoc perlxs
+mkscreen -- perldebug perldoc perldebug
+mkscreen -- perlmodlib perldoc perlmodlib
+mkscreen -- perltie perldoc perltie
+mkscreen -- perltooc perldoc perltooc
+mkscreen -- perltoot perldoc perltoot
+mkscreen -- perlxs perldoc perlxs
 mkscreen -- rpm-cheats /usr/bin/vim ~/.rpm-cheats
 mkscreen -- slrn /usr/bin/slrn
-mkscreen -- socket /usr/bin/perldoc Socket
+mkscreen -- socket perldoc Socket
 mkscreen -- starmans starman
 mkscreen -- talk talk
-mkscreen -- template /usr/bin/perldoc Template::Tutorial::Datafile
+mkscreen -- template perldoc Template::Tutorial::Datafile
 mkscreen -- Text::Balanced perldoc Text::Balanced
 mkscreen -- task-tutorial man task-tutorial
