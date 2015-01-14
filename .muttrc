@@ -105,6 +105,7 @@ lists ^beginners@perl\\.org$
 lists ^catalyst@lists\\.scsys\\.co\\.uk$
 lists ^cmus-devel@lists\\.sourceforge\\.net$
 lists ^cmus@noreply\\.github\\.com$
+lists ^challenge@cpan-prc\\.org$
 lists ^cpan-pr-challenge@googlegroups\\.com$
 lists ^collaboration@rbbinnovations\\.com$
 lists ^debian-security-announce@debian\\.org$
@@ -129,6 +130,7 @@ subscribe beginners
 subscribe catalyst
 subscribe collaboration
 subscribe cpan-pr-challenge
+subscribe challenge@cpan-prc\\.org
 subscribe cmus-devel
 subscribe debian-security-announce
 subscribe devel-announce
@@ -152,6 +154,7 @@ fcc-hook ^brandon\\.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
 fcc-hook ^cmus-devel@lists\\.sourceforge\\.net$ +cmus-devel
 fcc-hook ^collaboartion@rbbinnovations\\.com$ +rbb-collab
+fcc-hook ^challenge@cpan-prc\\.org$ +cpan-pr-challenge
 fcc-hook ^cpan-pr-challenge@googlegroups\\.com$ +cpan-pr-challenge
 fcc-hook ^ecls-list@lists\\.sourceforge\\.net$ +ecl
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users

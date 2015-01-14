@@ -50,7 +50,8 @@ bitbucket-issues
 catalyst
 
 :0:
-* ^TOcpan-pr-challenge@googlegroups\.com
+* ^TOchallenge@cpan-prc\.org|\
+  ^TOcpan-pr-challenge@googlegroups\.com
 cpan-pr-challenge
 
 :0:
