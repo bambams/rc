@@ -220,6 +220,14 @@ toronto-pm
 * ^TOtoronto-pm@pm\.org
 toronto-pm
 
+:0: fw:
+* ^FROM.*@travis-ci\.org
+* ^SUBJECT.*Passed
+| formail -i 'Status: R'
+
+:0 A:
+travis-ci
+
 :0:
 * ^FROM.*noreply@youtube\.com
 youtube

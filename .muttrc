@@ -69,6 +69,7 @@ mailboxes +stembot
 mailboxes +template
 mailboxes +tenaris
 mailboxes +toronto-pm
+mailboxes +travis-ci
 mailboxes +youtube
 set sort_browser = alpha
 
