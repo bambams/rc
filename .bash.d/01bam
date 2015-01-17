@@ -9,6 +9,9 @@
 # Setup a paranoid umask. :) Files that need to be shared can be modified.
 umask 0077;
 
+# Don't exit the shell on EOF.
+set -o ignoreeof;
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
