@@ -52,7 +52,7 @@ done;
 evil_path="$HOME/src/evil";
 evil_repo='git://gitorious.org/evil/evil.git';
 
-if [[ ! -d ~/src/evil ]]; then
+if [[ ! -d "$evil_path" ]]; then
     while true; do
         echo -n "Evil-mode is not found at $evil_path. \
 Clone it now from $evil_repo? (Y/n) ";
