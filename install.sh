@@ -76,6 +76,17 @@ evil_repo='git://gitorious.org/evil/evil.git';
 
 git-install Evil-mode "$evil_path" "$evil_repo";
 
+pyenv_path="$HOME/src/pyenv";
+pyenv_repo='git://github.com/yyuu/pyenv.git';
+
+git-install Pyenv "$pyenv_path" "$pyenv_repo";
+
+pyenv_pip_rehash_path="$pyenv_path/plugins/pyenv_pip_rehash";
+pyenv_pip_rehash_repo='git://github.com/yyuu/pyenv-pip-rehash.git';
+
+git-install 'Pyenv Pip Auto-rehash' \
+        "$pyenv_pip_rehash_path" "$pyenv_pip_rehash_repo";
+
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
         ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
