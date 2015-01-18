@@ -1,0 +1,5 @@
+## Attempt to restore PATH, et. al. to defaults.
+
+if [[ -e /etc/profile ]]; then
+    source /etc/profile;
+fi;
