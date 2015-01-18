@@ -33,6 +33,28 @@ function resolve-rc-path
     fi;
 }
 
+git-install() {
+    local name="$1";
+    local path="$2";
+    local repo="$3";
+
+    if [[ ! -d "$path" ]]; then
+        while true; do
+            echo -n "$name is not found at $path. \
+Clone it now from $repo? (Y/n) ";
+
+            read answer;
+
+            if [[ $answer =~ ^[yY] ]]; then
+                git clone "$repo" "$path";
+                break;
+            elif [[ $answer =~ ^[nN] ]]; then
+                break;
+            fi;
+        done;
+    fi;
+};
+
 rc_dir="$(resolve-rc-path "${HOME}" "${script_dir}")";
 
 for f in "${all_files[@]}"; do
@@ -52,21 +74,7 @@ done;
 evil_path="$HOME/src/evil";
 evil_repo='git://gitorious.org/evil/evil.git';
 
-if [[ ! -d "$evil_path" ]]; then
-    while true; do
-        echo -n "Evil-mode is not found at $evil_path. \
-Clone it now from $evil_repo? (Y/n) ";
-
-        read answer;
-
-        if [[ $answer =~ ^[yY] ]]; then
-            git clone "$evil_repo" "$evil_path";
-            break;
-        elif [[ $answer =~ ^[nN] ]]; then
-            break;
-        fi;
-    done;
-fi;
+git-install Evil-mode "$evil_path" "$evil_repo";
 
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
