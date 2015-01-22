@@ -16,6 +16,7 @@
     staged = diff --staged
     start = checkout -tb
     up = pull --ff --ff-only
+    wip = status -sb
 [apply]
     #whitespace = error-all
     #whitespace = error
