@@ -95,7 +95,7 @@ geshi-users
 
 :0:
 * ^TOgit@vger\.kernel\.org
-* ^SUBJECT.*[PATCH
+* ^SUBJECT.*\[PATCH
 | formail -i 'Status: R'
 
 :0 A:
