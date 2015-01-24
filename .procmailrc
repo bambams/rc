@@ -237,5 +237,9 @@ toronto-pm
 travis-ci
 
 :0:
+* ^FROM.*@travis-ci\.org
+travis-ci
+
+:0:
 * ^FROM.*noreply@youtube\.com
 youtube
