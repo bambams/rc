@@ -3,6 +3,7 @@
 .cmus/cache
 .cmus/command-history
 .cmus/search-history
+.emacs.d/auto-save-list/
 .mutt/aliases
 .mutt/certificates
 .mutt/cache
