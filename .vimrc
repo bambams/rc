@@ -166,7 +166,8 @@ autocmd FileType aspvbs setlocal ic tw=0|
 
 autocmd FileType diff
             \ nnoremap ,, :call UndoPatch()<CR>|
-            \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>jzz
+            \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>jzz|
+            \ nnoremap ,c :call DiffColor()<CR>
 
 autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72|
             \ noremap ,, :setlocal fo+=a<CR>|
@@ -180,6 +181,18 @@ autocmd FileType mail
             \ noremap ,s :w<CR>:! swap-sigs.pl %<CR>
             \         :edit +set\ ft=mail<CR>|
             \ noremap ,x :.,$g/^>/d<CR>
+
+" h4x: A simple function to replace vimdiff colors with reds and greens.
+" This may be easier to read on some terminals, but not necessarily all.
+" For now I am only including in in here so I can easily use it if I want.
+" Originated here:
+" <http://vim.1045645.n5.nabble.com/vimdiff-colors-tp1173870p1173871.html>
+function! DiffColor()
+    highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
+    highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
+    highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
+    highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
+endfunction
 
 function! UndoPatch()
     normal! 0
