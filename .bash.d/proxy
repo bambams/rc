@@ -30,6 +30,8 @@ proxy() {
 
             echo 'Successfully started proxy.';
 
+            proxy status;
+
             proxy env;
             ;;
         status)
