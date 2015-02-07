@@ -1,0 +1,29 @@
+alias dogrep=grep;
+
+grep() {
+    echo 'WARNING: Using grep(1), but consider porting to ack(1).' 1>&2;
+    grep "$@";
+};
+
+#grep() {
+#    local msg='You have attempted to use grep(1), but you probably meant ack(1). If you really mean grep(1) then use bash'\''s command buildin or the dogrep alias that I have setup...'
+#    local prompt='It appears that App::Ack is not yet installed. Install it using cpanm? (Y/n) [Y] ';
+#
+#    echo "$msg" 1>&2;
+#
+#    if ! which ack &>/dev/null; then
+#        while true; do
+#            read -p "$prompt" answer || return 1;
+#            answer="${answer:-y}";
+#            if [[ $answer =~ ^[YyNn] ]]; then
+#                break;
+#            fi;
+#        done;
+#
+#        if [[ $answer =~ ^[Yy] ]]; then
+#            cpanm App::Ack;
+#        fi;
+#    fi;
+#
+#    return 1;
+#};
