@@ -1,4 +1,9 @@
 # vim: ft=sh
 
 source "$HOME/.bash.d/00function.d/source.d";
-source.d;
+
+reload() {
+    source.d;
+};
+
+reload;
