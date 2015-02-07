@@ -177,7 +177,7 @@ fcc-hook ^tpm@to\\.pm\\.org$ +toronto-pm
 # Sorting.
 set sort = threads
 #set sort_browser = reverse-date
-#set sort_aux = reverse-last-date-received
+set sort_aux = last-date-received
 
 # GPG/PGP.
 # http://codesorcery.net/old/mutt/mutt-gnupg-howto
