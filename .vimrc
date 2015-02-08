@@ -212,3 +212,8 @@ function! UndoPatch()
     normal! ^
     normal! zz
 endfunction
+
+"""""""""""""""""""""""""""
+" h4x: Background coloring.
+"""""""""""""""""""""""""""
+set background=dark
