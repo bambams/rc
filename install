@@ -87,6 +87,12 @@ pyenv_pip_rehash_repo='git://github.com/yyuu/pyenv-pip-rehash.git';
 git-install 'Pyenv Pip Auto-rehash' \
         "$pyenv_pip_rehash_path" "$pyenv_pip_rehash_repo";
 
+vim_colorschemes_path="$HOME/src/vim-colorschemes";
+vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
+
+git-install 'Vim Color Schemes' \
+        "$vim_colorschemes_path" "$vim_colorschemes_repo";
+
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
         ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
