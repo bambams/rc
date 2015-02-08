@@ -1,0 +1,25 @@
+pms() {
+    local root="${PMS_ROOT:-$HOME/src/pms-1.90.1/}";
+    local log="${PMS_LOG:-$HOME/.pms.log}";
+    local cmd="${1:-start}";
+
+    shift;
+
+    case "$cmd" in
+        start)
+            cd "$root" && ./PMS.sh &>"$log" "$@" &
+            ;;
+        stop)
+            echo not_implemented;
+            return 1;
+            ;;
+        status)
+            echo not_implemented;
+            return 1;
+            ;;
+        *)
+            echo invalid_command $cmd;
+            return 1;
+            ;;
+    esac;
+}
