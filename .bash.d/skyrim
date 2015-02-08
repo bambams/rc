@@ -1,0 +1,7 @@
+if [[ -z $WINEDEBUG ]]; then
+    WINEDEBUG=fixme-all,err-all,warn-all,trace-all;
+else
+    WINEDEBUG="$WINEDEBUG,fixme-all,err-all,warn-all,trace-all";
+fi;
+
+export WINEDEBUG;
