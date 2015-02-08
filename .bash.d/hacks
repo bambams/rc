@@ -1,0 +1,20 @@
+e() {
+    if ! s 1>/dev/null; then
+        return $?;
+    fi;
+
+    "${EDITOR:-vi}" "$(s)";
+};
+
+s() {
+    if [[ $# = 0 ]]; then
+        if [[ -z $edit_selected ]]; then
+            echo 'There is no file selected.' 1>&2;
+            return 1;
+        else
+            echo "$edit_selected";
+        fi;
+    else
+        export edit_selected="$(abspath "$1")";
+    fi;
+};
