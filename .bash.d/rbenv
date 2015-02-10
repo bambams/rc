@@ -1,0 +1,6 @@
+export RBENV_ROOT="$HOME/src/rbenv";
+export PATH="${RBENV_ROOT}/bin:$PATH";
+
+if [ -x ~/src/rbenv/bin/rbenv ]; then
+    eval "$(~/src/rbenv/bin/rbenv init -)";
+fi;
