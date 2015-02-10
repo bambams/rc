@@ -87,6 +87,16 @@ pyenv_pip_rehash_repo='git://github.com/yyuu/pyenv-pip-rehash.git';
 git-install 'Pyenv Pip Auto-rehash' \
         "$pyenv_pip_rehash_path" "$pyenv_pip_rehash_repo";
 
+rbenv_path="$HOME/src/rbenv";
+rbenv_repo='git://github.com/sstephenson/rbenv.git';
+
+git-install rbenv "$rbenv_path" "$rbenv_repo";
+
+ruby_build_path="$rbenv_path/plugins/ruby-build/";
+ruby_build_repo='git://github.com/sstephenson/ruby-build.git';
+
+git-install ruby-build "$ruby_build_path" "$ruby_build_repo";
+
 vim_colorschemes_path="$HOME/src/vim-colorschemes";
 vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
 
