@@ -28,14 +28,6 @@ export EDITOR=vim;
 # Generate an enhanced/"smart" prompt.
 PROMPT_COMMAND=generate-ps1;
 
-if [ -z "$PATH" ]; then
-    PATH="$HOME/bin";
-else
-    PATH="$PATH:$HOME/bin";
-fi
-
-export PATH;
-
 # Disable annoying terminal blanking (virtual consoles only).
 if perl -e 'exit int((my $tty = `tty`) !~ m{^/dev/tty[0-9]+$})'; then
     setterm -powersave off -blank 0;
