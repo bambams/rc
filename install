@@ -103,6 +103,18 @@ vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
 git-install 'Vim Color Schemes' \
         "$vim_colorschemes_path" "$vim_colorschemes_repo";
 
+cat <<'EOF';
+Ruby NOTE: Recommended Debian packages at time of writing was:
+
+autoconf bison build-essential libssl-dev libyaml-dev \
+        libreadline6-dev zlib1g-dev libncurses5-dev \
+        libffi-dev libgdbm3 libgdbm-dev
+
+Consider installing these before attempting to install Ruby distributions.
+
+Source: https://github.com/sstephenson/ruby-build/wiki#suggested-build-environment
+EOF
+
 # Install into .bashrc.
 if [ "$1" == "-f" ] &&
         ! grep '^\s*(\.|source)\s*(~|$HOME)/.bash.d.source' ~/.bashrc;
