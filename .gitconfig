@@ -3,6 +3,8 @@
     alog = log --all --decorate --graph
     amend = commit --amend --no-edit
     blog = log --decorate --graph @{u}..
+    bmerged = branch --merged=master
+    bdiverged = branch --no-merged=master
     changed = diff --name-only
     detach = checkout --detach
     fall = fetch --all --prune
