@@ -1,0 +1,5 @@
+# Set an environment variable to mark bash.d as being loaded. This lets us
+# control whether or not to do things twice.
+bash.d complete;
+
+# vim: ft=sh
