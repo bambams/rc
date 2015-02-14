@@ -1,0 +1,8 @@
+xinit() {
+    command xinit &>/dev/null &
+    disown;
+    if [[ $# = 0 ]]; then
+        sleep 5;
+        exit;
+    fi;
+};
