@@ -1,0 +1,15 @@
+wifi() {
+    local interface=wlan0;
+
+    case "$1" in
+        connect|on|up)
+            sudo /sbin/ifup "$interface";
+            ;;
+        disconnect|down|off)
+            sudo /sbin/ifdown "$interface";
+            ;;
+        st|status|*)
+            /sbin/ifconfig "$interface";
+            ;;
+    esac;
+};
