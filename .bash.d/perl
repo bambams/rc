@@ -1,0 +1,20 @@
+pants() {
+    if [[ -f Build.PL ]]; then
+        pbuild "$@";
+    elif [[ -f Makefile.PL ]]; then
+        pmake "$@";
+    else
+        echo 'Unsupported build system.' 1>&2;
+        return 1;
+    fi;
+};
+
+pbuild() {
+    perl Build.PL || return $?;
+    ./Build "$@";
+};
+
+pmake() {
+    perl Makefile.PL || return $?;
+    make "$@";
+};
