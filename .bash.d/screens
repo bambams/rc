@@ -31,6 +31,6 @@ mkscreen -- slrn /usr/bin/slrn
 mkscreen -- socket perldoc Socket
 mkscreen -- starmans starman
 mkscreen -- talk talk
+mkscreen -- task-tutorial man task-tutorial
 mkscreen -- template perldoc Template::Tutorial::Datafile
 mkscreen -- Text::Balanced perldoc Text::Balanced
-mkscreen -- task-tutorial man task-tutorial
