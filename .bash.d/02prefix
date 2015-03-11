@@ -2,3 +2,4 @@ export CPATH="$HOME/include";
 export LIBRARY_PATH="$HOME/lib";
 export LD_LIBRARY_PATH="$LIBRARY_PATH";
 export PATH="$HOME/bin:$PATH";
+export PKG_CONFIG_PATH="$HOME/lib/pkgconfig";
