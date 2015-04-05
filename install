@@ -103,12 +103,14 @@ vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
 git-install 'Vim Color Schemes' \
         "$vim_colorschemes_path" "$vim_colorschemes_repo";
 
-cat <<'EOF';
+ruby_depends=(autoconf bison build-essential libssl-dev libyaml-dev
+        libreadline6-dev zlib1g-dev libncurses5-dev
+        libffi-dev libgdbm3 libgdbm-dev);
+
+cat <<EOF;
 Ruby NOTE: Recommended Debian packages at time of writing was:
 
-autoconf bison build-essential libssl-dev libyaml-dev \
-        libreadline6-dev zlib1g-dev libncurses5-dev \
-        libffi-dev libgdbm3 libgdbm-dev
+${ruby_depends[@]}
 
 Consider installing these before attempting to install Ruby distributions.
 
