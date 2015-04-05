@@ -1,12 +1,30 @@
 wifi() {
     local interface=wlan0;
 
+    export WIFI_DEFAULT_NETWORK="${WIFI_DEFAULT_NETWORK:-tiny-bronco}";
+    export WIFI_NETWORK_PATH="${WIFI_NETWORK_PATH:-$HOME/.netork.wlan0}";
+
     case "$1" in
         connect|on|up)
             sudo /sbin/ifup "$interface";
             ;;
         disconnect|down|off)
             sudo /sbin/ifdown "$interface";
+            ;;
+        goto|switch|use)
+            local network="${2:-WIFI_DEFAULT_NETWORK}";
+            local current="$(cat "$WIFI_NETWORK_PATH")";
+            local path="/etc/network/interfaces.d/${network}.${interface}";
+            local symlink="/etc/network/interfaces.d/${interface}";
+
+            sudo ln -fs "$path" "$symlink";
+
+            if [[ $network != $current ]]; then
+                echo "Changing to $network.";
+                echo -n "$network" > "$WIFI_NETWORK_PATH";
+                wifi off;
+                wifi on;
+            fi;
             ;;
         st|status|*)
             /sbin/ifconfig "$interface";
