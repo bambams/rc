@@ -185,6 +185,10 @@ playstation
 pof
 
 :0:
+* ^TOtutor@python\.org
+python-tutor
+
+:0:
 * ^FROM.*OnTimeNotifications@Axosoft\.com
 rbb-ontime
 

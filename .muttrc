@@ -62,6 +62,7 @@ mailboxes +perl-jobs
 mailboxes +perl-moose
 mailboxes +perl-xs
 #mailboxes +pof
+mailboxes +python-tutor
 mailboxes +rbb
 mailboxes +sent
 #mailboxes +slrn-user
@@ -126,6 +127,7 @@ lists ^slrn-user@
 lists ^templates@template-toolkit\\.org$
 lists ^toronto-pm@pm\\.org$
 lists ^tpm@to\\.pm\\.org$
+lists ^tutor@python\\.org$
 subscribe alleg-developers
 subscribe beginners
 subscribe catalyst
@@ -149,6 +151,7 @@ subscribe perl-xs
 subscribe slrn-user
 subscribe template
 subscribe toronto-pm
+subscribe tutor@python\\.org
 fcc-hook ^alleg-developers@ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^brandon\\.mccaig@rbbinnovations\\.com$ +rbb
@@ -169,6 +172,7 @@ fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
 fcc-hook ^pentadactyl@googlegroups\\.com$ +dactyl
 fcc-hook ^perl-xs@perl\\.org$ +perl-xs
+fcc-hook ^tutor@python\\.org$ +python-tutor
 fcc-hook ^slrn-user@ +slrn
 fcc-hook ^templates@template-toolkit\\.org$ +template
 fcc-hook ^toronto-pm@pm\\.org$ +toronto-pm
