@@ -182,6 +182,10 @@ autocmd FileType mail
             \         :edit +set\ ft=mail<CR>|
             \ noremap ,x :.,$g/^>/d<CR>
 
+" h4x: Google uses 2 space indentation and I'm trying to work on their
+" Python tutorial.
+autocmd FileType python setlocal sw=2 ts=2
+
 " h4x: A simple function to replace vimdiff colors with reds and greens.
 " This may be easier to read on some terminals, but not necessarily all.
 " For now I am only including in in here so I can easily use it if I want.
