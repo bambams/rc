@@ -12,7 +12,7 @@ alternates ^bambams@castopulence\.(com|org)$ ^bamccaig@ ^brandon.mccaig@
 
 # Directories.
 set folder = "$HOME/mail"
-set record = +sent
+set record = "$folder"
 set postponed = +postponed
 set mbox_type = mbox
 set move=no
