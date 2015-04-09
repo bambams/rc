@@ -249,5 +249,9 @@ travis-ci
 travis-ci
 
 :0:
+* ^FROM.*no-reply@twitch.tv
+twitch-tv
+
+:0:
 * ^FROM.*noreply@youtube\.com
 youtube
