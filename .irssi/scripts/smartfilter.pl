@@ -1,0 +1,1 @@
+/home/bambams/src/irssi-smartfilter/smartfilter.pl

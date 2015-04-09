@@ -76,6 +76,12 @@ evil_repo='git://gitorious.org/evil/evil.git';
 
 git-install Evil-mode "$evil_path" "$evil_repo";
 
+irssi_smartfilter_path="$HOME/src/irssi-smartfilter";
+irssi_smartfilter_repo="git://github.com/lifeforms/irssi-smartfilter.git";
+
+git-install irssi-smartfilter \
+        "$irssi_smartfilter_path" "$irssi_smartfilter_repo";
+
 pyenv_path="$HOME/src/pyenv";
 pyenv_repo='git://github.com/yyuu/pyenv.git';
 
