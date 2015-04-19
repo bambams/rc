@@ -7,7 +7,7 @@ pms() {
 
     case "$cmd" in
         start)
-            cd "$root" && ./PMS.sh &>"$log" "$@" &
+            cd "$root" && ./PMS.sh &>"$log" "$@" & disown;
             ;;
         stop)
             echo not_implemented;
