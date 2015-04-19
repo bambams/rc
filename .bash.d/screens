@@ -34,3 +34,4 @@ mkscreen -- talk talk
 mkscreen -- task-tutorial man task-tutorial
 mkscreen -- template perldoc Template::Tutorial::Datafile
 mkscreen -- Text::Balanced perldoc Text::Balanced
+mkscreen -- lyvi lyvi
