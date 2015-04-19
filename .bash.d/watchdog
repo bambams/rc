@@ -1,0 +1,16 @@
+watchdog() {
+    while true; do
+        echo -en '\rchecking for process...';
+
+        if ps aux | /bin/grep -v grep |
+                /bin/grep -e "$@"; then
+            echo -en 'already running...sleeping...';
+
+            sleep 1m;
+        else
+            echo -e 'not found...starting...';
+
+            "$@" && break;
+        fi;
+    done;
+};
