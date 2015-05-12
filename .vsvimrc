@@ -1,1 +1,16 @@
 source ~/.vimrc
+
+noremap ,/ :vsc View.CommandWindow<CR>
+noremap ,A :vsc TestExplorer.DebugAllTests<CR>
+noremap ,C :vsc TestExplorer.DebugAllTestsInContext<CR>
+noremap ,F :vsc TestExplorer.DebugFailedTests<CR>
+noremap ,T :vsc TestExplorer.DebugSelectedTests<CR>
+noremap ,a :vsc TestExplorer.RunAllTests<CR>
+noremap ,c :vsc TestExplorer.RunAllTestsInContext<CR>
+noremap ,f :vsc TestExplorer.RunFailedTests<CR>
+noremap ,l :vsc TestExplorer.RepeatLastRun<CR>
+noremap ,n :vsc TestExplorer.RunNotRunTests<CR>
+noremap ,o :vsc TestExplorer.ShowTestExplorer<CR>
+noremap ,t :vsc TestExplorer.RunSelectedTests<CR>
+noremap ,u :vsc EditorContextMenus.CodeWindow.OrganizeUsings.RemoveAndSort<CR>
+noremap ,S :source ~/.vsvimrc<CR>
