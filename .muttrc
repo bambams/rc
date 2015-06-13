@@ -62,6 +62,7 @@ mailboxes +perl-jobs
 mailboxes +perl-moose
 mailboxes +perl-xs
 #mailboxes +pof
+mailboxes +python
 mailboxes +python-tutor
 mailboxes +rbb
 mailboxes +sent
@@ -123,6 +124,7 @@ lists ^package-review@lists\\.fedoraproject\\.org$
 lists ^packaging@lists\\.fedoraproject\\.org$
 lists ^pentadactyl@googlegroups\\.com$
 lists ^perl-xs@perl\\.org$
+lists ^python-list@python\\.org$
 lists ^slrn-user@
 lists ^templates@template-toolkit\\.org$
 lists ^toronto-pm@pm\\.org$
@@ -148,6 +150,7 @@ subscribe package-review
 subscribe packaging
 subscribe pentadactyl
 subscribe perl-xs
+subscribe python-list@python\\.org
 subscribe slrn-user
 subscribe template
 subscribe toronto-pm
@@ -172,6 +175,7 @@ fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
 fcc-hook ^pentadactyl@googlegroups\\.com$ +dactyl
 fcc-hook ^perl-xs@perl\\.org$ +perl-xs
+fcc-hook ^python-list@python\\.org$ +python
 fcc-hook ^tutor@python\\.org$ +python-tutor
 fcc-hook ^slrn-user@ +slrn
 fcc-hook ^templates@template-toolkit\\.org$ +template
