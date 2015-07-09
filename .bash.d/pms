@@ -1,5 +1,5 @@
 pms() {
-    local root="${PMS_ROOT:-$HOME/src/pms-1.90.1/}";
+    local root="${PMS_ROOT:-$HOME/opt/pms/}";
     local log="${PMS_LOG:-$HOME/.pms.log}";
     local cmd="${1:-start}";
 
