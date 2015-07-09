@@ -57,7 +57,7 @@
 [rebase]
     autosquash = true
 [rerere]
-    enabled = false
+    enabled = true
 [user]
     name = "Brandon McCaig"
     email = "bamccaig@gmail.com"
