@@ -249,6 +249,8 @@ endif
 " Automatic commands.
 """""""""""""""""""
 
+noremap <C-X> :call StripPatchMarkers()<CR>
+
 autocmd FileType aspvbs setlocal ic tw=0|
            \ noremap ,, s" & vbNewline & _<CR>"   <ESC>|
            \ noremap ,. s" & vbNewline & _<CR>"<ESC>|
@@ -273,6 +275,13 @@ autocmd FileType diff
 autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72|
             \ noremap ,, :setlocal fo+=a<CR>|
             \ noremap ,. :setlocal fo-=a<CR>
+
+autocmd FileType hgcommit setlocal fo+=a noai nocin nosi tw=72|
+            \ setlocal comments+=b:HG:|
+            \ noremap ,, :setlocal fo+=a<CR>|
+            \ noremap ,. :setlocal fo-=a<CR>|
+            \ noremap ,b :call HgBranch()<CR>|
+            \ noremap ,B :call HgTopBranch()<CR>
 
 autocmd FileType mail
             \ setlocal noai nocin nosi tw=65 wrap|
@@ -316,6 +325,28 @@ function! UndoPatch()
     normal! j
     normal! ^
     normal! zz
+endfunction
+
+function! HgCdRoot()
+    cd $HG_CD_ROOT
+endfunction
+
+function! HgBranch()
+    call HgCdRoot()
+    r! hg branch
+    normal! k
+    normal! J
+endfunction
+
+function! HgTopBranch()
+    call HgCdRoot()
+    read! hg branches | head -n 1 |
+            \ perl -nE "/(.*) [0-9]+:[a-f0-9]{12}$/ and print qq/$1\n/"
+endfunction
+
+function! StripPatchMarkers()
+    :'<,'>s/^+//e
+    :'<,'>s///e
 endfunction
 
 """""""""""""""""""""""""""
