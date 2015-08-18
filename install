@@ -113,6 +113,15 @@ ruby_build_repo='git://github.com/sstephenson/ruby-build.git';
 
 git-install ruby-build "$ruby_build_path" "$ruby_build_repo";
 
+splice_path="$HOME/src/splice";
+splice_repo='git://github.com/sjl/splice.vim.git';
+
+git-install splice "$splice_path" "$splice_repo";
+
+if [[ $? = 0 ]]; then
+    mkdir -p .vim/bundle && ln -fs "$splice_path" .vim/bundle/splice;
+fi;
+
 vim_colorschemes_path="$HOME/src/vim-colorschemes";
 vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
 
