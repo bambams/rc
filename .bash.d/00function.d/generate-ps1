@@ -3,6 +3,7 @@
 # from PROMPT_COMMAND. >:)
 generate-ps1() {
     local music_state="$(\? -1 --color-prompt -s --suffix=♫ 2>/dev/null)";
+    local bzr_state="$(bzr-ps1__ 2>/dev/null)";
     local git_state="$(git-ps1__ 2>/dev/null)";
 
     # The prompt starts out with music player status and song information.
@@ -14,6 +15,11 @@ generate-ps1() {
 
     # State of git repository and working tree.
     PS1+="${git_state}";
+
+    if [[ -z $git_state ]]; then
+        # State of bzr repository and working tree...
+        PS1+="${bzr_state}";
+    fi;
 
     # Standard end of prompt. We like to keep things civilized.
     PS1+='$ ';
