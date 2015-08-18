@@ -43,6 +43,12 @@
     tool = vimdiff
 [difftool]
     prompt = false
+[gc]
+   reflogExpire = never
+   reflogexpireUnreachable = never
+   rerereresolved = forever
+   rerereunresolved = forever
+   pruneExpire = 6 months
 [log]
     decorate = short
     #showroot = true
