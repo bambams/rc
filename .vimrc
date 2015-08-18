@@ -353,3 +353,8 @@ endfunction
 " h4x: Background coloring.
 """""""""""""""""""""""""""
 set background=dark
+
+""""""""""""""""""""""""""
+" Activate pathogen.
+""""""""""""""""""""""""""
+execute pathogen#infect()

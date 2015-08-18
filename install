@@ -82,6 +82,16 @@ irssi_smartfilter_repo="git://github.com/lifeforms/irssi-smartfilter.git";
 git-install irssi-smartfilter \
         "$irssi_smartfilter_path" "$irssi_smartfilter_repo";
 
+pathogen_path="$HOME/src/vim-pathogen";
+pathogen_repo='git://github.com/tpope/vim-pathogen.git';
+
+git-install vim-pathogen "$pathogen_path" "$pathogen_repo";
+
+if [[ $? = 0 ]]; then
+    ln -fs "$pathogen_path/autoload/pathogen.vim" \
+            .vim/autoload/pathogen.vim;
+fi;
+
 pyenv_path="$HOME/src/pyenv";
 pyenv_repo='git://github.com/yyuu/pyenv.git';
 
