@@ -14,6 +14,7 @@ mkscreen -- hello-server script/hello_catalyst_server.pl --host 127.0.0.1 -r
 mkscreen -- imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
 mkscreen -- irc /usr/bin/irssi
 mkscreen -- lfs /usr/bin/elinks http://www.linuxfromscratch.org/
+mkscreen -- lyvi lyvi
 mkscreen -- man-adom /usr/bin/view /usr/share/doc/adom/manual.doc
 mkscreen -- moose-more perldoc Moose::Manual::Classes
 mkscreen -- moose perldoc Moose::Manual
@@ -34,4 +35,4 @@ mkscreen -- talk talk
 mkscreen -- task-tutorial man task-tutorial
 mkscreen -- template perldoc Template::Tutorial::Datafile
 mkscreen -- Text::Balanced perldoc Text::Balanced
-mkscreen -- lyvi lyvi
+mkscreen -- hgsh bash
