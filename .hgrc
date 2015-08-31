@@ -1,4 +1,5 @@
 [alias]
+alog = log -Gv
 blame = blame -clnu
 log.. = log -r "::$2 - ::$1"
 flog = log
@@ -7,6 +8,7 @@ in = in -Gv
 log = log -Gv
 out = out -Gv
 qlog = log -Gvr qbase:qtip
+reflog = log -Gv --hidden
 
 [bookmarks]
 track.current = True
@@ -27,12 +29,13 @@ color =
 convert = 
 eol = 
 extdiff =
+evolve = ~/src/evolve-main/hgext/evolve.py
 fetch = 
 gpg = 
 graphlog = 
 hgk = 
 highlight = 
-#histedit = ~/src/histedit/hg_histedit.py
+histedit =
 #keyword = 
 mq = 
 notify = 
@@ -45,7 +48,7 @@ rebase =
 record = 
 relink = 
 schemes = 
-#shelve = ~/src/hgshelve/hgshelve.py
+shelve =
 transplant = 
 
 [mq]
@@ -54,11 +57,12 @@ secret = true
 
 [pager]
 #[autopager]
-attend = annotate, blame, bookmarks, branches, cat, diff, export, flog,
-       glog, grep, heads, help, in, incoming, log, log.., merge, out,
-       outgoing, qapplied, qdiff, qguard, qlog, qseries, qunapplied,
-       resolve, status, summary, tags, tip
-#pager = LESS='FSRX' less
+attend = alog, annotate, blame, bookmarks, branches, cat, diff, export,
+       flog, glog, grep, heads, help, in, incoming, log, log.., merge,
+       out, outgoing, qapplied, qdiff, qguard, qlog, qseries, qunapplied,
+       reflog, resolve, status, summary, tags, tip
+
+pager = LESS='FSRX' less
 
 [server]
 validate = true
