@@ -33,7 +33,7 @@ function resolve-rc-path
     fi;
 }
 
-git-install() {
+scm-install() {
     local name="$1";
     local path="$2";
     local repo="$3";
@@ -46,14 +46,24 @@ Clone it now from $repo? (Y/n) ";
             read answer;
 
             if [[ $answer =~ ^[yY] ]]; then
-                git clone "$repo" "$path";
+                "${scm_install_cmd[@]}" "$repo" "$path";
                 break;
             elif [[ $answer =~ ^[nN] ]]; then
                 break;
             fi;
         done;
     fi;
+}
+
+git-install() {
+    scm_install_cmd=(git clone);
+    scm-install "$@";
 };
+
+hg-install() {
+    scm_install_cmd=(hg clone);
+    scm-install "$@";
+}
 
 rc_dir="$(resolve-rc-path "${HOME}" "${script_dir}")";
 
