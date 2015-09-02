@@ -92,6 +92,16 @@ irssi_smartfilter_repo="git://github.com/lifeforms/irssi-smartfilter.git";
 git-install irssi-smartfilter \
         "$irssi_smartfilter_path" "$irssi_smartfilter_repo";
 
+lawrencium_path="$HOME/src/vim-lawrencium"
+lawrencium_repo='https://bitbucket.org/ludovicchabant/vim-lawrencium'
+
+hg-install lawrencium "$lawrencium_path" "$lawrencium_repo";
+
+if [[ $? = 0 ]]; then
+    mkdir -p .vim/bundle &&
+            ln -fs "$lawrencium_path" .vim/bundle/lawrencium;
+fi;
+
 pathogen_path="$HOME/src/vim-pathogen";
 pathogen_repo='git://github.com/tpope/vim-pathogen.git';
 
