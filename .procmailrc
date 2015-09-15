@@ -273,5 +273,9 @@ travis-ci
 twitch-tv
 
 :0:
+* ^TOVsVim@noreply.github.com
+vsvim
+
+:0:
 * ^FROM.*noreply@youtube\.com
 youtube
