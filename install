@@ -8,6 +8,7 @@ all_files=(`ls -d .* *`);
 ignored_files=(
         .
         ..
+        .bash.d.local
         .git
         .gitignore
         .netrc
