@@ -75,6 +75,10 @@ debian-security
 ecl
 
 :0:
+* ^TOecl-devel@common-lisp\.net
+ecl-devel
+
+:0:
 * ^TOdevel-announce@lists\.fedoraproject\.org
 fedora-dev-annc
 
