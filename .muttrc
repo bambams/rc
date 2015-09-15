@@ -42,6 +42,7 @@ mailboxes +duplicates
 #mailboxes +fedora-pkg
 #mailboxes +fedora-pkg-rev
 #mailboxes +gameservers
+mailboxes +gentoo-user
 #mailboxes +geshi-users
 #mailboxes +git
 #mailboxes +git-hub
@@ -116,6 +117,7 @@ lists ^collaboration@rbbinnovations\\.com$
 lists ^debian-security-announce@debian\\.org$
 lists ^devel-announce@lists\\.fedoraproject\\.org$
 lists ^ecls-list@lists\\.sourceforge\\.net$
+lists ^gentoo-user@lists\\.gentoo\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
 lists ^git@vger\\.kernel\\.org$
 lists ^hackday@rbbinnovations\\.com$
@@ -145,6 +147,7 @@ subscribe cmus-devel
 subscribe debian-security-announce
 subscribe devel-announce
 subscribe ecl
+subscribe gentoo-user
 subscribe geshi-users
 subscribe git
 subscribe hackday
@@ -172,6 +175,7 @@ fcc-hook ^collaboartion@rbbinnovations\\.com$ +rbb-collab
 fcc-hook ^challenge@cpan-prc\\.org$ +cpan-pr-challenge
 fcc-hook ^cpan-pr-challenge@googlegroups\\.com$ +cpan-pr-challenge
 fcc-hook ^ecls-list@lists\\.sourceforge\\.net$ +ecl
+fcc-hook ^gentoo-user@lists\\.gentoo\\.org$ +gentoo-user
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^git@vger\\.kernel\\.org$ +git
 fcc-hook ^hackday@rbbinnovations\\.com$ +rbb-hackday

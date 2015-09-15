@@ -94,6 +94,10 @@ fedora-pkg
 geshi-users
 
 :0:
+* ^TOgentoo-user@lists\.gentoo\.org
+gentoo-user
+
+:0:
 * ^TOgit@vger\.kernel\.org
 * ^SUBJECT.*\[PATCH
 | formail -i 'Status: R'
