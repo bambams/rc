@@ -36,3 +36,5 @@ mkscreen -- task-tutorial man task-tutorial
 mkscreen -- template perldoc Template::Tutorial::Datafile
 mkscreen -- Text::Balanced perldoc Text::Balanced
 mkscreen -- hgsh bash
+mkscreen -- lyvi lyvi
+mkscreen -- weechat weechat
