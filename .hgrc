@@ -5,7 +5,6 @@ log.. = log -r "::$2 - ::$1"
 flog = log
 html-diff = !hg-html-diff $@
 in = in -Gv
-log = log -Gv
 out = out -Gv
 qlog = log -Gvr qbase:qtip
 reflog = log -Gv --hidden
