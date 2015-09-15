@@ -103,6 +103,22 @@ if [[ $? = 0 ]]; then
             ln -fs "$lawrencium_path" .vim/bundle/lawrencium;
 fi;
 
+mercurial_path="$HOME/src/hgdebug";
+mercurial_path_rc="$mercurial_path/.hg/hgrc";
+mercurial_repo='https://selenic.com/hg';
+
+hg-install mercurial "$mercurial_path" "$mercurial_repo";
+
+if grep 'default\s*=.*selenic' "$mercurial_path_rc" &>/dev/null; then
+    sed -i -e 's,default\s*=,upstream =,' "$mercurial_path_rc";
+fi;
+
+if ! grep 'default\s*=' "$mercurial_path_rc" &>/dev/null; then
+    sed -i -e '/\[paths\]/ a\
+default = https://bitbucket.org/bambams/hg\
+default-push = https://hg@bitbucket.org/bambams/hg' "$mercurial_path_rc";
+fi;
+
 pathogen_path="$HOME/src/vim-pathogen";
 pathogen_repo='git://github.com/tpope/vim-pathogen.git';
 
