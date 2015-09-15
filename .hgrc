@@ -26,6 +26,7 @@ children =
 churn = 
 color = 
 convert = 
+debugshell = ~/src/hg/contrib/debugshell.py
 eol = 
 extdiff =
 evolve = ~/src/evolve-main/hgext/evolve.py
