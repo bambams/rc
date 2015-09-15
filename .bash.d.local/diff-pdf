@@ -1,0 +1,1 @@
+alias diff-pdf='DISPLAY=:0 diff-pdf'
