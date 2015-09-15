@@ -127,20 +127,28 @@ green-party
 gwrra
 
 :0:
-* ^FROM.*mercurial-bugs@selenic.com
-hg-bugs
-
-:0:
-* ^TOmercurial-bugs@selenic.com
-hg-bugs
-
-:0:
 * ^TOirssi-users@dragoncat\.net
 irssi-users
 
 :0:
 * ^FROM.*leadnow.ca
 leadnow
+
+:0:
+* ^TOmercurial@selenic.com
+mercurial
+
+:0:
+* ^FROM.*mercurial-bugs@selenic.com
+mercurial-bugs
+
+:0:
+* ^TOmercurial-bugs@selenic.com
+mercurial-bugs
+
+:0:
+* ^TOmercurial-devel@selenic\.com
+mercurial-devel
 
 :0:
 * ^TOmutt-users@mutt\.org

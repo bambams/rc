@@ -49,10 +49,12 @@ mailboxes +duplicates
 #mailboxes +google-plus
 mailboxes +green-party
 mailboxes +gwrra
-#mailboxes +hg-bugs
 #mailboxes +humble-bundle
 #mailboxes +irssi-users
 mailboxes +leadnow
+mailboxes +mercurial
+mailboxes +mercurial-bugs
+mailboxes +mercurial-devel
 #mailboxes +mutt-users
 mailboxes +netflix
 mailboxes +oanda
@@ -118,6 +120,9 @@ lists ^geshi-users@lists\\.sourceforge\\.net$
 lists ^git@vger\\.kernel\\.org$
 lists ^hackday@rbbinnovations\\.com$
 lists ^irssi-users@dragoncat\\.net$
+lists ^mercurial@selenic\\.com$
+lists ^mercurial-bugs@selenic\\.com$
+lists ^mercurial-devel@selenic\\.com$
 lists ^moose@perl\\.org$
 lists ^mutt-users@mutt\\.org$
 lists ^package-review@lists\\.fedoraproject\\.org$
@@ -144,6 +149,9 @@ subscribe geshi-users
 subscribe git
 subscribe hackday
 subscribe irssi-users
+subscribe mercurial
+subscribe mercurial-bugs
+subscribe mercurial-devel
 subscribe moose
 subscribe mutt-users
 subscribe package-review
@@ -169,7 +177,9 @@ fcc-hook ^git@vger\\.kernel\\.org$ +git
 fcc-hook ^hackday@rbbinnovations\\.com$ +rbb-hackday
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
-fcc-hook ^mercurial-bugs@selenic\\.com$ +hg-bugs
+fcc-hook ^mercurial@selenic\\.com$ +mercurial
+fcc-hook ^mercurial-bugs@selenic\\.com$ +mercurial-bugs
+fcc-hook ^mercurial-devel@selenic\\.com$ +mercurial-devel
 fcc-hook ^moose@perl\\.org$ +perl-moose
 fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
