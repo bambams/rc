@@ -1,25 +1,111 @@
 [alias]
+active = branches --active
+all-releases = !hg branches --closed | grep -i release | sed -r "s/\s+[0-9]+:[0-9a-z]{12}(\s+.*|$)//" | sort
 alog = log -Gv
+ambu = !hg amend && hg backup
+#amend = commit --amend
+evolve+ = evolve --all
+b = !for /l %i in (1,1,$1) do @hg previous --merge --move-bookmark
+backward = !for /l %i in (1,1,$1) do @hg previous --merge --move-bookmark
+backup = push backup -f --new-branch
+bdiff = diff -r "ancestor($1,.)::."
+bdraft = log -Gvr "draft() and ::."
+begin = !hg branch "$1" && hg commit -m "(Empty commit) Begin branch $1" -X*
+bhidden = log -Gvr "hidden() and ::."
 blame = blame -clnu
+blog = log -Gvr ::p1()
+blog. = log -Gv -b .
+blog- = log -Gvr "ancestor(default,p1())::p1() - ancestor(default,p1())"
+blogx = log -Gvr "ancestor($1,p1())::p1() - ancestor($1,p1())"
+bprivate = log -Gvr "(draft() or secret()) and ::."
+bpublic = log -Gvr "public() and ::."
+branch-name = !hg log -r "$1" | grep "^branch:" | sed -e "s/^branch:\s*//"
+bsecret = log -Gvr "secret() and ::."
+bu = backup
+clog = log -Gvr 0::p1()
+close = !for /f "tokens=*" %f in ('hg branch') do @hg commit --close-branch -em "Closing branch %f" -X*
+count = !hg log -r "(draft() or secret()) and (::. or .::)" --template \n | wc -l
+debugshell = ~/src/hg/contrib/debugshell.py
+details = log -Gr "(draft() or secret()) and (::. or .::)" --template "{label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author|user} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc}\n\n"
+diff-merge = diff -r p1($1)::$1
+diff-p2 = diff -r "p2($1)..$1"
+draft = log -Gvr "draft()"
 log.. = log -r "::$2 - ::$1"
+f = !for /l %i in (1,1,$1) do @hg next --merge --move-bookmark
 flog = log
+forward = !for /l %i in (1,1,$1) do @hg next --merge --move-bookmark
+glog = log -G
+hidden = log --hidden -Gvr "hidden()"
 html-diff = !hg-html-diff $@
 in = in -Gv
+instream = in upstream
+in-branches = !hg log -r "$1::heads(all())" --template {branch}\n | sort | uniq
+in-releases = !hg in-branches "$1" | grep -i release
+len = !hg log -l 1 --template "{desc|firstline}" $@ | wc -c
+mdiff = diff -r "ancestor($1,.)::$1"
+mqdiff = diff -r qparent -r qtip
+mutate = evolve -Aa
+n = next --merge --move-bookmark
 out = out -Gv
-qlog = log -Gvr qbase:qtip
+outstream = out upstream
+p = previous --merge --move-bookmark
+patches = log -Gpr "(draft() or secret()) and (::. or .::)" --template "{label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author|user} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc}\n\n"
+phase-log = log -G --template "[{branch}] {label('changeset.{phase}', node|short)} {label('changeset.{phase}', phase)} {desc|firstline}\n"
+private = log -Gvr "draft() or secret()"
+public = log -Gvr "public()"
+publish = !hg push upstream & hg push local
+publish-branch = !hg push upstream --new-branch & hg push local --new-branch
+push-new-branch = push --new-branch
+qdiff = !hg --config diff.nobinary=True diff
+qlog = log -Gvr qbase::qtip
+qls = qseries --verbose
+rating = !hg diff --stat $@ && perl -Mstrict -Mwarnings -MData::Dumper -E "open my $fh, '-|', qq/hg diff --stat @ARGV 2>&1/ or die qq/failed to open pipe\n/; my $diff = undef; while(<$fh>) { my ($insertions, $deletions) = /([0-9]+) insertions\(\+\), ([0-9]+) deletions\(-\)/ or next; $diff = $deletions - $insertions; last; } close $fh; if($? << 8) { print STDERR qq/failed to read diff stat. not a mercurial repo?\n/; exit($? << 8); } unless(defined $diff) { print STDERR qq/working tree not dirty\n/; exit 1; } say qq/lines saved: $diff/;" -- $@
+read = pull upstream
+real-rating = !hg diff $@ && perl -Mstrict -Mwarnings -MData::Dumper -E "open my $fh, '-|', qq/hg diff @ARGV 2>&1/ or die qq/failed to open pipe\n/; my ($deletions, $insertions) = (0) x 2; while(my $line = <$fh>) { ($line =~ /^diff/ or $line =~ m{^--- a/} or $line =~ m{^\+\+\+ b/}) and next; $line =~ /^-/ and $deletions += length($line) - 1; $line =~ /^\+/ and $insertions += length($line) - 1; } close $fh; if($? << 8) { print STDERR qq/failed to read diff. not a mercurial repo?\n/; exit($? << 8); } if($deletions == 0 && $insertions == 0) { print STDERR qq/working tree not dirty\n/; exit 1; } my $diff = $deletions - $insertions; say qq/characters saved: $diff/;" -- $@
+#rebase = !echo ERROR: Please try rebase-safe instead. && false
+rebase-safe = rebase --keep
+repo-bookmark = !hg up "$1" && hg up
+releases = !hg branches | grep -i release | sed -r "s/\s+[0-9]+:[0-9a-z]{12}(\s+.*|$)//" | sort
 reflog = log -Gv --hidden
+revert-all = revert --all --no-backup
+revert-hard = revert --no-backup
+reword = amend -eX*
+secret = log -Gvr "secret()"
+stats = log -Gr "(draft() or secret()) and (::. or .::)" --stat --template "{label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author|user} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc}\n\n"
+#push-backup = !hg phase -fdr "secret()" && hg push backup -f && hg phase -fsr "outgoing()"
+subject = log -r "reverse((draft() or secret()) and (::. or .::))" --template "{label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {desc|firstline}\n"
+wip = log -Gr "(draft() or secret()) and (::. or .::)" --template "{label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author|user} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc|firstline}\n\n"
+
+[blackbox]
+track = *
+maxsize = 100 MB
+maxfiles = 10
 
 [bookmarks]
 track.current = True
 
+[color]
+changeset.draft = green bold
+changeset.public = green underline
+changeset.secret = red bold
+
 [diff]
 git = True
+#nobinary = True
 
 [eol]
 only-consistent = False
 
+[experimental]
+#crecord = yes
+
+[extdiff]
+
+
 [extensions]
+#acl =
 #autopager = ~/src/autopager/autopager.py
+blackbox =
 bookmarks = 
 bugzilla = 
 children = 
@@ -33,11 +119,15 @@ evolve = ~/src/evolve-main/hgext/evolve.py
 fetch = 
 gpg = 
 graphlog = 
+#hgban = ~/src/hgban/hgban.py
 hgk = 
 highlight = 
 histedit =
+inotify =
 #keyword = 
-mq = 
+#largefiles =
+#mq =
+#mqext = ~/src/mqext
 notify = 
 pager = 
 parentrevspec = 
@@ -47,29 +137,72 @@ purge =
 rebase = 
 record = 
 relink = 
+remotebranches = ~/src/hg-remotebranches/hg_remotebranches.py
 schemes = 
 shelve =
+strip =
+#textful = ~/src/hgext-textful/hgext/textful
+#textful.encoding = ~/src/hgext-textful/hgext/textful/encoding.py
+#textful.pipe = ~/src/hgext-textful/hgext/textful/pipe.py
 transplant = 
+
+[hooks]
+pretxncommit.linelength = python:hg_util.hooks.pretxncommit_linelength
+pre-push.wip = python:hgutil.hooks.pre_push_wip
+
+[merge-tools]
+gitvimdiff.executable = gvimdiff
+gitvimdiff.args = -f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"
+gitvimdiff.premerge = keep
+splice.executable = gvim
+splice.args = -f $base $local $other $output -c 'SpliceInit'
+splice.premerge = keep
+splice.priority = 1
+vimdiff.executable = gvimdiff
+vimdiff.args = -d $base $local $output $other +close +close
+
 
 [mq]
 keepchanges = true
 secret = true
 
+[mqext]
+mqcommit = yes
+
 [pager]
 #[autopager]
-attend = alog, annotate, blame, bookmarks, branches, cat, diff, export,
-       flog, glog, grep, heads, help, in, incoming, log, log.., merge,
-       out, outgoing, qapplied, qdiff, qguard, qlog, qseries, qunapplied,
-       reflog, resolve, status, summary, tags, tip
+attend = active, alog, annotate, bdiff, bdraft, bhidden, blame, blog,
+       blog., blog-, blogx, bookmarks, bprivate, bpublic, branches,
+       bsecret, cat, details, diff, diff-merge, diff-p2, draft, export, flog,
+       glog, grep, heads, help, hidden, in, incoming, ins, instream, log,
+       log.., mdiff, merge, mqdiff, odiff, out, outgoing, outstream, outs,
+       parents, patches, pdiff, phase-log, private, public, qapplied, qdiff,
+       qguard, qlog, qls, qseries, qunapplied, reflog, resolve, secret, shelve,
+       stats, status, subject, summary, tags, tip, wip
 
-pager = LESS='FSRX' less
+#pager = LESS='FSRX' less
+pager = less
+
+[phases]
+#new-commit = secret
 
 [server]
 validate = true
 
+[textful]
+attend = diff
+encoding = utf-8-sig, utf-8, utf-16le
+
+[tortoisehg]
+authorcolor = True
+fullauthorname = True
+
 [ui]
-merge = internal:merge
+merge = internal:merge3
 username = Brandon McCaig <bamccaig@gmail.com>
 
-#%include .hgrc.override
+%include .hgrc.bitbucket
+%include .hgrc.override
+%include .hgrc.scmman
 
+# vim: nocin tw=0 wrap
