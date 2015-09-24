@@ -11,6 +11,7 @@ ignored_files=(
         .bash.d.local
         .git
         .gitignore
+        .irssi
         .netrc
         bin
         install.sh
@@ -81,6 +82,10 @@ for f in "${all_files[@]}"; do
         ln -f -s "${rc_dir}/$f" "${HOME}";
     fi;
 done;
+
+if [[ ! -d ~/.irssi ]]; then
+    cp -a .irssi ~;
+fi;
 
 evil_path="$HOME/src/evil";
 evil_repo='git://gitorious.org/evil/evil.git';
