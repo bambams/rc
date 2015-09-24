@@ -53,6 +53,7 @@ mailboxes +gwrra
 #mailboxes +humble-bundle
 #mailboxes +irssi-users
 mailboxes +leadnow
+mailboxes +libreplanet-ca-on
 mailboxes +mercurial
 mailboxes +mercurial-bugs
 mailboxes +mercurial-devel
@@ -123,6 +124,7 @@ lists ^geshi-users@lists\\.sourceforge\\.net$
 lists ^git@vger\\.kernel\\.org$
 lists ^hackday@rbbinnovations\\.com$
 lists ^irssi-users@dragoncat\\.net$
+lists ^libreplanet-ca-on@libreplanet\\.org$
 lists ^mercurial@selenic\\.com$
 lists ^mercurial-bugs@selenic\\.com$
 lists ^mercurial-devel@selenic\\.com$
@@ -153,6 +155,7 @@ subscribe geshi-users
 subscribe git
 subscribe hackday
 subscribe irssi-users
+subscribe libreplanet-ca-on
 subscribe mercurial
 subscribe mercurial-bugs
 subscribe mercurial-devel
@@ -182,6 +185,7 @@ fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^git@vger\\.kernel\\.org$ +git
 fcc-hook ^hackday@rbbinnovations\\.com$ +rbb-hackday
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
+fcc-hook ^libreplanet-ca-on@libreplanet\\.org$ +libreplanet-ca-on
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
 fcc-hook ^mercurial@selenic\\.com$ +mercurial
 fcc-hook ^mercurial-bugs@selenic\\.com$ +mercurial-bugs
