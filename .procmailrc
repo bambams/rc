@@ -20,10 +20,6 @@ LOGFILE=$HOME/.procmail.log
 duplicates
 
 :0:
-* ^TOalleg-developers@lists\.s(ource)?f(orge)?\.net
-alleg-developers
-
-:0:
 * ^FROM:.*noreply@sourceforge.net
 * ^SUBJECT:.*\[AD\] *\[ *alleg-Bugs
 alleg-bugs
@@ -33,7 +29,15 @@ alleg-bugs
 alleg-bugs
 
 :0:
-* ^FROM:.*noreply@sourceforge.net
+* ^TOalleg-developers@lists\.s(ource)?f(orge)?\.net
+alleg-developers
+
+:0:
+* ^TOallegro-developers@gna\.org
+alleg-developers
+
+:0:
+* ^FROM:.*noreply@sourceforge\.net
 * ^SUBJECT:.*\[AD\]
 alleg-developers
 

@@ -107,6 +107,7 @@ source ~/.mutt/colors
 set followup_to = yes
 set honor_followup_to = yes
 lists ^alleg-developers@
+lists ^allegro-developers@
 lists ^beginners@perl\\.org$
 lists ^catalyst@lists\\.scsys\\.co\\.uk$
 lists ^cmus-devel@lists\\.sourceforge\\.net$
@@ -167,6 +168,7 @@ subscribe template
 subscribe toronto-pm
 subscribe tutor@python\\.org
 fcc-hook ^alleg-developers@ +alleg-developers
+fcc-hook ^allegro-developers@gna\\.org$ +alleg-developers
 fcc-hook ^beginners@perl\\.org$ +perl-beginners
 fcc-hook ^brandon\\.mccaig@rbbinnovations\\.com$ +rbb
 fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
