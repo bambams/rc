@@ -40,6 +40,13 @@ servers = (
     use_ssl = "no";
     ssl_verify = "no";
     autoconnect = "yes";
+  },
+  {
+    address = "irc.mozilla.org";
+    chatnet = "mozilla";
+    port = "6669";
+    use_ssl = "no";
+    ssl_verify = "no";
   }
 );
 
@@ -114,13 +121,22 @@ chatnets = {
     type = "IRC";
     autosendcmd = "/^msg -bitlbee &bitlbee identify hunter2;wait -bitlbee 2000;";
   };
+  foonetic = {
+    type = "IRC";
+    autosendcmd = "/^msg -foonetic nickserv identify hunter2;wait -foonetic 2000;";
+  };
+  mozilla = {
+    type = "IRC";
+    autosendcmd = "/^msg -mozilla nickserv identify hunter2;wait -mozilla 2000;";
+  };
 };
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#allegro"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#castopulence"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#castopulence"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "bambot"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -193,7 +209,10 @@ aliases = {
   ayst = "/say Are you still there?";
   close = "/part $*;/win close";
   bi = "/say http://basicinstructions.net/basic-instructions/$*";
-  yuno = "/exec - -out echo y u no $*? `cat ~/y_u_no`";
+  yuno = "/exec - -out echo $0: y u no $1-? `cat ~/y_u_no`";
+  math = "/exec perl -E 'say $*';";
+  sekrit = "/say https://castopulence.org/tmp/sekrit/$0";
+  tmp = "/say https://castopulence.org/tmp/$0";
 };
 
 statusbar = {
@@ -318,7 +337,7 @@ statusbar = {
 settings = {
   core = {
     real_name = "Brandon McCaig";
-    user_name = "bamccaig";
+    user_name = "bambams";
     nick = "bambams";
     timestamp_format = "%H:%M:%S";
     settings_autosave = "no";
@@ -347,7 +366,12 @@ keyboard = (
   {
     key = "meta-^F";
     id = "command";
-    data = "sbclear CLIENTCRAP,CRAP,CLIENTNOTICE,NOTICE";
+    data = "sbclear QUITS,JOINS,MODES,PARTS,CLIENTNOTICE,CLIENTCRAP,CLIENTERRORS,CRAP";
+  },
+  {
+    key = "^F";
+    id = "command";
+    data = "echo ^F has been disabled to discourage its use. See M-^F as an alternative.";
   }
 );
 hilights = (
@@ -356,14 +380,26 @@ hilights = (
   { text = "brandon"; nick = "yes"; word = "yes"; },
   { text = "mccaig"; nick = "yes"; word = "yes"; },
   { text = "bambam"; nick = "yes"; word = "yes"; },
-  { text = "Kaede "; nick = "yes"; word = "yes"; },
-  { text = "Kawayde"; nick = "yes"; word = "yes"; },
-  { text = "Moosader "; nick = "yes"; word = "yes"; },
   { text = "bambot"; nick = "yes"; word = "yes"; },
-  { text = "bam"; nick = "yes"; word = "yes"; },
-  { text = "Nisha"; nick = "yes"; word = "yes"; }
+  { text = "mandy"; nick = "yes"; word = "yes"; },
+  { text = "bams"; nick = "yes"; word = "yes"; },
+  { text = "miranda"; nick = "yes"; word = "yes"; }
 );
 logs = { };
+ignores = (
+  {
+    mask = "Irritiable!UNDEFINED@70.113.125.226";
+    level = "ALL";
+    replies = "yes";
+  },
+  {
+    mask = "Irritiable!~UNDEFINED@70.113.125.226";
+    level = "ALL";
+    replies = "yes";
+  },
+  { mask = "*!Harbinger@*"; level = "ALL"; replies = "yes"; },
+  { mask = "BHX*!*@*"; level = "ALL"; replies = "yes"; }
+);
 windows = {
   1 = {
     items = (
@@ -375,11 +411,21 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "4";
   };
   2 = { name = "hilight"; sticky = "yes"; };
-  3 = { name = "schitzo"; sticky = "yes"; };
+  3 = { name = "schitzo"; sticky = "yes"; parent = "5"; };
   4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#bambot";
+        tag = "freenode";
+      }
+    );
+  };
+  5 = {
     items = (
       {
         type = "CHANNEL";
@@ -389,9 +435,9 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "4";
   };
-  5 = {
+  6 = {
     items = (
       {
         type = "CHANNEL";
@@ -401,14 +447,11 @@ windows = {
       }
     );
     sticky = "yes";
+    parent = "4";
   };
 };
 mainwindows = {
-  5 = { first_line = "12"; lines = "45"; };
-  2 = { first_line = "4"; lines = "8"; };
-  3 = { first_line = "1"; lines = "3"; };
+  4 = { first_line = "17"; lines = "66"; };
+  2 = { first_line = "5"; lines = "12"; };
+  5 = { first_line = "1"; lines = "4"; };
 };
-ignores = (
-  { mask = "*!Harbinger@*"; level = "ALL"; replies = "yes"; },
-  { mask = "BHX*!*@*"; level = "ALL"; replies = "yes"; }
-);
