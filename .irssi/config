@@ -28,7 +28,7 @@ servers = (
     chatnet = "freenode";
     port = "6697";
     use_ssl = "yes";
-#    ssl_cert = "/etc/ssl/certs";
+    #    ssl_cert = "/etc/ssl/certs";
     ssl_verify = "yes";
     ssl_capath = "/etc/ssl/certs";
     autoconnect = "yes";
@@ -342,7 +342,13 @@ keyboard = (
   { key = "meta-prior"; id = "scroll_backward"; data = ""; },
   { key = "meta-next"; id = "scroll_forward"; data = ""; },
   { key = "prior"; id = "command"; data = "scrollback goto -1"; },
-  { key = "next"; id = "command"; data = "scrollback goto +1"; }
+  { key = "next"; id = "command"; data = "scrollback goto +1"; },
+  { key = "^F"; id = "command"; data = "sbclear CLIENTCRAP,CRAP"; },
+  {
+    key = "meta-^F";
+    id = "command";
+    data = "sbclear CLIENTCRAP,CRAP,CLIENTNOTICE,NOTICE";
+  }
 );
 hilights = (
   { text = "castopulence"; nick = "yes"; word = "yes"; },
