@@ -102,6 +102,10 @@ fedora-pkg
 geshi-users
 
 :0:
+* ^TOgentoo-announce@lists\.gentoo\.org
+gentoo-announce
+
+:0:
 * ^TOgentoo-user@lists\.gentoo\.org
 gentoo-user
 
