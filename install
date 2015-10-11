@@ -146,6 +146,15 @@ pyenv_pip_rehash_repo='git://github.com/yyuu/pyenv-pip-rehash.git';
 git-install 'Pyenv Pip Auto-rehash' \
         "$pyenv_pip_rehash_path" "$pyenv_pip_rehash_repo";
 
+rakudobrew_path="$HOME/src/rakudobrew";
+rakudobrew_repo='git://github.com/tadzik/rakudobrew.git';
+
+git-install rakudobrew "$rakudobrew_path" "$rakudobrew_repo";
+
+if [[ $? = 0 ]] && [[ ! -L ~/.rakudobrew ]]; then
+    ln -s src/rakudobrew ~/.rakudobrew;
+fi;
+
 rbenv_path="$HOME/src/rbenv";
 rbenv_repo='git://github.com/sstephenson/rbenv.git';
 
