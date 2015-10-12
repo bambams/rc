@@ -11,4 +11,6 @@
 .newsbeuter/*.db
 .newsbeuter/*.cmdline
 .newsbeuter/*.search
+.vim/autoload
+.vim/bundle
 .vim/.netrwhist
