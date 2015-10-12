@@ -1,0 +1,9 @@
+gui() {
+    "$@" &>/dev/null & disown;
+};
+
+_gui() {
+    false;
+}
+
+complete -F _gui gui;
