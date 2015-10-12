@@ -1,3 +1,4 @@
+mkscreen -- Text::Balanced perldoc Text::Balanced
 mkscreen -- admin /usr/bin/env /bin/bash
 mkscreen -- adom /usr/bin/sudo -u /usr/games/adom /usr/games/adom
 mkscreen -- attributes perldoc attributes
@@ -11,13 +12,15 @@ mkscreen -- elinks /usr/bin/elinks
 mkscreen -- fetch-loop fetch-loop
 mkscreen -- ghci ghci
 mkscreen -- hello-server script/hello_catalyst_server.pl --host 127.0.0.1 -r
+mkscreen -- hgsh bash
 mkscreen -- imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
 mkscreen -- irc /usr/bin/irssi
 mkscreen -- lfs /usr/bin/elinks http://www.linuxfromscratch.org/
 mkscreen -- lyvi lyvi
+mkscreen -- lyvi lyvi
 mkscreen -- man-adom /usr/bin/view /usr/share/doc/adom/manual.doc
-mkscreen -- moose-more perldoc Moose::Manual::Classes
 mkscreen -- moose perldoc Moose::Manual
+mkscreen -- moose-more perldoc Moose::Manual::Classes
 mkscreen -- mutt /usr/bin/mutt
 mkscreen -- newsbeuter newsbeuter
 mkscreen -- perldebtut perldoc perldebtut
@@ -34,7 +37,4 @@ mkscreen -- starmans starman
 mkscreen -- talk talk
 mkscreen -- task-tutorial man task-tutorial
 mkscreen -- template perldoc Template::Tutorial::Datafile
-mkscreen -- Text::Balanced perldoc Text::Balanced
-mkscreen -- hgsh bash
-mkscreen -- lyvi lyvi
 mkscreen -- weechat weechat
