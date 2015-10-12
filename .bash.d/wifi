@@ -1,8 +1,12 @@
 wifi() {
     local interface=wlan0;
+    local dir="/etc/network/interfaces.d";
+    local symlink="${dir}/${interface}";
 
     export WIFI_DEFAULT_NETWORK="${WIFI_DEFAULT_NETWORK:-tiny-bronco}";
-    export WIFI_NETWORK_PATH="${WIFI_NETWORK_PATH:-$HOME/.netork.wlan0}";
+    export WIFI_NETWORK_PATH="${WIFI_NETWORK_PATH:-$HOME/.network.wlan0}";
+
+    local current="$(cat "$WIFI_NETWORK_PATH")";
 
     case "$1" in
         connect|on|up)
@@ -13,11 +17,9 @@ wifi() {
             ;;
         goto|switch|use)
             local network="${2:-WIFI_DEFAULT_NETWORK}";
-            local current="$(cat "$WIFI_NETWORK_PATH")";
-            local path="/etc/network/interfaces.d/${network}.${interface}";
-            local symlink="/etc/network/interfaces.d/${interface}";
+            local path="${dir}/${network}.${interface}";
 
-            sudo ln -fs "$path" "$symlink";
+            sudo ln -fs "$path" "$symlink" || return 1;
 
             if [[ $network != $current ]]; then
                 echo "Changing to $network.";
@@ -26,8 +28,84 @@ wifi() {
                 wifi on;
             fi;
             ;;
-        st|status|*)
+        list|ls)
+            sudo ls "${dir}/" | sed -e 's/\.wlan0\b//g';
+            ;;
+        query|which)
+            echo "$current";
+            ;;
+        re|restart|reup)
+            wifi off && wifi on;
+            ;;
+        st|status)
             /sbin/ifconfig "$interface";
+            ;;
+        *|'?'|help)
+            cat <<USAGE | "${PAGER:-less}";
+wifi [SUBCOMMAND] [ARG...]
+
+Subcommands:
+
+    connect (alias: on, up)
+
+        Args: none.
+
+        Attempt to connect the wireless interface using
+        the selected configuration.
+
+    disconnect (alias: down, off)
+
+        Args: none.
+
+        Attempt to disconnect the wireless interface.
+
+    goto (alias: switch, use)
+
+        Args: configuration file name (excluding the extension).
+
+        Change the selected configuration. Configurations
+        must already exist within the configuration
+        directory ($dir).
+
+        If the configuration is changed then we
+        automatically attempt to disconnect from an
+        existing interface and connect using the new
+        configuration.
+
+    help (alias: ?) (default)
+
+        Args: none.
+
+        Print this message to the pager (default pager:
+        less).
+
+    list (alias: ls)
+
+        Args: none.
+
+        List available configurations.
+
+    query (alias: which)
+
+        Args: none.
+
+        Print the name of the currently selected
+        configuration (if known).
+
+    restart (alias: re, reup)
+
+        Args: none.
+
+        Disconnect and connect.
+
+    status (alias: st)
+
+        Args: none.
+
+        Print the ifconfig(1) of the network interface.
+        The format is not defined by this command. It is a
+        simple shell-out (as are most commands).
+USAGE
             ;;
     esac;
 };
