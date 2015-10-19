@@ -1,0 +1,13 @@
+CYGWIN_SETUP_PATH="$HOME/Downloads/setup-x86.exe";
+
+cygwin-download() {
+    curl -L https://cygwin.com/setup-x86.exe -o "$CYGWIN_SETUP_PATH";
+};
+
+cygwin-setup() {
+    if [[ ! -f "$CYGWIN_SETUP_PATH" ]]; then
+        cygwin-download || return $?;
+    fi;
+
+    "$CYGWIN_SETUP_PATH";
+};
