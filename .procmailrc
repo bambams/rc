@@ -188,6 +188,10 @@ oanda
 openmedia
 
 :0:
+* ^TOperl6-users@perl\.org
+perl6-users
+
+:0:
 * ^TObeginners@perl\.org
 perl-beginners
 
@@ -198,6 +202,11 @@ perl-moose
 :0:
 * ^TOperl-xs@perl\.org
 perl-xs
+
+:0:
+* ^Mailing-List: contact perl6-all-help@perl.org; run by ezmlm
+* ^X-Mailing-List-Name: \/.*
+perl-$MATCH
 
 :0:
 * ^FROM.*@playstation\.sony\.com
