@@ -42,6 +42,10 @@ alleg-developers
 alleg-developers
 
 :0:
+: ^TOallegro5@noreply\.github\.com
+allegro5
+
+:0:
 * ^TOarch-announce@archlinux\.org
 arch-announce
 
