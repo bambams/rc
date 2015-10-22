@@ -148,7 +148,7 @@ transplant =
 
 [hooks]
 pretxncommit.linelength = python:hg_util.hooks.pretxncommit_linelength
-pre-push.wip = python:hgutil.hooks.pre_push_wip
+#pre-push.wip = python:hgutil.hooks.pre_push_wip
 
 [merge-tools]
 gitvimdiff.executable = gvimdiff
