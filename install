@@ -108,7 +108,7 @@ if [[ $? = 0 ]]; then
             ln -fs "$lawrencium_path" .vim/bundle/lawrencium;
 fi;
 
-mercurial_path="$HOME/src/hgdebug";
+mercurial_path="$HOME/src/hg";
 mercurial_path_rc="$mercurial_path/.hg/hgrc";
 mercurial_repo='https://selenic.com/hg';
 
