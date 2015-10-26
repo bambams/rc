@@ -77,6 +77,7 @@ mailboxes +sent
 #mailboxes +stembot
 mailboxes +template
 mailboxes +tenaris
+mailboxes +texhax
 mailboxes +toronto-pm
 #mailboxes +travis-ci
 mailboxes +youtube
@@ -143,6 +144,7 @@ lists ^perl-xs@perl\\.org$
 lists ^python-list@python\\.org$
 lists ^slrn-user@
 lists ^templates@template-toolkit\\.org$
+lists ^texhax@tug\\.org$
 lists ^toronto-pm@pm\\.org$
 lists ^tpm@to\\.pm\\.org$
 lists ^tutor@python\\.org$
@@ -177,6 +179,7 @@ subscribe perl-xs
 subscribe python-list@python\\.org
 subscribe slrn-user
 subscribe template
+subscribe texhax
 subscribe toronto-pm
 subscribe tutor@python\\.org
 fcc-hook ^allegro5@noreply\\.github\\.com$ +allegro5
@@ -211,6 +214,7 @@ fcc-hook ^python-list@python\\.org$ +python
 fcc-hook ^tutor@python\\.org$ +python-tutor
 fcc-hook ^slrn-user@ +slrn
 fcc-hook ^templates@template-toolkit\\.org$ +template
+fcc-hook ^texhax@tug\\.org$ +texhax
 fcc-hook ^toronto-pm@pm\\.org$ +toronto-pm
 fcc-hook ^tpm@to\\.pm\\.org$ +toronto-pm
 
