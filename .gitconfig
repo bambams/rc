@@ -13,6 +13,7 @@
     glog = log --decorate --graph
     lol = log --all --decorate --graph --oneline
     ncommit = commit --no-edit
+    reword = commit --amend --edit --only
     revert-tree = checkout -- .
     squash = commit --squash
     staged = diff --staged
