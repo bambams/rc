@@ -38,3 +38,4 @@ mkscreen -- talk talk
 mkscreen -- task-tutorial man task-tutorial
 mkscreen -- template perldoc Template::Tutorial::Datafile
 mkscreen -- weechat weechat
+mkscreen -- julia bash
