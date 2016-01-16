@@ -130,6 +130,10 @@ git
 git-hub
 
 :0:
+* ^TOgnuplot-info@lists\.sourceforge\.net
+gnuplot-info
+
+:0:
 * ^FROM.*plus\.google\.com
 google-plus
 

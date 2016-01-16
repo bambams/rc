@@ -48,6 +48,7 @@ mailboxes +gentoo-user
 #mailboxes +geshi-users
 #mailboxes +git
 #mailboxes +git-hub
+mailboxes +gnuplot-info
 #mailboxes +google-chat
 #mailboxes +google-plus
 mailboxes +green-party
@@ -128,6 +129,7 @@ lists ^gentoo-announce@lists\\.gentoo\\.org$
 lists ^gentoo-user@lists\\.gentoo\\.org$
 lists ^geshi-users@lists\\.sourceforge\\.net$
 lists ^git@vger\\.kernel\\.org$
+lists ^gnuplot-info@lists\\.sourceforge\\.net$
 lists ^hackday@rbbinnovations\\.com$
 lists ^irssi-users@dragoncat\\.net$
 lists ^libreplanet-ca-on@libreplanet\\.org$
@@ -163,6 +165,7 @@ subscribe gentoo-announce
 subscribe gentoo-user
 subscribe geshi-users
 subscribe git
+subscribe gnuplot-info
 subscribe hackday
 subscribe irssi-users
 subscribe libreplanet-ca-on
@@ -197,6 +200,7 @@ fcc-hook ^gentoo-announce@lists\\.gentoo\\.org$ +gentoo-announce
 fcc-hook ^gentoo-user@lists\\.gentoo\\.org$ +gentoo-user
 fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
 fcc-hook ^git@vger\\.kernel\\.org$ +git
+fcc-hook ^gnuplot-info@lists\\.sourceforge\\.net$ +gnuplot-info
 fcc-hook ^hackday@rbbinnovations\\.com$ +rbb-hackday
 fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^libreplanet-ca-on@libreplanet\\.org$ +libreplanet-ca-on
