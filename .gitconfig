@@ -45,11 +45,11 @@
 [difftool]
     prompt = false
 [gc]
+   pruneExpire = 6 months
    reflogExpire = never
    reflogexpireUnreachable = never
    rerereresolved = forever
    rerereunresolved = forever
-   pruneExpire = 6 months
 [log]
     decorate = short
     #showroot = true
