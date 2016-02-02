@@ -163,19 +163,23 @@ leadnow
 libreplanet-ca-on
 
 :0:
-* ^TOmercurial@selenic.com
+* ^TOmercurial@selenic\.com|\
+  ^TOmercurial@mercurial-scm\.com
 mercurial
 
 :0:
-* ^FROM.*mercurial-bugs@selenic.com
+* ^FROM.*mercurial-bugs@selenic\.com|\
+  ^FROM.*mercurial-bugs@mercurial-scm\.com
 mercurial-bugs
 
 :0:
-* ^TOmercurial-bugs@selenic.com
+* ^TOmercurial-bugs@selenic\.com|\
+  ^TOmercurial-bugs@mercurial-scm\.com
 mercurial-bugs
 
 :0:
-* ^TOmercurial-devel@selenic\.com
+* ^TOmercurial-devel@selenic\.com|\
+  ^TOmercurial-devel@mercurial-scm\.com
 mercurial-devel
 
 :0:
