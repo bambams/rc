@@ -164,22 +164,22 @@ libreplanet-ca-on
 
 :0:
 * ^TOmercurial@selenic\.com|\
-  ^TOmercurial@mercurial-scm\.com
+  ^TOmercurial@mercurial-scm\.org
 mercurial
 
 :0:
 * ^FROM.*mercurial-bugs@selenic\.com|\
-  ^FROM.*mercurial-bugs@mercurial-scm\.com
+  ^FROM.*mercurial-bugs@mercurial-scm\.org
 mercurial-bugs
 
 :0:
 * ^TOmercurial-bugs@selenic\.com|\
-  ^TOmercurial-bugs@mercurial-scm\.com
+  ^TOmercurial-bugs@mercurial-scm\.org
 mercurial-bugs
 
 :0:
 * ^TOmercurial-devel@selenic\.com|\
-  ^TOmercurial-devel@mercurial-scm\.com
+  ^TOmercurial-devel@mercurial-scm\.org
 mercurial-devel
 
 :0:

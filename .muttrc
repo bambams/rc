@@ -134,9 +134,9 @@ lists ^hackday@rbbinnovations\\.com$
 lists ^irssi-users@dragoncat\\.net$
 lists ^libreplanet-ca-on@libreplanet\\.org$
 lists ^mercurial@selenic\\.com$
-lists ^mercurial@mercurial-scm\\.com$
+lists ^mercurial@mercurial-scm\\.org$
 lists ^mercurial-bugs@selenic\\.com$
-lists ^mercurial-bugs@mercurial-scm\\.com$
+lists ^mercurial-bugs@mercurial-scm\\.org$
 lists ^mercurial-devel@selenic\\.com$
 lists ^mercurial-devel@mercurial\\.com$
 lists ^moose@perl\\.org$
@@ -209,11 +209,11 @@ fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
 fcc-hook ^libreplanet-ca-on@libreplanet\\.org$ +libreplanet-ca-on
 fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
 fcc-hook ^mercurial@selenic\\.com$ +mercurial
-fcc-hook ^mercurial@mercurial-scm\\.com$ +mercurial
+fcc-hook ^mercurial@mercurial-scm\\.org$ +mercurial
 fcc-hook ^mercurial-bugs@selenic\\.com$ +mercurial-bugs
-fcc-hook ^mercurial-bugs@mercurial-scm\\.com$ +mercurial-bugs
+fcc-hook ^mercurial-bugs@mercurial-scm\\.org$ +mercurial-bugs
 fcc-hook ^mercurial-devel@selenic\\.com$ +mercurial-devel
-fcc-hook ^mercurial-devel@mercurial-scm\\.com$ +mercurial-devel
+fcc-hook ^mercurial-devel@mercurial-scm\\.org$ +mercurial-devel
 fcc-hook ^moose@perl\\.org$ +perl-moose
 fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
 fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
