@@ -1,9 +1,9 @@
-export bindir="$HOME/.rakudobrew/bin";
+b="$HOME/.rakudobrew/bin";
 
 if [[ -z $PATH ]]; then
-    PATH="$bindir";
+    PATH="$b";
 else
-    PATH="$PATH:$bindir";
+    PATH="$PATH:$b";
 fi;
 
-export PATH;
+unset b;
