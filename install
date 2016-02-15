@@ -92,6 +92,11 @@ evil_repo='https://bitbucket.org/lyro/evil';
 
 hg-install Evil-mode "$evil_path" "$evil_repo";
 
+evolve_path="$HOME/src/evolve-main";
+evolve_repo="http://42.netv6.net/evolve-main/";
+
+hg-install evolve "$evolve_path" "$evolve_repo";
+
 hg_remotebranches_path="$HOME/src/hg-remotebranches";
 hg_remotebranches_repo="https://bitbucket.org/durin42/hg-remotebranches";
 
