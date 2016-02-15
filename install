@@ -92,6 +92,12 @@ evil_repo='https://bitbucket.org/lyro/evil';
 
 hg-install Evil-mode "$evil_path" "$evil_repo";
 
+hg_remotebranches_path="$HOME/src/hg-remotebranches";
+hg_remotebranches_repo="https://bitbucket.org/durin42/hg-remotebranches";
+
+hg-install hg-remotebranches \
+        "$hg_remotebranches_path" "$hg_remotebranches_repo";
+
 irssi_smartfilter_path="$HOME/src/irssi-smartfilter";
 irssi_smartfilter_repo="git://github.com/lifeforms/irssi-smartfilter.git";
 
