@@ -88,9 +88,9 @@ if [[ ! -d ~/.irssi ]]; then
 fi;
 
 evil_path="$HOME/src/evil";
-evil_repo='git://gitorious.org/evil/evil.git';
+evil_repo='https://bitbucket.org/lyro/evil';
 
-git-install Evil-mode "$evil_path" "$evil_repo";
+hg-install Evil-mode "$evil_path" "$evil_repo";
 
 irssi_smartfilter_path="$HOME/src/irssi-smartfilter";
 irssi_smartfilter_repo="git://github.com/lifeforms/irssi-smartfilter.git";
