@@ -5,6 +5,7 @@ generate-ps1() {
     local music_state="$(\? -1 --color-prompt -s --suffix=♫ 2>/dev/null)";
     local bzr_state="$(bzr-ps1__ 2>/dev/null)";
     local git_state="$(git-ps1__ 2>/dev/null)";
+    local time="$(date '+%k:%M:%S')";
 
     # The prompt starts out with music player status and song information.
     # See music-control (https://github.com/bamccaig/music-control/).
@@ -20,6 +21,10 @@ generate-ps1() {
         # State of bzr repository and working tree...
         PS1+="${bzr_state}";
     fi;
+
+    # The time which serves as a very convenient way to figure out the
+    # timeline of the scrollback.
+    PS1+=" ${time}";
 
     # Standard end of prompt. We like to keep things civilized.
     PS1+='$ ';
