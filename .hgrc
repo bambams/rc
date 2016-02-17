@@ -85,6 +85,7 @@ maxfiles = 10
 track.current = True
 
 [color]
+branchname.x = yellow
 changeset.draft = green bold
 changeset.public = green underline
 changeset.secret = red bold
