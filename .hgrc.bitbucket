@@ -1,0 +1,3 @@
+[auth]
+bitbucket.prefix = https://bitbucket.org/
+bitbucket.username = bambams
