@@ -60,6 +60,8 @@
 [pretty]
     subject = %s
     body = %B
+[pull]
+    ff = only
 [push]
     default = tracking
 [rebase]
