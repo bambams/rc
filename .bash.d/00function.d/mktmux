@@ -58,6 +58,10 @@ Usage: mktmux [ -a | -r ] [ -e | -n ] name command
         esac;
     done;
 
+    if [[ -z $command ]]; then
+        command="${SHELL:-bash}";
+    fi;
+
     if [ $add == y ]; then
         echo "mktmux -- $name $command" >> "$rc";
     elif [ $replace == y ]; then
