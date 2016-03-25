@@ -1,0 +1,31 @@
+function rmtmux
+{
+    local rc="$HOME/.bash.d/tmuxes";
+    local delete=n sort=n;
+
+    if [ "$1" == '-d' ]; then
+        delete=y sort=y;
+        shift;
+    fi;
+
+    local name="$1";
+
+    if [ -z "$name" ]; then
+        echo 'Usage: rmtmux [ -d ] name
+
+    -d          Delete from ~/.bash.d/tmuxes.' 1>&2;
+        return 1;
+    fi;
+
+    if [ "$delete" == y ]; then
+        sed -i -r "/^mktmux -- $name .*/d" "$rc";
+    fi;
+
+    if [ "$sort" == y ]; then
+        sort-tmuxes;
+    fi;
+
+    unalias "$name";
+
+    return 0;
+}

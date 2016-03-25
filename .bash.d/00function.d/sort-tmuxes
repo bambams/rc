@@ -1,0 +1,18 @@
+# vim: ft=sh
+function sort-tmuxes
+{
+    local rc="$HOME/.bash.d/tmuxes";
+    local sorted_rc="`mktemp`";
+
+    if ! sort "$rc" > "$sorted_rc"; then
+        echo 'Failed to sort tmuxes.' 1>&2;
+        return 1;
+    fi;
+
+    if ! mv -f "$sorted_rc" "$rc"; then
+        echo 'Failed to overwrite tmuxes.' 1>&2;
+        rm "$sorted_rc" || \
+                echo "Failed to cleanup temp file '$sorted_rc'." 1>&2;
+        return 1;
+    fi;
+}

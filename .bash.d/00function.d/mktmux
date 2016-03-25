@@ -1,0 +1,79 @@
+# vim: ft=sh
+function mktmux
+{
+    local add=n;
+    local exec="${MKTMUX_EXEC:-n}";
+    local rc="$HOME/.bash.d/tmuxes";
+    local replace=n;
+    local sort="${MKTMUX_SORT:-n}";
+    local args=$(getopt -o aenr -- "$@");
+
+    if [[ $? -ne 0 ]]; then
+        return $?;
+    fi;
+
+    eval set -- "$args";
+
+    while true; do
+        case "$1" in
+            -a)
+                add=y;
+                replace=n;
+                shift;
+                ;;
+            -e)
+                exec=y;
+                shift;
+                ;;
+            -n)
+                exec=n;
+                shift;
+                ;;
+            -r)
+                replace=y;
+                add=n;
+                shift;
+                ;;
+            --)
+                if [[ $# -lt 2 ]]; then
+                    echo '\
+Usage: mktmux [ -a | -r ] [ -e | -n ] name command
+
+-a          Add to ~/.bash.d/tmuxes
+
+-e          Execute the tmux immediately after creating it.
+
+-n          Create-only: do not execute now.
+
+-r          Replace screen in ~/.bash.d/tmuxes' 1>&2;
+                    return 1;
+                fi;
+
+                shift;
+                local name="$1";
+                shift;
+                local command="$*";
+                break;
+                ;;
+        esac;
+    done;
+
+    if [ $add == y ]; then
+        echo "mktmux -- $name $command" >> "$rc";
+    elif [ $replace == y ]; then
+        sed -i -r "/mktmux -- $name / s/mktmux -- $name (.*)/\
+mktmux $name $command/" "$rc";
+    fi;
+
+    if [ "$sort" == y ];  then
+        sort-tmuxes;
+    fi;
+
+    alias $name="/usr/bin/tmux new-session -As $name $command";
+
+    if [ $exec = y ]; then
+        eval $name;
+    fi;
+
+    return 0;
+}
