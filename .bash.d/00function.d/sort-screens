@@ -6,13 +6,13 @@ function sort-screens
 
     if ! sort "$rc" > "$sorted_rc"; then
         echo 'Failed to sort screens.' 1>&2;
-        exit 1;
+        return 1;
     fi;
 
     if ! mv -f "$sorted_rc" "$rc"; then
         echo 'Failed to overwrite screens.' 1>&2;
         rm "$sorted_rc" || \
                 echo "Failed to cleanup temp file '$sorted_rc'." 1>&2;
-        exit 1;
+        return 1;
     fi;
 }
