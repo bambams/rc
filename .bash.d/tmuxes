@@ -1,3 +1,3 @@
-mktmux -- social /bin/bash -c '"tmux source-file .tmux/session.d/social"'
-mktmux -- hgdev /bin/bash -c '"tmux source-file .tmux/session.d/hgdev"'
-mktmux -- scratch /bin/bash -c '"tmux source-file .tmux/session.d/scratch"'
+mktmux -- social /bin/bash -c '"tmux source-file ~/.tmux/session.d/social"'
+mktmux -- hgdev /bin/bash -c '"tmux source-file ~/.tmux/session.d/hgdev"'
+mktmux -- scratch /bin/bash -c '"tmux source-file ~/.tmux/session.d/scratch"'
