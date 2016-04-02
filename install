@@ -3,7 +3,7 @@
 cd "$(dirname "$0")" || exit 1;
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
-all_files=(`ls -d .* *`);
+all_files=(`ls -d .* * bin/.* bin/*`);
 
 ignored_files=(
         .
@@ -14,12 +14,26 @@ ignored_files=(
         .irssi
         .netrc
         bin
+        bin/.
+        bin/..
         install.sh
         offlineimap.conf
         README
         vs2010.vssettings
         vs2012.vssettings
         );
+
+resolve-rel-depth() {
+    local d="$(dirname "$1")";
+    local p=;
+
+    while [[ $d != $(dirname "$d") ]]; do
+        p="../$p";
+        d="$(dirname "$d")";
+    done;
+
+    echo "$p";
+}
 
 function resolve-rc-path
 {
@@ -79,7 +93,9 @@ for f in "${all_files[@]}"; do
     done;
 
     if [ -z "${ignored}" ]; then
-        ln -f -s "${rc_dir}/$f" "${HOME}";
+        d="$(dirname "$f")";
+        p="$(resolve-rel-depth "$f")";
+        ln -f -s "${p}${rc_dir}/$f" "${HOME}/${d}";
     fi;
 done;
 
