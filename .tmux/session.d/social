@@ -1,7 +1,7 @@
-new-window -c $HOME
-split-window -c $HOME -h
+new-window -c $HOME mosh-irc
+split-window -c $HOME -h mosh-mutt
 select-pane -t 1
-split-window -c $HOME -v
+split-window -c $HOME -v mosh-bash
 select-pane -t 2
 split-window -c $HOME -v
 select-pane -t 0
