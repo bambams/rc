@@ -35,8 +35,7 @@ resolve-rel-depth() {
     echo "$p";
 }
 
-function resolve-rc-path
-{
+resolve-rc-path() {
     local home_dir="$1";
     local rc_dir="$2";
 
