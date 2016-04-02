@@ -1,0 +1,3 @@
+new-window -c $HOME
+split-window -c $HOME -h
+select-pane -t 0
