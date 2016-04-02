@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mosh bambams@castopulence.org -- \
+        bash -c 'screen -d -RR -S mutt /usr/bin/mutt;bash'
