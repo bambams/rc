@@ -73,7 +73,7 @@ mktmux $name $command/" "$rc";
         sort-tmuxes;
     fi;
 
-    alias $name="/usr/bin/tmux new-session -As $name $command";
+    alias $name="tmux new-session -As $name $command";
 
     if [ $exec = y ]; then
         eval $name;
