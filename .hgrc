@@ -109,6 +109,8 @@ patches-branch = log -Gpb. -T "{label('changeset.{phase}', rev)} {label('changes
 #patches-branch = log -Gpb. -T bam3
 phase-log = log -G -T bam4
 private = log -Gvr "draft() or secret()" -T bam1
+property = !hg property-aux && if "x$1" == "x" (echo Usage: hg property NAME [VALUE] 1>&2 && exit /b 1) else (for /f "tokens=*" %f in ('hg root') do @(if "x$2" == "x" (type "%f\.hg\bam-properties\$1") else (echo $2>"%f\.hg\bam-properties\$1")))
+property-aux = !for /f "tokens=*" %f in ('hg root') do @if not exist "%f\.hg\bam-properties\" (mkdir "%f\.hg\bam-properties\")
 public = log -Gvr "public()" -T bam1
 publish-any = !hg push upstream $@ & hg push local $@
 publish-any-branch = !hg push upstream --new-branch $@ & hg push local --new-branch $@
@@ -132,6 +134,7 @@ reflog = log -Gv --hidden -T bam1
 revert-all = revert --all --no-backup
 revert-hard = revert --no-backup
 reword = amend -eX*
+rm-property = !if "x$1" == "x" (echo Usage: hg rm-property NAME 1>&2 && exit /b 1) else (for /f "tokens=*" %f in ('hg root') do @del "%f\.hg\bam-properties\$1")
 secret = log -Gvr "secret()" -T bam1
 stats = log -Gr "limit((draft() or secret()) and (::. or .::))::" --stat -T bam3
 #stats = current --stat -GT bam3
