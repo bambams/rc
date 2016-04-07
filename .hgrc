@@ -33,7 +33,27 @@ bsecret = log -Gvr "secret() and ::." -T bam1
 bu = backup
 clog = log -Gvr "0::p1()" -T bam1
 close = !for /f "tokens=*" %f in ('hg branch') do @hg commit --close-branch -em "(Empty commit) Closing branch %f" -X*
-commit-merge = !for /f "tokens=*" %f in ('hg log -r "p1()" -T {branch}') do @for /f "tokens=*" %g in ('hg log -r "p2()" -T {branch}') do @(if "x%f" == "x%g" (hg commit -em "Merging with upstream.") else (hg commit -em "Merging branch '%g' into %f"))
+commit-branch = !hg commit-branch-arg "$1" && hg commit-branch-arg "$2" && hg commit-branch-base "$1" && hg commit-branch-branch "$2" && hg is-clean 1>NUL && hg up "$1" && hg diff -wr "ancestor('$1','$2')::'$2'" && pause && hg merge "$2" && hg commit-branch-continue
+commit-branch-arg = !if "x$1" == "x" (hg commit-branch-usage && exit /b 1)
+commit-branch-base = !hg property .commit-branch.base "$1"
+commit-branch-branch = !hg property .commit-branch.branch "$1"
+commit-branch-continue = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @hg commit-branch-continue-aux "%f" "%g" && hg commit-merge && hg up "%g" && hg close && hg up "%f" && hg commit-branch-done
+commit-branch-continue-aux = !if "x$1" == "x" (hg commit-branch-continue-error) else if "x$2" == "x" (hg commit-branch-continue-error)
+commit-branch-continue-error = !echo hg commit-branch-continue should only be run after merge conflicts in hg commit-branch. 1>&2 && exit /b 1
+commit-branch-done = !hg rm-property .commit-branch.base && hg rm-property .commit-branch.branch
+commit-branch-status = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @if "x%f" == "x" (hg commit-branch-status-none) else if "x%g" == "x" (hg commit-branch-status-none) else (echo Merging "%g" into $f.)
+commit-branch-status-none = echo No branch is being committed. 1>&2 && exit /b 1
+commit-branch-usage = !echo Usage: hg commit-branch BASE BRANCH 1>&2
+commit-merge = !for /f "tokens=*" %f in ('hg log -r "p1()" -T {branch}') do @for /f "tokens=*" %g in ('hg log -r "p2()" -T {branch}') do @for /f "tokens=*" %h in ('hg commit-merge-path') do @del "%h" & (if "x%f" == "x%g" (hg commit-merge-msg-upstream > "%h") else (hg commit-merge-msg-branch "%g" "%f" > "%h")) && hg commit -el "%h" && hg commit-merge-done
+#commit-merge = !for /f "tokens=*" %f in ('hg log -r "p1()" -T {branch}') do @for /f "tokens=*" %g in ('hg log -r "p2()" -T {branch}') do @(if "x%f" == "x%g" (hg commit -em "Merging with upstream.") else (hg commit -em "Merging branch '%g' into %f"))
+commit-merge-done = !del /s *.eof *.orig *.utf8 & for /f "tokens=*" %f in ('hg root') do @(if exist "%f\.hgconflicts" (move "%f\.hgconflicts" "%f\.hgconflicts.old") else (echo No conflicts file detected to retire. 1>&2))
+commit-merge-msg-branch = !echo Merging branch '$1' into $2&& echo.&& hg commit-merge-msg-conflicts && hg commit-diff-msg
+commit-merge-msg-conflicts = !for /f "tokens=*" %f in ('hg root') do @if exist "%f\.hgconflicts" (echo Conflicts:&& echo.&& sed -e "s/^/    /" "%f/.hgconflicts") else (echo No conflicts.)
+commit-merge-msg-upstream = !echo Merging with upstream.&& echo.&& echo No conflicts.&& hg commit-diff-msg
+commit-merge-path = !for /f "tokens=*" %f in ('hg root') do @echo "%f\.hg\.commit-merge.msg"
+commit-diff = !for /f "tokens=*" %f in ('hg commit-diff-path') do @del /q "%f" 1>NUL 2>NUL & hg commit-diff-msg >"%f" && call hg commit -el "%f"
+commit-diff-msg = !echo.&& echo.&& hg diff | sed -e "s/^/HG: /"
+commit-diff-path = !for /f "tokens=*" %f in ('hg root') do @echo %f\.hg\.commit-diff.msg
 count = !hg count-x --rev "(draft() or secret()) and (::. or .::)"
 #count = !hg count-x --rev "current()"
 count-branch = !hg count-x --branch .
