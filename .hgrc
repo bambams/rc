@@ -86,6 +86,8 @@ inbranch = in upstream -b .
 instream = in upstream
 in-branches = !hg log -r "$1::heads(all())" -T {branch}\n | sort | uniq
 in-releases = !hg in-branches "$1" | grep -i release
+is-clean = !for /f "tokens=*" %f in ('hg diff 2^>^&1 ^| wc -c') do @(if not "x%f" == "x0" (echo Working tree is dirty! 1>&2 && exit /b 1))
+is-dirty = !for /f "tokens=*" %f in ('hg diff 2^>^&1 ^| wc -c') do @(if "x%f" == "x0" (echo Working tree is clean! 1>&2 && exit /b 1)
 ancestor-db-changesets = log -r "reverse(::p1() and file('DbScripts/*'))"
 last-db-changeset = log -r "limit(reverse(::p1() and file('DbScripts/*')))"
 len = !hg log -l 1 -T "{desc|firstline}" $@ | wc -c
