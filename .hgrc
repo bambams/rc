@@ -76,7 +76,7 @@ local-tags = !hg tags --verbose | grep local$ | sed -e "s/\s*local$//"
 log.. = log -r "::$2 - ::$1" -T bam1
 #f = !set break_=0 && for /l %i in (1,1,$1) do @(if !break_! == 0 hg next --merge --move-bookmark || set break_=1)
 f = !for /l %i in (1,1,$1) do @hg next --merge --move-bookmark
-for-bookmarks = !hg bookmarks ^| sed -e "s/^\s*\*\?\s*//" -e "s/\s\+.*$//" -e "s/^/-B /" | xargs "$@"
+for-bookmarks = !hg bookmarks | sed -e "s/^\s*\*\?\s*//" -e "s/\s\+.*$//" -e "s/^/-B /" | xargs "$@"
 forward = !for /l %i in (1,1,$1) do @hg next --merge --move-bookmark
 glog = log -G
 hidden = log --hidden -Gvr "hidden()" -T bam1
