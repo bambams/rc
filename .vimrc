@@ -30,7 +30,9 @@ filetype indent on
 " Enable syntax highlighting.
 syntax enable
 
-
+if has('gui_running')
+    set guifont="DejaVu Sans Mono 10"
+endif
 
 """""""""""""""""""""""""""""""""""""""""""
 " Fileformats
