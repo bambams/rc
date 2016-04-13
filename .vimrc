@@ -31,7 +31,7 @@ filetype indent on
 syntax enable
 
 if has('gui_running')
-    set guifont="DejaVu Sans Mono 10"
+    set guifont=DejaVu\ Sans\ Mono\ 10
 endif
 
 """""""""""""""""""""""""""""""""""""""""""
