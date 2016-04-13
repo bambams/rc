@@ -75,7 +75,9 @@ set showmatch
 set hlsearch
 
 " This apparently will make gVim maximize by default.
-au GUIEnter * simalt ~x
+if has('win32')
+    au GUIEnter * simalt ~x
+endif
 
 " Disable the mouse (hopefully).
 set mouse=
