@@ -14,6 +14,7 @@
     lol = log --all --decorate --graph --oneline
     ncommit = commit --no-edit
     noff = merge --no-ff
+    reup = pull --rebase
     revert-tree = checkout -- .
     reword = commit --amend --edit --only
     squash = commit --squash
