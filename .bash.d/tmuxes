@@ -1,3 +1,4 @@
 mktmux -- social /bin/bash -c '"tmux source-file ~/.tmux/session.d/social"'
-mktmux -- hgdev /bin/bash -c '"tmux source-file ~/.tmux/session.d/hgdev"'
+mktmux -- py /bin/bash -c '"tmux source-file ~/.tmux/session.d/py"'
 mktmux -- scratch /bin/bash -c '"tmux source-file ~/.tmux/session.d/scratch"'
+alias hgdev=py
