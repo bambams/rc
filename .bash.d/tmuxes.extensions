@@ -1,0 +1,4 @@
+if [[ $(alias social | wc -l) != 0 ]] &&
+        ! alias social | grep ssh-add &>/dev/null; then
+    source <(alias social | sed -e 's/tmux/ssh-add-if-empty \&\& tmux/')
+fi;
