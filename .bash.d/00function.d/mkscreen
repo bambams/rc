@@ -69,7 +69,7 @@ mkscreen $name $command/" "$rc";
         sort-screens;
     fi;
 
-    alias $name="/usr/bin/screen -d -RR -S $name -U $command";
+    alias $name="opscreen \"$name\" \"$command\"";
 
     if [ $exec = y ]; then
         eval $name;

@@ -1,0 +1,35 @@
+opscreen() {
+    local force=0;
+    local anon_args=();
+
+    while [[ $# -gt 0 ]]; do
+        local force_re='-f|--force';
+
+        if [[ $1 =~ $force_re ]]; then
+            warn force matched\!
+            force=1;
+        else
+            anon_args=("${anon_args[@]}" "$1");
+        fi;
+
+        shift;
+    done;
+
+    local name="${anon_args[0]}";
+    local command="${anon_args[1]}";
+    local ls="$(screen -ls | grep "\\.$name\\b")";
+    local status=$?;
+
+    if [[ $force = 0 ]] && [[ $status = 0 ]] &&
+            grep Multi <<< "$ls" &>/dev/null; then
+        screen -x "$name";
+        status=$?;
+        warn "Note: Screen existed so we attempted to attach" \
+             "and now we assume you've manually detached." \
+             "Try again with -f.";
+        return $status;
+    fi;
+
+    # h4x: command is unquoted because it comes in as a string.
+    screen -d -RR -S "$name" -U $command;
+};
