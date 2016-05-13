@@ -19,7 +19,7 @@ source-if /etc/bash_completion;
 source-if /etc/bash_completion.d/git;
 
 # Source git's bash completion. :)
-git_version=`/usr/bin/git --version | sed -r 's/git version (.*)/\1/'`;
+git_version=`git --version | sed -r 's/git version (.*)/\1/'`;
 source-if "/usr/share/doc/git-${git_version}/contrib/completion/git-completion.bash";
 
 # Always vim as an editor. :)
