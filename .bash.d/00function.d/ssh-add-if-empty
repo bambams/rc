@@ -1,5 +1,5 @@
 ssh-add-if-empty() {
-    if ssh-add -l -L | grep 'The agent has no identities.' &>/dev/null; then
+    if ssh-add -l | grep 'The agent has no identities.' &>/dev/null; then
         ssh-add;
     fi;
 };
