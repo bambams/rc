@@ -1,0 +1,7 @@
+if [[ -z $PATH ]]; then
+    PATH="$HOME/.cargo/bin"
+else
+    PATH="$PATH:$HOME/.cargo/bin"
+fi;
+
+export PATH
