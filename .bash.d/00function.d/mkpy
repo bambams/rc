@@ -1,0 +1,10 @@
+mkpy() {
+    local name="$1";
+
+    if [[ -z $name ]]; then
+        echo 'Usage: mkpy NAME' 1>&2;
+        return 1;
+    fi;
+
+    alias "$name"='tmux new-session -As '"$name"' /bin/bash -c "tmux source-file ~/.tmux/session.d/py"';
+}
