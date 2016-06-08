@@ -73,3 +73,5 @@
 [user]
     name = "Brandon McCaig"
     email = "bamccaig@gmail.com"
+[credential]
+	helper = cache --timeout=3600
