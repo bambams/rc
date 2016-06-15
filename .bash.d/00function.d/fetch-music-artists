@@ -1,0 +1,9 @@
+fetch-music-artists() { 
+    for f in "$@";
+    do
+        g="$(echo "$f" | sed -e 's/\s/\\&/')";
+        rsync -cr --progress "castopulence.org:music/$g/" "$HOME/Music/$f/";
+    done
+};
+
+# vim: ft=sh

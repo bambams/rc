@@ -1,0 +1,14 @@
+free-the-music() {
+    while read f; do
+        local o="$(echo "$f" | perl -pe 's/\.[^.]+$/.ogg/')";
+
+        if [[ -f "$o" ]]; then
+            echo "ok  $o";
+        else
+            echo "ogg $o";
+            </dev/null ffmpeg -i "$f" "$o";
+        fi;
+    done < <(find "$HOME/music" "$HOME/Music" \
+                -name '*.m4a' -o \
+                -name '*.mp4');
+};
