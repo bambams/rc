@@ -6,6 +6,7 @@
     bmerged = branch --merged=master
     bdiverged = branch --no-merged=master
     changed = diff --name-only
+    current = !git branch | grep '^\\*' | sed -e 's/^\\*\\?\\s*//g'
     detach = checkout --detach
     fall = fetch --all --prune
     ff = merge --ff --ff-only
