@@ -17,6 +17,7 @@
     noff = merge --no-ff
     reup = pull --rebase
     revert-tree = checkout -- .
+    reup = !git current | xargs git rebase origin
     reword = commit --amend --edit --only
     squash = commit --squash
     staged = diff --staged
