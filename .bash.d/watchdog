@@ -1,4 +1,11 @@
 watchdog() {
+    local no_exec=0;
+
+    if [[ $1 = -n ]]; then
+        no_exec=1;
+        shift;
+    fi;
+
     while true; do
         echo -en '\rchecking for process...';
 
@@ -8,9 +15,14 @@ watchdog() {
 
             sleep 1m;
         else
-            echo -e 'not found...starting...';
-
-            "$@" && break;
+            echo -n '\rnot found...';
+            break;
         fi;
     done;
+
+    if [[ $no_exec = 0 ]]; then
+        echo -e ' starting...';
+
+        "$@" && break;
+    fi;
 };
