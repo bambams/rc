@@ -21,7 +21,7 @@
     staged = diff --staged
     start = checkout -tb
     summary = log --decorate --graph --oneline
-    up = pull --ff --ff-only
+    update = pull --ff --ff-only
     wip = log --no-decorate --graph --oneline @{u}..
     wipd = log --decorate --graph --online @{u}..
 [apply]
