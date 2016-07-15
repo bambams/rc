@@ -70,6 +70,29 @@ Clone it now from $repo? (Y/n) ";
     fi;
 }
 
+symlink() {
+    if uname | grep CYGWIN &>/dev/null; then
+        local mklink_opts=;
+        local link="$(cygpath -w "$2")";
+        local path="$(cygpath -w "$1")";
+
+
+        if [[ -d "$(basename "$1")" ]]; then
+            mklink_opts='/d'
+        fi;
+
+        if [[ -d "$link" ]]; then
+            cmd /c "rmdir /s /q $link" || return $?;
+        elif [[ -f "$link" ]]; then
+            cmd /c "del $link" || return $?;
+        fi;
+
+        cmd /c "mklink $mklink_opts $link $path";
+    else
+        ln -fs "$1" "$2";
+    fi;
+};
+
 git-install() {
     scm_install_cmd=(git clone);
     scm-install "$@";
@@ -94,7 +117,7 @@ for f in "${all_files[@]}"; do
     if [ -z "${ignored}" ]; then
         d="$(dirname "$f")";
         p="$(resolve-rel-depth "$f")";
-        ln -f -s "${p}${rc_dir}/$f" "${HOME}/${d}";
+        symlink "${p}${rc_dir}/$f" "${HOME}/${d}";
     fi;
 done;
 
@@ -131,7 +154,7 @@ hg-install lawrencium "$lawrencium_path" "$lawrencium_repo";
 
 if [[ $? = 0 ]]; then
     mkdir -p .vim/bundle &&
-            ln -fs "$lawrencium_path" .vim/bundle/lawrencium;
+            symlink "$lawrencium_path" .vim/bundle/lawrencium;
 fi;
 
 mercurial_path="$HOME/src/hg";
@@ -157,7 +180,7 @@ git-install vim-pathogen "$pathogen_path" "$pathogen_repo";
 
 if [[ $? = 0 ]]; then
     mkdir -p .vim/autoload &&
-            ln -fs "$pathogen_path/autoload/pathogen.vim" \
+            symlink "$pathogen_path/autoload/pathogen.vim" \
                     .vim/autoload/pathogen.vim;
 fi;
 
@@ -178,7 +201,7 @@ rakudobrew_repo='git://github.com/tadzik/rakudobrew.git';
 git-install rakudobrew "$rakudobrew_path" "$rakudobrew_repo";
 
 if [[ $? = 0 ]] && [[ ! -L ~/.rakudobrew ]]; then
-    ln -s src/rakudobrew ~/.rakudobrew;
+    symlink src/rakudobrew ~/.rakudobrew;
 fi;
 
 rbenv_path="$HOME/src/rbenv";
@@ -197,7 +220,7 @@ splice_repo='git://github.com/sjl/splice.vim.git';
 git-install splice "$splice_path" "$splice_repo";
 
 if [[ $? = 0 ]]; then
-    mkdir -p .vim/bundle && ln -fs "$splice_path" .vim/bundle/splice;
+    mkdir -p .vim/bundle && symlink "$splice_path" .vim/bundle/splice;
 fi;
 
 vim_colorschemes_path="$HOME/src/vim-colorschemes";
