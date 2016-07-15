@@ -5,6 +5,7 @@
     blog = log --decorate --graph @{u}..
     bmerged = branch --merged=master
     bdiverged = branch --no-merged=master
+    branch-remote = !git config "branch.${1:-$(git current)}.remote"
     changed = diff --name-only
     current = !git branch | grep '^\\*' | sed -e 's/^\\*\\?\\s*//g'
     detach = checkout --detach
