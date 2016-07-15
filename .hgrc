@@ -1,6 +1,6 @@
 [alias]
+abort-merge = !hg up -C && hg clean .hgconflicts glob:**.eof glob:**.orig
 active = branches --active
-all-releases = !hg branches --closed | grep -i release | sed -r "s/\s+[0-9]+:[0-9a-z]{12}(\s+.*|$)//" | sort
 aliases = !hg config alias | sed -re "s/^alias\.//" -e "s/^([^=]+)\s*=\s*/\1 = /" | less
 alog = log -GvT bam1
 ambu = !hg amend && hg backup
@@ -10,7 +10,10 @@ asyncupdatereleases = !start /min cmd /c "hg --config pager.attend= updatereleas
 authors=!hg log -T "{author}\n" | sort | uniq | sed -e "s/\s*\(\@\|<\).*//" -e "s/\./ /" | perl -pe "$_ = lc([split ' ', $_]->[0]) . qq/\n/" | awk "{print $1}" | sort | uniq
 author-stats=!@perl -E "sub mmmz { my $cmd = shift; open my $fh, '-|', $cmd or die $!; chomp(my @lines = <$fh>); close $fh or warn $!; return @lines; } my @authors = mmmz 'hg authors'; for my $author (@authors) { my ($num_commits) = mmmz qq/hg log -r \x{22}author('%f') and not merge()\x{22} -T \\n | wc -l/; my ($num_merges) = mmmz qq/hg log -r \x{22}author('%f') and merge()\x{22} -T \\n | wc -l/; my $ratio = $num_merges == 0 ? 0 : 1.0 - $num_commits / $num_merges; say qq/$author has $num_commits commits (+ $num_merges merges) [$ratio]/; }"
 author-stats-old = !for /f "tokens=*" %f in ('hg authors') do @for /f "tokens=*" %g in ('hg log -r "author('%f') and not merge()" -T \n ^| wc -l') do @for /f "tokens=*" %h in ('hg log -r "author('%f') and merge()" -T \n ^| wc -l') do @for /f "tokens=*" %i in ('hg log -r "author('%f') and heads(all()) and not branch(default)" -T \n ^| wc -l') do @echo %f has %g commits ^(+ %h merges, %i heads ^)
+cmd-echo = !echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
+cmd-print = !perl -E "say for @ARGV" "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
 evolve+ = evolve --all
+#b = !set break_=0 && for /l %i in (1,1,$1) do @(if !break_! == 0 hg previous --merge --move-bookmark || set break_=1) & set break_=
 b = !for /l %i in (1,1,$1) do @hg previous --merge --move-bookmark
 backward = !for /l %i in (1,1,$1) do @(hg previous --merge --move-bookmark || exit /b 1)
 backup = !hg for-bookmarks hg push backup -f --new-branch -r "all()"
@@ -32,25 +35,30 @@ branch-name = log -r "$1" -T "{branch}\n" -T bam1
 bsecret = log -Gvr "secret() and ::." -T bam1
 bu = backup
 clog = log -Gvr "0::p1()" -T bam1
-close = !for /f "tokens=*" %f in ('hg branch') do @hg commit --close-branch -em "(Empty commit) Closing branch %f" -X*
-commit-branch = !hg commit-branch-arg "$1" && hg commit-branch-arg "$2" && hg commit-branch-base "$1" && hg commit-branch-branch "$2" && hg is-clean 1>NUL && hg up "$1" && hg diff -wr "ancestor('$1','$2')::'$2'" && pause && hg merge "$2" && hg commit-branch-continue
+close = !for /f "tokens=*" %f in ('hg branch') do @hg integrating 1>NUL 2>NUL & if errorlevel 1 (hg commit --close-branch -em "(Empty commit) Closing branch %f" -X*) else (hg integrate-close)
+close-path = !for /f "tokens=*" %f in ('hg root') do @echo %f\.hg\.close.msg
+commit-branch = !hg commit-branch-arg "$1" && hg commit-branch-arg "$2" && hg commit-branch-base "$1" && hg commit-branch-branch "$2" && hg is-clean 1>NUL && hg up "$1" && hg commit-branch-summary && hg diff -wr "ancestor('$1','$2')::'$2'" && pause && hg merge "$2" && hg commit-branch-continue
+#commit-branch = !hg commit-branch-arg "$1" && hg commit-branch-arg "$2" && hg commit-branch-base "$1" && hg commit-branch-branch "$2" && hg is-clean 1>NUL && hg up "$1" && hg commit-branch-diff && pause && hg merge "$2" && hg commit-branch-continue
+commit-branch-abort = !hg commit-branch-done && hg up -C && hg clean
 commit-branch-arg = !if "x$1" == "x" (hg commit-branch-usage && exit /b 1)
 commit-branch-base = !hg property .commit-branch.base "$1"
 commit-branch-branch = !hg property .commit-branch.branch "$1"
-commit-branch-continue = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @hg commit-branch-continue-aux "%f" "%g" && hg commit-merge && hg up "%g" && hg close && hg up "%f" && hg commit-branch-done
+commit-branch-continue = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @hg commit-branch-continue-aux "%f" "%g" && hg commit-merge && hg up "'%g'" && hg close && hg up "'%f'" && hg commit-branch-done
 commit-branch-continue-aux = !if "x$1" == "x" (hg commit-branch-continue-error) else if "x$2" == "x" (hg commit-branch-continue-error)
 commit-branch-continue-error = !echo hg commit-branch-continue should only be run after merge conflicts in hg commit-branch. 1>&2 && exit /b 1
+commit-branch-diff = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @hg commit-branch-continue-aux "%f" "%g" && (echo Merging %g into %f && hg diff -wr "ancestor('%f','%g')::'%g'") | less
 commit-branch-done = !hg rm-property .commit-branch.base && hg rm-property .commit-branch.branch
 commit-branch-status = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @if "x%f" == "x" (hg commit-branch-status-none) else if "x%g" == "x" (hg commit-branch-status-none) else (echo Merging "%g" into $f.)
 commit-branch-status-none = echo No branch is being committed. 1>&2 && exit /b 1
+commit-branch-summary = !for /f "tokens=*" %f in ('hg commit-branch-base') do @for /f "tokens=*" %g in ('hg commit-branch-branch') do @hg commit-branch-continue-aux "%f" "%g" && hg log -r "%g" -T ".\n" | wc -l | grep "^1$" 1>NUL & if errorlevel 1 (echo Failed to identify the branch name for %g. 1>&2) else (for /f "tokens=*" %h in ('hg log -r "%g" -T "{branch}\n"') do @echo Merging "%h" into "%f" && pause)
 commit-branch-usage = !echo Usage: hg commit-branch BASE BRANCH 1>&2
 commit-merge = !for /f "tokens=*" %f in ('hg log -r "p1()" -T {branch}') do @for /f "tokens=*" %g in ('hg log -r "p2()" -T {branch}') do @for /f "tokens=*" %h in ('hg commit-merge-path') do @del "%h" & (if "x%f" == "x%g" (hg commit-merge-msg-upstream > "%h") else (hg commit-merge-msg-branch "%g" "%f" > "%h")) && hg commit -el "%h" && hg commit-merge-done
 #commit-merge = !for /f "tokens=*" %f in ('hg log -r "p1()" -T {branch}') do @for /f "tokens=*" %g in ('hg log -r "p2()" -T {branch}') do @(if "x%f" == "x%g" (hg commit -em "Merging with upstream.") else (hg commit -em "Merging branch '%g' into %f"))
 commit-merge-done = !del /s *.eof *.orig *.utf8 & for /f "tokens=*" %f in ('hg root') do @(if exist "%f\.hgconflicts" (move "%f\.hgconflicts" "%f\.hgconflicts.old") else (echo No conflicts file detected to retire. 1>&2))
-commit-merge-msg-branch = !echo Merging branch '$1' into $2&& echo.&& hg commit-merge-msg-conflicts && hg commit-diff-msg
+commit-merge-msg-branch = !perl -E "say qq/Merging branch '$ARGV[0]' into $ARGV[1]/" "$1" "$2"&& echo.&& hg commit-merge-msg-conflicts && hg commit-diff-msg
 commit-merge-msg-conflicts = !for /f "tokens=*" %f in ('hg root') do @if exist "%f\.hgconflicts" (echo Conflicts:&& echo.&& sed -e "s/^/    /" "%f/.hgconflicts") else (echo No conflicts.)
 commit-merge-msg-upstream = !echo Merging with upstream.&& echo.&& echo No conflicts.&& hg commit-diff-msg
-commit-merge-path = !for /f "tokens=*" %f in ('hg root') do @echo "%f\.hg\.commit-merge.msg"
+commit-merge-path = !for /f "tokens=*" %f in ('hg root') do @echo %f\.hg\.commit-merge.msg
 commit-diff = !for /f "tokens=*" %f in ('hg commit-diff-path') do @del /q "%f" 1>NUL 2>NUL & hg commit-diff-msg >"%f" && call hg commit -el "%f"
 commit-diff-msg = !echo.&& echo.&& hg diff | sed -e "s/^/HG: /"
 commit-diff-path = !for /f "tokens=*" %f in ('hg root') do @echo %f\.hg\.commit-diff.msg
@@ -63,14 +71,12 @@ current = log -r "current()"
 db-backup = tag -lf db-backup
 db-diff = diff -wr db-backup DbScripts/
 db-log = log -r "(db-backup::p1() or db-backup::p2()) - db-backup" -T bam1 DbScripts/
-debugshell = ~/src/hg/contrib/debugshell.py
 details = log -Gr "limit((draft() or secret()) and (::. or .::))::" -T bam3
 #details = log -Gr "limit(current())::" -T bam3
 diff-merge = diff -r p1($1)::$1
 diff-p2 = diff -r "p2($1)..$1"
 draft = log -Gvr "draft()" -T bam1
 econtinue = evolve --continue
-eunshelve = unshelve --continue
 hcontinue = histedit --continue
 local-tags = !hg tags --verbose | grep local$ | sed -e "s/\s*local$//"
 log.. = log -r "::$2 - ::$1" -T bam1
@@ -79,44 +85,51 @@ f = !for /l %i in (1,1,$1) do @hg next --merge --move-bookmark
 for-bookmarks = !hg bookmarks | sed -e "s/^\s*\*\?\s*//" -e "s/\s\+.*$//" -e "s/^/-B /" | xargs "$@"
 forward = !for /l %i in (1,1,$1) do @hg next --merge --move-bookmark
 glog = log -G
+hg = !hg "$@"
+hg-echo = !echo hg "$@"
 hidden = log --hidden -Gvr "hidden()" -T bam1
 html-diff = !hg-html-diff $@
 in = in -Gv
 inbranch = in upstream -b .
 instream = in upstream
 in-branches = !hg log -r "$1::heads(all())" -T {branch}\n | sort | uniq
-in-releases = !hg in-branches "$1" | grep -i release
 is-clean = !for /f "tokens=*" %f in ('hg diff 2^>^&1 ^| wc -c') do @(if not "x%f" == "x0" (echo Working tree is dirty! 1>&2 && exit /b 1))
 is-dirty = !for /f "tokens=*" %f in ('hg diff 2^>^&1 ^| wc -c') do @(if "x%f" == "x0" (echo Working tree is clean! 1>&2 && exit /b 1)
-ancestor-db-changesets = log -r "reverse(::p1() and file('DbScripts/*'))"
-last-db-changeset = log -r "limit(reverse(::p1() and file('DbScripts/*')))"
 len = !hg log -l 1 -T "{desc|firstline}" $@ | wc -c
+ls-property = !for /f "tokens=*" %f in ('hg root') do @dir /b "%f\.hg\bam-properties\"
 mdiff = diff -r "ancestor($1,.)::$1"
+#mktag = !(for /f "tokens=*" %f in ('hg bookmark ^| grep "^\*" ^| sed -e "s/^\*//"') do @set rev=%f&& echo Started at bookmark !rev!) & echo here2 & (if x!rev! == x (for /f "tokens=*" %f in ('hg branch') do @set rev=%f&& echo Started at branch !rev!) else (echo Already have rev: !rev! 1>&2)) & echo here1 && echo hg up tags && echo hg tag $@ && echo hg up "!rev!"
 mqdiff = diff -r qparent -r qtip
 mutate = evolve -Aa
-#my-branches = !hg log -r "head() and not closed()" -T {branch}\n -u brandon | sort | uniq
-my-branches = log -r "head() and not closed()" -k "(empty commit) begin branch" -T "{branch}\\n" -u brandon
+#my-branches = !hg log -r "not ::closed()" -T {branch}\n -u brandon | sort | uniq
+my-branches = log -r "not ::closed()" -k "(empty commit) begin branch" -T "{branch}\\n" -u brandon
 n = next --merge --move-bookmark
+named-branches = !hg branches "$@" | sed -e "s/\s\+[0-9]\+:[0-9a-f]\+\(\s\+(\(closed\|inactive\))\)\?$//"
 open = !hg --debug pull upstream -u && hg asyncupdaterelease
 open-releases = !hg --debug pull upstream -u && hg updaterelease
 out = out -Gv
 outbranch = out upstream -b .
 outstream = out upstream
 p = previous --merge --move-bookmark
+pb = alog -pb $1
 patches = log -Gpr "limit((draft() or secret()) and (::. or .::))::" -T bam3
 #patches = log -Gpr "limit(current())::" -T bam3
 patches-branch = log -Gpb. -T "{label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc}\n\n"
 #patches-branch = log -Gpb. -T bam3
 phase-log = log -G -T bam4
+pipe = !hg read && hg publish-local
 private = log -Gvr "draft() or secret()" -T bam1
 property = !hg property-aux && if "x$1" == "x" (echo Usage: hg property NAME [VALUE] 1>&2 && exit /b 1) else (for /f "tokens=*" %f in ('hg root') do @(if "x$2" == "x" (type "%f\.hg\bam-properties\$1") else (echo $2>"%f\.hg\bam-properties\$1")))
 property-aux = !for /f "tokens=*" %f in ('hg root') do @if not exist "%f\.hg\bam-properties\" (mkdir "%f\.hg\bam-properties\")
 public = log -Gvr "public()" -T bam1
 publish-any = !hg push upstream $@ & hg push local $@
 publish-any-branch = !hg push upstream --new-branch $@ & hg push local --new-branch $@
-publish-local = push local --new-branch -r "public()"
-publish-this = !hg publish-any -r .
-publish-this-branch = !hg publish-any-branch -r .
+publish-local = push local -f --new-branch -r "public()"
+publish-this = !hg publish-any -r "."
+publish-this-branch = !hg publish-any-branch -r "."
+publish-tip = !hg publish-any -r ".::"
+publish-tip-branch = !hg publish-any-branch -r ".::"
+pure-tags = !hg tags -v | grep -v /
 push-new-branch = push --new-branch
 qdiff = !hg --config diff.nobinary=True diff
 qlog = log -Gvr qbase::qtip -T bam1
@@ -125,11 +138,12 @@ rating = !hg diff --stat $@ && perl -Mstrict -Mwarnings -MData::Dumper -E "open 
 rc = !hg branches | sed -r "s/\s+[0-9]+:[0-9a-z]{12}(\s+.*|$)//" | grep -i "[0-9]\+\(\.[0-9]\+\)\+-rc[0-9]\+" | sort
 rcontinue = rebase --continue
 read = !hg --debug pull upstream && hg asyncupdaterelease
+readlog = !hg --debug pull upstream && hg asyncupdaterelease && hg alog
 read-releases = !hg --debug pull upstream && hg updaterelease
 real-rating = !hg diff $@ & perl -Mstrict -Mwarnings -MData::Dumper -E "open my $fh, '-|', qq/hg diff @ARGV 2>&1/ or die qq/failed to open pipe\n/; my ($deletions, $insertions) = (0) x 2; while(my $line = <$fh>) { ($line =~ /^diff/ or $line =~ m{^--- a/} or $line =~ m{^\+\+\+ b/}) and next; $line =~ /^-/ and $deletions += length($line) - 1; $line =~ /^\+/ and $insertions += length($line) - 1; } close $fh; if($? << 8) { print STDERR qq/failed to read diff. not a mercurial repo?\n/; exit($? << 8); } if($deletions == 0 && $insertions == 0) { print STDERR qq/working tree not dirty\n/; exit 1; } my $diff = $deletions - $insertions; say qq/characters saved: $diff/;" -- $@
 #rebase = !echo ERROR: Please try rebase-safe instead. && false
 rebase-safe = rebase --keep
-releases = !hg branches | grep -i release | sed -r "s/\s+[0-9]+:[0-9a-z]{12}(\s+.*|$)//" | grep -E "[0-9]+\.[0-9]+\.[0-9]+$" | sort
+release-merges = alog -r "branch('Release $1') and merge()"
 reflog = log -Gv --hidden -T bam1
 revert-all = revert --all --no-backup
 revert-hard = revert --no-backup
@@ -141,9 +155,10 @@ stats = log -Gr "limit((draft() or secret()) and (::. or .::))::" --stat -T bam3
 #push-backup = !hg phase -fdr "secret()" && hg push backup -f && hg phase -fsr "outgoing()"
 subject = log -r "reverse(limit((draft() or secret()) and (::. or .::))::)" -T bam5
 #subject = log -r "reverse(limit(current())::)" -T bam5
+ucontinue = unshelve --continue
+unstable = alog -r "unstable()"
 utf16diff = diff --confing extensions.utf16decodediff=~/src/hg-util/utf16decodediff.py
 updatebookmark = !hg up "$1" && hg up
-updatereleases = !perl -E "open my $fh, '-|', 'hg releases' or die qq/open pipe: $!/; chomp(my @releases = <$fh>); close $fh or warn qq/close pipe: $!/; for my $release (@releases) { my $version = (split ' ', $release)[-1]; print qq/$version ($release)\n/; system(qq/hg tag --force --local --rev \x{22}$release\x{22} \x{22}$version\x{22} | cat/); my ($status, $signal) = ($? << 8, $? & 127); if($signal) { kill $signal, $$; } if($status) { exit($status); } }"
 wip = log -Gr "limit((draft() or secret()) and (::. or .::))::" -T bam2
 #wip = current -GT bam2
 with-bookmarks = for-bookmarks hg
@@ -185,20 +200,20 @@ children =
 churn = 
 color = 
 convert = 
-debugshell = ~/src/hg/contrib/debugshell.py
-eol = 
+#eol =
 extdiff =
 evolve = ~/src/evolve-main/hgext/evolve.py
 fetch = 
 gpg = 
 graphlog = 
 #hgban = ~/src/hgban/hgban.py
-hggit =
+#hggit =
 hgk = 
 highlight = 
 histedit =
 inotify =
 #keyword = 
+killbom = ~/src/hg-killbom/killbom.py
 #largefiles =
 #mq =
 #mqext = ~/src/mqext
@@ -212,6 +227,7 @@ rebase =
 record = 
 relink = 
 remotebranches = ~/src/hg-remotebranches/hg_remotebranches.py
+#remotenames = ~/src/hgremotenames/remotenames.py
 schemes = 
 shelve =
 strip =
@@ -221,8 +237,13 @@ strip =
 transplant = 
 
 [hooks]
-pretxncommit.linelength = python:hg_util.hooks.pretxncommit_linelength
+#pretxncommit.linelength = python:hg_util.hooks.pretxncommit_linelength
 #pre-push.wip = python:hgutil.hooks.pre_push_wip
+
+[killbom]
+action = ignore
+extensions = utf-8 utf-16le utf-16be utf-32le utf-32be
+#maxsize = 1024
 
 [merge-tools]
 gitvimdiff.executable = gvimdiff
@@ -251,7 +272,7 @@ attend =
        branches, bsecret, cat, current, db-diff, db-log, details, diff,
        diff-merge, diff-p2, draft, export, flog, glog, grep, heads, help,
        hidden, in, inb, inbranch, incoming, ins, instream, last-db-changeset,
-       log, log.., mdiff, merge, mqdiff, my-branches, odiff, out, outb,
+       log, log.., mdiff, merge, mqdiff, my-branches, odiff, out, outb, pb,
        outbranch, outgoing, outstream, outs, parents, patches, patches-branch,
        pdiff, phase-log, private, public, qapplied, qdiff, qguard, qlog, qls,
        qseries, qunapplied, reflog, resolve, secret, shelve, stats, status,
@@ -265,13 +286,19 @@ pager = less
 
 [revsetalias]
 current = (draft() or secret()) and (::. or .::)
+mylast = limit(reverse(author(brandon) and not merge() and not closed()))
+mylastclose = limit(reverse(author(brandon) and closed()))
+mylastdraft = limit(reverse(author(brandon) and draft()))
+mylastmerge = limit(reverse(author(brandon) and merge()))
+mylastpublic = limit(reverse(author(brandon) and public()))
+mylastsecret = limit(reverse(author(brandon) and secret()))
 
 [server]
 validate = true
 
 [templates]
 #bam1 = revs: {p1rev} <- {label('changeset.{phase}', '{rev}')} {ifeq(\'{p2rev}\', -1, \'\', \'-> {p2rev}\')}\nnodes: {p1node} <- {label('changeset.{phase}', '{node}')} {ifeq(\'{p2rev}\', -1, \'\', \'-> {p2node}\')}\nnames: {label('branchname.x', '{branch}')}{if('{bookmarks}', '{bookmarks}' % ' "{bookmark}"')}{if('{tags}', '{tags}' % ' "{tag}"')}{if('{remotebranches}', '{remotebranches}' % ' "{remotebranch}"')}\nmetadata: "{author|user}" "{date|isodate}"\n\n{indent('{desc}', '  ')}\n\n
-bam1 = revs: {p1rev} <- {label('changeset.{phase}', '{rev}')} {ifeq('{p2rev}', -1, '', '-> {p2rev}')}\nnodes: {p1node|short} <- {label('changeset.{phase}', '{node|short}')} {ifeq('{p2rev}', -1, '', '-> {p2node|short}')}\nnames: {label('branchname.x', '{branch}')}{if('{bookmarks}', '{bookmarks}' % ' "{bookmark}"')}{if('{tags}', '{tags}' % ' "{tag}"')}{if('{remotebranches}', '{remotebranches}' % ' "{remotebranch}"')}\nmetadata: "{author}" "{date|isodate}"\n\n{indent('{desc}', '  ')}\n\n
+bam1 = revs: {p1rev} <- {label('changeset.{phase}', '{rev}')} {ifeq('{p2rev}', -1, '', '-> {p2rev}')}\nnodes: {p1node|short} <- {label('changeset.{phase}', '{node|short}')} {ifeq('{p2rev}', -1, '', '-> {p2node|short}')}\nnames: {label('branchname.x', '{branch}')}{if('{bookmarks}', ' {bookmarks}' % '"{bookmark}"')}{if('{tags}', ' {tags}' % '"{tag}"')}{if('{remotebranches}', ' {remotebranches}' % '"{remotebranch}"')}\nmetadata: "{author}" "{date|isodate}"\n\n{indent('{desc}', '  ')}\n\n
 bam2 = {label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc|firstline}\n\n
 bam3 = {label('changeset.{phase}', rev)} {label('changeset.{phase}', node|short)} {date|isodate} {branch} {author} {bookmarks} {tags} {label('changeset.{phase}', phase)}\n{desc}\n\n
 bam4 = [{branch}] {label('changeset.{phase}', node|short)} {label('changeset.{phase}', phase)} {desc|firstline}\n
@@ -291,6 +318,5 @@ username = Brandon McCaig <bamccaig@gmail.com>
 
 %include .hgrc.bitbucket
 %include .hgrc.override
-%include .hgrc.scmman
 
 # vim: nocin tw=0 wrap
