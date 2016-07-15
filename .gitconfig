@@ -46,9 +46,9 @@
 [diff]
     #renames = true
     renames = copy
-    tool = vimdiff
+    tool = meld
 [difftool]
-    prompt = false
+    prompt = true
 [gc]
    pruneExpire = 6 months
    reflogExpire = never
@@ -61,6 +61,9 @@
 [merge]
     ff = false
     log = 1000
+    tool = meld
+[mergetool]
+    prompt = true
 [pretty]
     subject = %s
     body = %B
