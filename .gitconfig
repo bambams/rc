@@ -16,7 +16,7 @@
     lol = log --all --decorate --graph --oneline
     ncommit = commit --no-edit
     noff = merge --no-ff
-    reup = pull --rebase
+    reup = !git pull --rebase "$(git branch-remote)" \"$(git current)\"
     revert-tree = checkout -- .
     reup = !git current | xargs git rebase origin
     reword = commit --amend --edit --only
