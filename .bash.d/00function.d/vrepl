@@ -1,0 +1,16 @@
+# vim: ft=sh
+
+vrepl() {
+    if [[ -z $LISP_FILE ]]; then
+        read -p "Enter a value for LISP_FILE (Enter to quit): " LISP_FILE;
+    fi;
+
+    if [[ -z $LISP_FILE ]]; then
+        return 1;
+    fi;
+
+    while true; do
+        "${EDITOR:-vi}" "$LISP_FILE" || return $?;
+        clisp -repl "$LISP_FILE" || return $?;
+    done;
+}
