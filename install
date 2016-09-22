@@ -223,6 +223,15 @@ if [[ $? = 0 ]]; then
     mkdir -p .vim/bundle && symlink "$splice_path" .vim/bundle/splice;
 fi;
 
+vinfo_path="$HOME/src/vinfo";
+vinfo_repo='git://github.com/alx741/vinfo.git';
+
+git-install 'Vinfo' "$vinfo_path" "$vinfo_repo";
+
+if [[ $? = 0 ]]; then
+    mkdir -p .vim/bundle && ln -fs "$vinfo_path" .vim/bundle/vinfo;
+fi;
+
 vim_colorschemes_path="$HOME/src/vim-colorschemes";
 vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
 
