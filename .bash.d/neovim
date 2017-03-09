@@ -1,0 +1,14 @@
+if [[ ! -d "$HOME/opt/neovim/bin" ]]; then
+    return;
+fi;
+
+if [[ -z $PATH ]]; then
+    export PATH="$HOME/opt/neovim/bin";
+else
+    export PATH="$PATH:$HOME/opt/neovim/bin";
+fi
+
+if [[ ! -f "$HOME/.config/nvim/init.vim" ]]; then
+    mkdir -p "$HOME/.config/nvim";
+    ln -s ~/.vimrc "$HOME/.config/nvim/init.vim";
+fi;
