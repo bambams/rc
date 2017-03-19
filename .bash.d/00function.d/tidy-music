@@ -1,0 +1,45 @@
+tidy-music() {
+    find ~/music ~/Music -type f \( -name '*.ogg' \) 2>/dev/null | perl -E '
+            use Data::Dump qw/dd/;
+            use File::Basename qw/dirname/;
+            use File::Copy qw/mv/;
+            use File::Path qw/make_path/;
+
+            my %files;
+
+            while (my $line = <STDIN>) {
+                chomp $line;
+
+                my $key = tidy_path($line);
+
+                push @{$files{$key}}, $line;
+            }
+
+            for my $key (sort { $a cmp $b } keys %files) {
+                for my $path (@{$files{$key}}) {
+                    next if $path eq $key;
+
+                    if (grep /^-f|--force$/, @ARGV) {
+                        if (-f "$key") {
+                            say "UNLINK: $path ($key)";
+
+                            unlink $path or die "unlink $path: $!";
+                        } else {
+                            my $dir = dirname($key);
+                            make_path($dir);
+                            mv($path, $key) or die "mv $path, $key: $!";
+                        }
+                    } else {
+                        say "DRY-RUN: $path => $key";
+                    }
+                }
+            }
+
+            sub tidy_path {
+                my $path = shift;
+                $path =~ s/[-_\s]+/-/g;
+                $path =~ tr/A-Z/a-z/;
+                return $path;
+            }
+            ' -- "$@";
+}
