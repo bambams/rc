@@ -1,6 +1,10 @@
 free-the-music() {
     while read f; do
-        local o="$(echo "$f" | perl -pe 's/\.[^.]+$/.ogg/')";
+        local o="${f/%.???/.ogg}";
+
+        if [[ ! -z $MUSIC_DIR_FREE ]] && [[ ! -z $MUSIC_DIR_NONFREE ]]; then
+            o="${o/$MUSIC_DIR_NONFREE/$MUSIC_DIR_FREE}";
+        fi;
 
         if [[ -f "$o" ]]; then
             echo "ok  $o";
