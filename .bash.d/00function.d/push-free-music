@@ -1,0 +1,11 @@
+push-free-music() {
+    local dir="$HOME/music";
+
+    if [[ ! -z $FREE_MUSIC_DIR ]]; then
+        dir="$FREE_MUSIC_DIR";
+    elif [[ ! -d $dir ]]; then
+        dir="$HOME/Music";
+    fi;
+
+    rsync -cr --progress castopulence.org:music/free/ "$dir/";
+}

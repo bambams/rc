@@ -1,5 +1,7 @@
 tidy-music() {
-    find ~/music ~/Music -type f \( -name '*.ogg' \) 2>/dev/null | perl -E '
+    find ~/music ~/Music "$MUSIC_DIR_FREE" "$MUSIC_DIR_NONFREE" \
+            -type f \( -name '*.m4a' -o -name '*.mp3' -o -name '*.ogg' \) 2>/dev/null \
+            | perl -E '
             use Data::Dump qw/dd/;
             use File::Basename qw/dirname/;
             use File::Copy qw/mv/;

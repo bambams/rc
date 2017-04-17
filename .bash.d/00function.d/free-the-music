@@ -6,13 +6,22 @@ free-the-music() {
             o="${o/$MUSIC_DIR_NONFREE/$MUSIC_DIR_FREE}";
         fi;
 
+        local d="$(dirname "$o")";
+
+        if [[ -d $d ]]; then
+            echo "ok: $d";
+        else
+            echo mkdir "<<$d>>";
+            mkdir -p "$d" || return $?;
+        fi;
+
         if [[ -f "$o" ]]; then
             echo "ok  $o";
         else
             echo "ogg $o";
             </dev/null ffmpeg -i "$f" "$o";
         fi;
-    done < <(find "$HOME/music" "$HOME/Music" \
+    done < <(find "$HOME/music" "$HOME/Music" "$MUSIC_DIR_NONFREE" \
                 -name '*.m4a' -o \
                 -name '*.mp4');
 };

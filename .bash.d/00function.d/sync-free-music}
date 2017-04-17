@@ -1,0 +1,3 @@
+sync-free-music() {
+    fetch-free-music && push-free-music;
+}
