@@ -27,6 +27,8 @@
     update = pull --ff --ff-only
     wip = log --no-decorate --graph --oneline @{u}..
     wipd = log --decorate --graph --online @{u}..
+    dot = commit -am ...
+    dot-push = !git commit -am ... && git push
 [apply]
     #whitespace = error-all
     #whitespace = error
