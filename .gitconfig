@@ -29,6 +29,13 @@
     wipd = log --decorate --graph --online @{u}..
     dot = commit -am ...
     dot-push = !git commit -am ... && git push
+    auto-rebase = !git -c core.editor=true rebase -i @{u}
+    ff-branch = !git fetch origin "$1:$1"
+    clean-orig = clean -f *.orig
+    first-push = !git current | xargs -I? git push -u origin ?:?
+    original-commit = show rebase-apply/original-commit
+    tag-release = "!git tag -f \"$1\" \"${2:-HEAD}\" && git push -f origin \"refs/tags/$1\" #"
+    deleted-views = "!git -c diff.renameLimit=999999 log --all --diff-filter=D --summary \"${1:-HEAD~}..${2:-HEAD}\" | grep delete | egrep '([^./]+\\.[^./]+)\\.cshtml$' | sed -re 's/^\\s*delete mode 100644 //' | sort | uniq #"
 [apply]
     #whitespace = error-all
     #whitespace = error
