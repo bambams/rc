@@ -16,8 +16,7 @@ mkscreen -- hgsh bash
 mkscreen -- imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
 mkscreen -- irc /usr/bin/irssi
 mkscreen -- lfs /usr/bin/elinks http://www.linuxfromscratch.org/
-mkscreen -- lyvi lyvi
-mkscreen -- lyvi lyvi
+mkscreen -- lyvi lyvi-wrapper
 mkscreen -- man-adom /usr/bin/view /usr/share/doc/adom/manual.doc
 mkscreen -- moose perldoc Moose::Manual
 mkscreen -- moose-more perldoc Moose::Manual::Classes
