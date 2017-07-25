@@ -7,5 +7,5 @@ fetch-free-music() {
         dir="$HOME/Music";
     fi;
 
-    rsync -cr --progress "$dir/" castopulence.org:music/free/;
+    rsync -cr --progress castopulence.org:music/free/ "$dir/";
 }
