@@ -38,6 +38,7 @@ endif
 " Fileformats
 """""""""""""""""""""""""""""""""""""""""""
 " Favorite filetypes.
+set enc=utf-8
 set ffs=unix,dos,mac
 set fencs=ucs-bom,utf-8,latin-1
 
