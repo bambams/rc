@@ -38,8 +38,8 @@ endif
 " Fileformats
 """""""""""""""""""""""""""""""""""""""""""
 " Favorite filetypes.
-set enc=utf-8
 set ffs=unix,dos,mac
+set enc=utf-8
 set fencs=ucs-bom,utf-8,latin-1
 
 " Default file type is UTF-8.
@@ -254,7 +254,7 @@ endif
 " Automatic commands.
 """""""""""""""""""
 
-noremap <C-X> :call StripPatchMarkers()<CR>
+"noremap <C-X> :call StripPatchMarkers()<CR>
 
 autocmd FileType aspvbs setlocal ic tw=0|
            \ noremap ,, s" & vbNewline & _<CR>"   <ESC>|
@@ -277,9 +277,10 @@ autocmd FileType diff
             \ nnoremap ,. :s/^ /-/e<CR>:nohl<CR>jzz|
             \ nnoremap ,c :call DiffColor()<CR>
 
-autocmd FileType gitcommit setlocal fo+=a noai nocin nosi tw=72|
+autocmd FileType gitcommit setlocal fo-=a noai nocin nosi tw=72|
             \ noremap ,, :setlocal fo+=a<CR>|
-            \ noremap ,. :setlocal fo-=a<CR>
+            \ noremap ,. :setlocal fo-=a<CR>|
+            \ setlocal comments+=b:\|
 
 autocmd FileType hgcommit setlocal fo+=a noai nocin nosi tw=72|
             \ setlocal comments+=b:HG:|
@@ -296,6 +297,10 @@ autocmd FileType mail
             \ noremap ,s :w<CR>:! swap-sigs.pl %<CR>
             \         :edit +set\ ft=mail<CR>|
             \ noremap ,x :.,$g/^>/d<CR>
+
+" Hacks: source a template for batch scripts.
+autocmd BufNewFile *.bat r ~/.vim/templates/cmd| normal ggVdGo
+autocmd BufNewFile *.cmd r ~/.vim/templates/cmd| normal ggVdGo
 
 " h4x: Google uses 2 space indentation and I'm trying to work on their
 " Python tutorial.
@@ -349,10 +354,10 @@ function! HgTopBranch()
             \ perl -nE "/(.*) [0-9]+:[a-f0-9]{12}$/ and print qq/$1\n/"
 endfunction
 
-function! StripPatchMarkers()
-    :'<,'>s/^+//e
-    :'<,'>s///e
-endfunction
+"function! StripPatchMarkers()
+"    :'<,'>s/^+//e
+"    :'<,'>s///e
+"endfunction
 
 """""""""""""""""""""""""""
 " h4x: Background coloring.
@@ -362,4 +367,4 @@ set background=dark
 """"""""""""""""""""""""""
 " Activate pathogen.
 """"""""""""""""""""""""""
-execute pathogen#infect()
+"execute pathogen#infect()

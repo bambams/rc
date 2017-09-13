@@ -320,3 +320,4 @@ username = Brandon McCaig <bamccaig@gmail.com>
 %include .hgrc.override
 
 # vim: nocin tw=0 wrap
+ignore=

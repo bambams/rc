@@ -29,10 +29,19 @@
     wipd = log --decorate --graph --online @{u}..
     dot = commit -am ...
     dot-push = !git commit -am ... && git push
+    integrate = !git-integrate.cmd
+    fuzzy = !git-fuzzy.cmd
+    fuzzy-cmd = !git-fuzzy-cmd.cmd
+    echo = !echo
+    fuzzy-checkout = !git-fuzzy-checkout.cmd
+    fuzzy-delete = !git-fuzzy-delete.cmd
     auto-rebase = !git -c core.editor=true rebase -i @{u}
     ff-branch = !git fetch origin "$1:$1"
     clean-orig = clean -f *.orig
+    unknown-find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    unknown-show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
     first-push = !git current | xargs -I? git push -u origin ?:?
+    fuzzy-archive = !git-fuzzy-archive.cmd
     original-commit = show rebase-apply/original-commit
     tag-release = "!git tag -f \"$1\" \"${2:-HEAD}\" && git push -f origin \"refs/tags/$1\" #"
     deleted-views = "!git -c diff.renameLimit=999999 log --all --diff-filter=D --summary \"${1:-HEAD~}..${2:-HEAD}\" | grep delete | egrep '([^./]+\\.[^./]+)\\.cshtml$' | sed -re 's/^\\s*delete mode 100644 //' | sort | uniq #"
@@ -49,31 +58,34 @@
 [core]
     #autocrlf = true
     autocrlf = input
+    commentChar = |
     filemode = false
     #safecrlf = warn
     logAllRefUpdates = true
+    ignoreCase = true
     #whitespace=space-before-tab,tab-in-indent,tab-width=4,trailing-space
 [diff]
     #renames = true
     renames = copy
-    tool = meld
+    tool = vimdiff
 [difftool]
     prompt = true
 [gc]
    pruneExpire = 6 months
    reflogExpire = never
    reflogexpireUnreachable = never
-   rerereresolved = forever
-   rerereunresolved = forever
+   rerereresolved = 365
+   rerereunresolved = 365
 [log]
     decorate = short
     #showroot = true
 [merge]
     ff = false
     log = 1000
-    tool = meld
+    tool = vimdiff
+    conflictstyle = diff3
 [mergetool]
-    prompt = true
+    prompt = false
 [pretty]
     subject = %s
     body = %B
@@ -89,4 +101,5 @@
     name = "Brandon McCaig"
     email = "bamccaig@gmail.com"
 [credential]
-	helper = cache --timeout=3600
+    helper = manager
+    #helper = cache --timeout=3600
