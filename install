@@ -238,6 +238,11 @@ vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
 git-install 'Vim Color Schemes' \
         "$vim_colorschemes_path" "$vim_colorschemes_repo";
 
+vim_ps1_path="$HOME/src/vim-ps1";
+vim_ps1_repo='https://github.com/PProvost/vim-ps1.git';
+
+git-install 'Vim Powershell Plugin' "$vim_ps1_path" "$vim_ps1_repo";
+
 ruby_depends=(autoconf bison build-essential libssl-dev libyaml-dev
         libreadline6-dev zlib1g-dev libncurses5-dev
         libffi-dev libgdbm3 libgdbm-dev);
