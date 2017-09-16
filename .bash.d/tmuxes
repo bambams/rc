@@ -2,4 +2,5 @@ mktmux -- full-cs /bin/bash -c '"tmux source-file ~/.tmux/session.d/full-cs"'
 mktmux -- social /bin/bash -c '"tmux source-file ~/.tmux/session.d/social"'
 mktmux -- py /bin/bash -c '"tmux source-file ~/.tmux/session.d/py"'
 mktmux -- scratch /bin/bash -c '"tmux source-file ~/.tmux/session.d/scratch"'
+mktmux -- bax /bin/bash -c '"tmux source-file ~/.tmux/session.d/bax"'
 alias hgdev=py

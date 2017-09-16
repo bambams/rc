@@ -1,0 +1,11 @@
+if [[ -z $ANDROID_STUDIO_PATH ]] && [[ -d "$HOME/opt/android-studio" ]]; then
+    export ANDROID_STUDIO_PATH="$HOME/opt/android-studio";
+fi;
+
+if [[ ! -z $ANDROID_STUDIO_PATH ]]; then
+    if [[ -z $PATH ]]; then
+        export PATH="$ANDROID_STUDIO_PATH/bin";
+    else
+        export PATH="$ANDROID_STUDIO_PATH/bin:$PATH";
+    fi;
+fi;

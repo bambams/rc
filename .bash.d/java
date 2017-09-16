@@ -1,0 +1,7 @@
+if [[ ! -z $JDK_HOME ]]; then
+    if [[ -z $PATH ]]; then
+        export PATH="$JDK_HOME/bin";
+    else
+        export PATH="$JDK_HOME/bin:$PATH";
+    fi;
+fi;

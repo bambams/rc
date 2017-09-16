@@ -4,8 +4,10 @@
 alias aptitude='/usr/bin/aptitude -P'
 alias cb='/usr/bin/xclip -selection clipboard'
 alias cp='/bin/cp -i'
+alias emacs='emacs -nw'
 alias flashpids="(ps aux | grep npviewer.bin | grep -v grep | awk '{print \$2}' ; ps aux | grep flashplayer | grep -v grep | awk '{print \$2}') | xargs"
 alias fortune='fortune -ac'
+alias gemacs='emacs'
 alias iperl="/usr/bin/perl -Mstrict -Mwarnings -MData::Dumper <<-'EOF'"
 alias less='/usr/bin/less -S'
 alias mosh-cs='/usr/bin/mosh bambams@castopulence.org'
