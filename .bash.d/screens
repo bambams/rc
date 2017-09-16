@@ -9,6 +9,7 @@ mkscreen -- critic perldoc Perl::Critic
 mkscreen -- curses perldoc Curses::UI
 mkscreen -- dwarves dwarves
 mkscreen -- elinks /usr/bin/elinks
+mkscreen -- emacs emacs -nw
 mkscreen -- fetch-loop fetch-loop
 mkscreen -- ghci ghci
 mkscreen -- hello-server script/hello_catalyst_server.pl --host 127.0.0.1 -r
