@@ -29,7 +29,7 @@ tidy-music() {
                         } else {
                             my $dir = dirname($key);
                             make_path($dir);
-                            mv($path, $key) or die "mv $path, $key: $!";
+                            mv($path, $key) or warn "mv $path, $key: $!";
                         }
                     } else {
                         say "DRY-RUN: $path => $key";
