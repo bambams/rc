@@ -1,0 +1,267 @@
+# Basics.
+set realname = "Brandon McCaig"
+set from = bamccaig@gmail.com
+set use_from = yes
+set envelope_from = yes
+set signature = ~/.signature
+set sendmail = /usr/bin/msmtp
+
+# Other addresses.
+set reverse_name = yes
+alternates ^bambams@castopulence\.(com|org)$ ^bamccaig@ ^brandon.mccaig@
+
+# Directories.
+set spoolfile = ~/Maildir
+set folder = ~/Maildir
+set record = +sent
+set postponed = +postponed
+set mbox_type = Maildir
+set move=no
+
+# Mailboxes to watch.
+mailboxes !
+#mailboxes +allegro5
+#mailboxes +alleg-bugs
+#mailboxes +alleg-developers
+#mailboxes +arch-announce
+mailboxes +archive
+#mailboxes +bitbucket-issues
+#mailboxes +catalyst
+#mailboxes +community-living-algoma
+#mailboxes +corenetworks
+mailboxes +cpan-pr-challenge
+#mailboxes +cmus-devel
+#mailboxes +dactyl
+mailboxes +debian-security
+mailboxes +duplicates
+#mailboxes +ecl
+#mailboxes +fedora-admin
+#mailboxes +fedora-dev-annc
+#mailboxes +fedora-pkg
+#mailboxes +fedora-pkg-rev
+#mailboxes +gameservers
+mailboxes +gentoo-announce
+mailboxes +gentoo-user
+#mailboxes +geshi-users
+#mailboxes +git
+#mailboxes +git-hub
+mailboxes +gnuplot-info
+#mailboxes +google-chat
+#mailboxes +google-plus
+mailboxes +green-party
+mailboxes +gwrra
+#mailboxes +humble-bundle
+#mailboxes +irssi-users
+mailboxes +leadnow
+mailboxes +libreplanet-ca-on
+mailboxes +mercurial
+mailboxes +mercurial-bugs
+mailboxes +mercurial-devel
+#mailboxes +mutt-users
+mailboxes +netflix
+mailboxes +oanda
+mailboxes +openmedia
+mailboxes +perl6-users
+mailboxes +perl-beginners
+mailboxes +perl-jobs
+mailboxes +perl-moose
+mailboxes +perl-xs
+#mailboxes +pof
+mailboxes +python
+mailboxes +python-tutor
+mailboxes +rbb
+mailboxes +sent
+#mailboxes +slrn-user
+#mailboxes +stembot
+mailboxes +template
+mailboxes +tenaris
+mailboxes +texhax
+mailboxes +toronto-pm
+#mailboxes +travis-ci
+mailboxes +youtube
+set sort_browser = alpha
+
+# Headers.
+my_hdr X-PGP-Key: https://castopulence.org/bamccaig/castopulence.asc
+ignore *
+unignore Date: From: User-Agent: X-Mailer X-Operating-System TO: \
+         Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
+hdr_order Date: From: User-Agent: X-Mailer X-Operating-System TO: \
+          Cc: Reply-To: Subject: Mail-Followup-To: User-Agent:
+
+# Editor.
+set editor = vim
+set edit_headers = yes
+
+# Macros.
+macro pager \t '<next-unread>'
+macro index,pager G '<shell-escape> fetchmail<enter>'
+macro index,pager p '<search-opposite>'
+
+# Aliases.
+set alias_file = ~/.mutt/aliases
+source ~/.mutt/aliases
+set sort_alias = alias
+
+# Colors.
+source ~/.mutt/colors
+
+# Lists.
+set followup_to = yes
+set honor_followup_to = yes
+lists ^allegro5@
+lists ^alleg-developers@
+lists ^allegro-developers@
+lists ^beginners@perl\\.org$
+lists ^catalyst@lists\\.scsys\\.co\\.uk$
+lists ^cmus-devel@lists\\.sourceforge\\.net$
+lists ^cmus@noreply\\.github\\.com$
+lists ^challenge@cpan-prc\\.org$
+lists ^cpan-pr-challenge@googlegroups\\.com$
+lists ^collaboration@rbbinnovations\\.com$
+lists ^debian-security-announce@debian\\.org$
+lists ^devel-announce@lists\\.fedoraproject\\.org$
+lists ^ecls-list@lists\\.sourceforge\\.net$
+lists ^gentoo-announce@lists\\.gentoo\\.org$
+lists ^gentoo-user@lists\\.gentoo\\.org$
+lists ^geshi-users@lists\\.sourceforge\\.net$
+lists ^git@vger\\.kernel\\.org$
+lists ^gnuplot-info@lists\\.sourceforge\\.net$
+lists ^hackday@rbbinnovations\\.com$
+lists ^irssi-users@dragoncat\\.net$
+lists ^libreplanet-ca-on@libreplanet\\.org$
+lists ^mercurial@selenic\\.com$
+lists ^mercurial@mercurial-scm\\.org$
+lists ^mercurial-bugs@selenic\\.com$
+lists ^mercurial-bugs@mercurial-scm\\.org$
+lists ^mercurial-devel@selenic\\.com$
+lists ^mercurial-devel@mercurial\\.com$
+lists ^moose@perl\\.org$
+lists ^mutt-users@mutt\\.org$
+lists ^package-review@lists\\.fedoraproject\\.org$
+lists ^packaging@lists\\.fedoraproject\\.org$
+lists ^pentadactyl@googlegroups\\.com$
+lists ^perl6-users@perl\\.org$
+lists ^perl-xs@perl\\.org$
+lists ^python-list@python\\.org$
+lists ^slrn-user@
+lists ^templates@template-toolkit\\.org$
+lists ^texhax@tug\\.org$
+lists ^toronto-pm@pm\\.org$
+lists ^tpm@to\\.pm\\.org$
+lists ^tutor@python\\.org$
+subscribe allegro5
+subscribe alleg-developers
+subscribe beginners
+subscribe catalyst
+subscribe collaboration
+subscribe cpan-pr-challenge
+subscribe challenge@cpan-prc\\.org
+subscribe cmus-devel
+subscribe debian-security-announce
+subscribe devel-announce
+subscribe ecl
+subscribe gentoo-announce
+subscribe gentoo-user
+subscribe geshi-users
+subscribe git
+subscribe gnuplot-info
+subscribe hackday
+subscribe irssi-users
+subscribe libreplanet-ca-on
+subscribe mercurial
+subscribe mercurial-bugs
+subscribe mercurial-devel
+subscribe moose
+subscribe mutt-users
+subscribe package-review
+subscribe packaging
+subscribe pentadactyl
+subscribe perl6-users
+subscribe perl-xs
+subscribe python-list@python\\.org
+subscribe slrn-user
+subscribe template
+subscribe texhax
+subscribe toronto-pm
+subscribe tutor@python\\.org
+fcc-hook ^allegro5@noreply\\.github\\.com$ +allegro5
+fcc-hook ^alleg-developers@ +alleg-developers
+fcc-hook ^allegro-developers@gna\\.org$ +alleg-developers
+fcc-hook ^beginners@perl\\.org$ +perl-beginners
+fcc-hook ^catalyst@lists\\.scsys\\.co\\.uk$ +catalyst
+fcc-hook ^cmus-devel@lists\\.sourceforge\\.net$ +cmus-devel
+fcc-hook ^collaboartion@rbbinnovations\\.com$ +rbb-collab
+fcc-hook ^challenge@cpan-prc\\.org$ +cpan-pr-challenge
+fcc-hook ^cpan-pr-challenge@googlegroups\\.com$ +cpan-pr-challenge
+fcc-hook ^ecls-list@lists\\.sourceforge\\.net$ +ecl
+fcc-hook ^gentoo-announce@lists\\.gentoo\\.org$ +gentoo-announce
+fcc-hook ^gentoo-user@lists\\.gentoo\\.org$ +gentoo-user
+fcc-hook ^geshi-users@lists\\.sourceforge\\.net$ +geshi-users
+fcc-hook ^git@vger\\.kernel\\.org$ +git
+fcc-hook ^gnuplot-info@lists\\.sourceforge\\.net$ +gnuplot-info
+fcc-hook ^hackday@rbbinnovations\\.com$ +rbb-hackday
+fcc-hook ^irssi-users@dragoncat\\.net$ +irssi-users
+fcc-hook ^libreplanet-ca-on@libreplanet\\.org$ +libreplanet-ca-on
+fcc-hook ^mutt-users@mutt\\.org$ +mutt-users
+fcc-hook ^mercurial@selenic\\.com$ +mercurial
+fcc-hook ^mercurial@mercurial-scm\\.org$ +mercurial
+fcc-hook ^mercurial-bugs@selenic\\.com$ +mercurial-bugs
+fcc-hook ^mercurial-bugs@mercurial-scm\\.org$ +mercurial-bugs
+fcc-hook ^mercurial-devel@selenic\\.com$ +mercurial-devel
+fcc-hook ^mercurial-devel@mercurial-scm\\.org$ +mercurial-devel
+fcc-hook ^moose@perl\\.org$ +perl-moose
+fcc-hook ^package-review@lists\\.fedoraproject\\.org$ +fedora-pkg-rev
+fcc-hook ^packaging@lists\\.fedoraproject\\.org$ +fedora-pkg
+fcc-hook ^pentadactyl@googlegroups\\.com$ +dactyl
+fcc-hook ^perl6-users@perl\\.org$ +perl6-users
+fcc-hook ^perl-xs@perl\\.org$ +perl-xs
+fcc-hook ^python-list@python\\.org$ +python
+fcc-hook ^tutor@python\\.org$ +python-tutor
+fcc-hook ^slrn-user@ +slrn
+fcc-hook ^templates@template-toolkit\\.org$ +template
+fcc-hook ^texhax@tug\\.org$ +texhax
+fcc-hook ^toronto-pm@pm\\.org$ +toronto-pm
+fcc-hook ^tpm@to\\.pm\\.org$ +toronto-pm
+
+# Sorting.
+set sort = threads
+#set sort_browser = reverse-date
+set sort_aux = last-date-received
+
+# GPG/PGP.
+# http://codesorcery.net/old/mutt/mutt-gnupg-howto
+# Wait, what do you mean, "old?"
+set pgp_decode_command = "/usr/bin/gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command = "/usr/bin/gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command = "/usr/bin/gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command = "/usr/bin/gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command = "/usr/bin/gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command = "/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0x22E593F2 -- -r %r -- %f"
+#set pgp_encrypt_only_command = "/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to -- -r %r -- %f"
+set pgp_encrypt_sign_command = "/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x22E593F2 -- -r %r -- %f"
+#set pgp_encrypt_sign_command = "/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to -- -r %r -- %f"
+set pgp_import_command = "/usr/bin/gpg --no-verbose --import -v %f"
+set pgp_export_command = "/usr/bin/gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command = "/usr/bin/gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command = "/usr/bin/gpg --no-verbose --batch --with-colons --list-keys %r" 
+set pgp_list_secring_command = "/usr/bin/gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set pgp_autosign = yes
+set pgp_sign_as = 0x22E593F2
+set pgp_replyencrypt = yes
+set pgp_timeout = 1800
+set pgp_good_sign = "^gpg: Good signature from"
+
+# Misc.
+set attach_format = "%u%D%I %t%4n %T%.150d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+set mark_old = no
+set markers
+set send_charset = utf-8
+set smart_wrap
+set pager_context = 5
+set pager_format="-%Z- %C/%m %e/%E %D %.20F <%.20a>   %s%*  -- (%P)"
+set pager_index_lines = 8
+set pager_stop = yes
+set status_on_top
+push <show-version>
+
