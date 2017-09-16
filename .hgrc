@@ -203,6 +203,7 @@ convert =
 #eol =
 extdiff =
 evolve =
+#evolve = ~/src/evolve-main/hgext/evolve.py
 fetch = 
 gpg = 
 graphlog = 
@@ -282,7 +283,7 @@ attend =
 pager = less
 
 [phases]
-#new-commit = secret
+new-commit = secret
 
 [revsetalias]
 current = (draft() or secret()) and (::. or .::)
