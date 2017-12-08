@@ -221,6 +221,14 @@ perl-xs
 perl-$MATCH
 
 :0:
+* ^FROM.*@unknown.email
+* ^SUBJECT.*Call from
+| formail -i 'Status: R'
+
+:0 A:
+phone
+
+:0:
 * ^FROM.*@playstation\.sony\.com
 playstation
 
@@ -264,6 +272,14 @@ rbb
 :0:
 * ^TOslrn-user@lists\.sourceforge\.net
 slrn-user
+
+:0:
+* ^FROM.*@unknown.email
+* ^SUBJECT.*SMS from
+| formail -i 'Status: R'
+
+:0 A:
+sms
 
 :0:
 * ^TOsslmate@noreply\.github\.com
