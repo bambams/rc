@@ -29,7 +29,7 @@
     wipd = log --decorate --graph --online @{u}..
     dot = commit -am ...
     dot-push = !git commit -am ... && git push
-    auto-rebase = !git -c core.editor=true rebase -i @{u}
+    auto-rebase = "!git -c core.editor=true rebase -i \"${1:-@{u\\}}\" #"
     ff-branch = !git fetch origin "$1:$1"
     clean-orig = clean -f *.orig
     first-push = !git current | xargs -I? git push -u origin ?:?
