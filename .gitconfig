@@ -36,6 +36,7 @@
     original-commit = show rebase-apply/original-commit
     tag-release = "!git tag -f \"$1\" \"${2:-HEAD}\" && git push -f origin \"refs/tags/$1\" #"
     deleted-views = "!git -c diff.renameLimit=999999 log --all --diff-filter=D --summary \"${1:-HEAD~}..${2:-HEAD}\" | grep delete | egrep '([^./]+\\.[^./]+)\\.cshtml$' | sed -re 's/^\\s*delete mode 100644 //' | sort | uniq #"
+    new = checkout -b
 [apply]
     #whitespace = error-all
     #whitespace = error
