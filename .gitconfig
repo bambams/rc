@@ -56,7 +56,7 @@
 [diff]
     #renames = true
     renames = copy
-    tool = meld
+    tool = vimdiff
 [difftool]
     prompt = true
 [gc]
@@ -71,7 +71,7 @@
 [merge]
     ff = false
     log = 1000
-    tool = meld
+    tool = vimdiff
 [mergetool]
     prompt = true
 [pretty]
