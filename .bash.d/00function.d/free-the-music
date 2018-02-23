@@ -1,4 +1,9 @@
 free-the-music() {
+    if [[ $# -lt 1 ]]; then
+        echo Usage: free-the-music DIR... 1>&2;
+        return 1;
+    fi;
+
     while read f; do
         local o="${f/%.???/.ogg}";
 
@@ -21,7 +26,5 @@ free-the-music() {
             echo "ogg $o";
             </dev/null ffmpeg -i "$f" "$o";
         fi;
-    done < <(find "$HOME/music" "$HOME/Music" "$MUSIC_DIR_NONFREE" \
-                -name '*.m4a' -o \
-                -name '*.mp4');
+    done < <(find "$@" -name '*.m4a' -o -name '*.mp4');
 };
