@@ -1,0 +1,2 @@
+export GLOBIGNORE='.:..';
+shopt -u dotglob
