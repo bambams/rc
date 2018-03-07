@@ -15,7 +15,7 @@ mkscreen -- ghci ghci
 mkscreen -- hello-server script/hello_catalyst_server.pl --host 127.0.0.1 -r
 mkscreen -- hgsh bash
 mkscreen -- imutt /usr/bin/mutt -F /home/bamccaig/.muttrc.imap
-mkscreen -- irc /usr/bin/irssi
+mkscreen -- irc irssi
 mkscreen -- lfs /usr/bin/elinks http://www.linuxfromscratch.org/
 mkscreen -- lyvi lyvi-wrapper
 mkscreen -- man-adom /usr/bin/view /usr/share/doc/adom/manual.doc
