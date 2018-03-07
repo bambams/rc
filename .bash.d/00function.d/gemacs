@@ -1,4 +1,4 @@
-gemacs() {
+function gemacs {
     if [[ ! -z $DISPLAY ]]; then
         command emacs &>/dev/null & disown;
     else
