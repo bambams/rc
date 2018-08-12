@@ -1,5 +1,5 @@
 [alias]
-    aliases = !git config --global --get-regexp alias. | sed -re 's/alias\\.(\\w+)\\s+([^!])/\\1 = git \\2/' -e 's/alias\\.(\\w+)\\s+!/\\1 = /'
+    aliases = !git config --global --get-regexp alias. | sed -re 's/alias\\.([\\w-]+)\\s+([^!])/\\1 = git \\2/' -e 's/alias\\.([\\w-]+)\\s+!/\\1 = /'
     alog = log --all --decorate --graph
     amend = commit --amend --no-edit
     blog = log --decorate --graph @{u}..
@@ -37,6 +37,8 @@
     tag-release = "!git tag -f \"$1\" \"${2:-HEAD}\" && git push -f origin \"refs/tags/$1\" #"
     deleted-views = "!git -c diff.renameLimit=999999 log --all --diff-filter=D --summary \"${1:-HEAD~}..${2:-HEAD}\" | grep delete | egrep '([^./]+\\.[^./]+)\\.cshtml$' | sed -re 's/^\\s*delete mode 100644 //' | sort | uniq #"
     new = checkout -b
+    archive-branch = "!git tag \"archive/$USER/${1:-$(git current)}\" \"${1:-$(git current)}\" && git branch -d \"${1:-$(git current)}\" #"
+    topic = log --decorate --graph --oneline develop..
 [apply]
     #whitespace = error-all
     #whitespace = error
