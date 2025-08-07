@@ -141,7 +141,7 @@ hg-install hg-remotebranches \
         "$hg_remotebranches_path" "$hg_remotebranches_repo";
 
 irssi_smartfilter_path="$HOME/src/irssi-smartfilter";
-irssi_smartfilter_repo="git://github.com/lifeforms/irssi-smartfilter.git";
+irssi_smartfilter_repo="https://github.com/lifeforms/irssi-smartfilter";
 
 git-install irssi-smartfilter \
         "$irssi_smartfilter_path" "$irssi_smartfilter_repo";
@@ -173,7 +173,7 @@ default-push = https://hg@bitbucket.org/bambams/hg' "$mercurial_path_rc";
 fi;
 
 pathogen_path="$HOME/src/vim-pathogen";
-pathogen_repo='git://github.com/tpope/vim-pathogen.git';
+pathogen_repo='https://github.com/tpope/vim-pathogen';
 
 git-install vim-pathogen "$pathogen_path" "$pathogen_repo";
 
@@ -184,18 +184,18 @@ if [[ $? = 0 ]]; then
 fi;
 
 pyenv_path="$HOME/src/pyenv";
-pyenv_repo='git://github.com/yyuu/pyenv.git';
+pyenv_repo='https://github.com/yyuu/pyenv';
 
 git-install pyenv "$pyenv_path" "$pyenv_repo";
 
 pyenv_pip_rehash_path="$pyenv_path/plugins/pyenv-pip-rehash";
-pyenv_pip_rehash_repo='git://github.com/yyuu/pyenv-pip-rehash.git';
+pyenv_pip_rehash_repo='https://github.com/yyuu/pyenv-pip-rehash';
 
 git-install 'Pyenv Pip Auto-rehash' \
         "$pyenv_pip_rehash_path" "$pyenv_pip_rehash_repo";
 
 rakudobrew_path="$HOME/src/rakudobrew";
-rakudobrew_repo='git://github.com/tadzik/rakudobrew.git';
+rakudobrew_repo='https://github.com/tadzik/rakudobrew';
 
 git-install rakudobrew "$rakudobrew_path" "$rakudobrew_repo";
 
@@ -204,17 +204,17 @@ if [[ $? = 0 ]] && [[ ! -L ~/.rakudobrew ]]; then
 fi;
 
 rbenv_path="$HOME/src/rbenv";
-rbenv_repo='git://github.com/sstephenson/rbenv.git';
+rbenv_repo='https://github.com/sstephenson/rbenv';
 
 git-install rbenv "$rbenv_path" "$rbenv_repo";
 
 ruby_build_path="$rbenv_path/plugins/ruby-build/";
-ruby_build_repo='git://github.com/sstephenson/ruby-build.git';
+ruby_build_repo='https://github.com/sstephenson/ruby-build';
 
 git-install ruby-build "$ruby_build_path" "$ruby_build_repo";
 
 splice_path="$HOME/src/splice";
-splice_repo='git://github.com/sjl/splice.vim.git';
+splice_repo='https://github.com/sjl/splice.vim';
 
 git-install splice "$splice_path" "$splice_repo";
 
@@ -223,7 +223,7 @@ if [[ $? = 0 ]]; then
 fi;
 
 vinfo_path="$HOME/src/vinfo";
-vinfo_repo='git://github.com/alx741/vinfo.git';
+vinfo_repo='https://github.com/alx741/vinfo';
 
 git-install 'Vinfo' "$vinfo_path" "$vinfo_repo";
 
@@ -232,7 +232,7 @@ if [[ $? = 0 ]]; then
 fi;
 
 vim_colorschemes_path="$HOME/src/vim-colorschemes";
-vim_colorschemes_repo='git://github.com/flazz/vim-colorschemes.git';
+vim_colorschemes_repo='https://github.com/flazz/vim-colorschemes';
 
 git-install 'Vim Color Schemes' \
         "$vim_colorschemes_path" "$vim_colorschemes_repo";
