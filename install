@@ -105,6 +105,8 @@ hg-install() {
 
 rc_dir="$(resolve-rc-path "${HOME}" "${script_dir}")";
 
+mkdir ~/bin;
+
 for f in "${all_files[@]}"; do
     ignored=;
     for g in "${ignored_files[@]}"; do
@@ -117,7 +119,7 @@ for f in "${all_files[@]}"; do
     if [ -z "${ignored}" ]; then
         d="$(dirname "$f")";
         p="$(resolve-rel-depth "$f")";
-        symlink "${p}${rc_dir}/$f" "${HOME}/${d}";
+        symlink "$HOME/${p}${rc_dir}/$f" "${HOME}/${d}";
     fi;
 done;
 
