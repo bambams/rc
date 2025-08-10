@@ -362,4 +362,4 @@ set background=dark
 """"""""""""""""""""""""""
 " Activate pathogen.
 """"""""""""""""""""""""""
-execute pathogen#infect()
+"execute pathogen#infect()
