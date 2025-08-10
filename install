@@ -105,7 +105,7 @@ hg-install() {
 
 rc_dir="$(resolve-rc-path "${HOME}" "${script_dir}")";
 
-mkdir ~/bin;
+symlink "$(dirname "$0")/bin" ~/bin;
 
 for f in "${all_files[@]}"; do
     ignored=;
